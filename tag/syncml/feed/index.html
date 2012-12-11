@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; syncml</title>
+	<atom:link href="http://eikke.com/tag/syncml/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Nokia 6300 SyncML follow-up</title>
+		<link>http://eikke.com/nokia-6300-syncml-follow-up/</link>
+		<comments>http://eikke.com/nokia-6300-syncml-follow-up/#comments</comments>
+		<pubDate>Tue, 08 Jan 2008 17:54:52 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[nokia 6300]]></category>
+		<category><![CDATA[opensync]]></category>
+		<category><![CDATA[syncml]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/nokia-6300-syncml-follow-up/</guid>
+		<description><![CDATA[Last couple of days I&#8217;ve been trying to get SyncML up and running on my new Nokia 6300 cellphone, as it wasn&#8217;t working before. I&#8217;ve been collaborating with the main libsyncml author to figure out what&#8217;s going wrong, but no success, although there is a report of someone who did get it working. The phone [...]]]></description>
+			<content:encoded><![CDATA[<p>Last couple of days I&#8217;ve been trying to get SyncML up and running on my new Nokia 6300 cellphone, as <a href="http://eikke.com/cellphone-bluetooth-and-reddit-rant/" title="Cellphone, bluetooth and reddit rant">it wasn&#8217;t working before</a>. I&#8217;ve been collaborating with the main <a href="http://libsyncml.opensync.org" title="libsyncml homepage">libsyncml</a> author to figure out what&#8217;s going wrong, but no success, although there is a <a href="http://libsyncml.opensync.org/ticket/123">report</a> of someone who did get it working.</p>
+<p>The phone firmware is broken though, that&#8217;s pretty sure. As you can read in the <a href="http://libsyncml.opensync.org/ticket/123">bug report</a>, he had to sync the phone in Windows using the Nokia PC Suite, before it wanted to work using libsyncml. Next to this, authentication had to be enabled on the phone before it wanted to sync.</p>
+<p>It looks like I&#8217;m not the only person who got issues though: even the official Nokia software under Windows refuses to work (&#8220;<a href="http://www.google.be/search?q=PC+Sync+has+encountered+a+problem+and+has+terminated+the+synchronisation">PC Sync has encountered a problem and has terminated the synchronisation</a>&#8220;, &#8220;<a href="http://www.google.be/search?q=Data+transfer+not+possible">Data transfer not possible</a>&#8220;) for several users. There are reports of SyncML working in iSync, although this needs an external &#8220;plugin&#8221;. Luckily I was able to make a complete phone backup using the PC suite. This, and all other suite features, except sync, seem to work fine.</p>
+<p>Anyway, libsyncml traces, obex data dumps or logs of the data sent and received by the official client under Windows (by snooping USB data) didn&#8217;t provide any solution, yet.</p>
+<p>The fact synchronization doesn&#8217;t work is a killer bug if you ask me: I bought this phone to be able to sync, otherwise I&#8217;d have settled with some basic model at half the price (like my old 3100).</p>
+<p>One more issue: I configured the built-in email client to fetch mails from my IMAP server using an SSL connection. When trying to sync my mails, the client errors out though, as my (self-signed) server certificate can&#8217;t be validated. I checked the phone&#8217;s manual, but there&#8217;s nothing regarding CA keys in the phone&#8217;s trust list, nor could I find it myself&#8230;</p>
+<p>It would be really nice if, in some new version of the firmware (next to fixing the SyncML issues) the contact list would be somewhat better integrated with other applications:</p>
+<ol>
+<li>Allow sending emails to contacts or browsing to the webpage of contacts from within the contacts application. Currently you can only view the addresses, if set, but there&#8217;s no way to launch the email client or browser application with the given address.</li>
+<li>Integrate calendar and contact birthday information: you can set the birthday of contacts, but these are not displayed in the calendar, whilst the latter one does allow you to add birthdays. I guess nobody wants to add all contacts manually in his calendar application too&#8230;</li>
+</ol>
+<p>So, if you happen to know some people working on series40 firmware, please point them to these issues, thanks <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/nokia-6300-syncml-follow-up/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>Cellphone, Bluetooth and reddit rant</title>
+		<link>http://eikke.com/cellphone-bluetooth-and-reddit-rant/</link>
+		<comments>http://eikke.com/cellphone-bluetooth-and-reddit-rant/#comments</comments>
+		<pubDate>Thu, 03 Jan 2008 21:58:31 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[cellphone]]></category>
+		<category><![CDATA[gnokii]]></category>
+		<category><![CDATA[nokia 6300]]></category>
+		<category><![CDATA[opensync]]></category>
+		<category><![CDATA[rant]]></category>
+		<category><![CDATA[syncml]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/cellphone-bluetooth-and-reddit-rant/</guid>
+		<description><![CDATA[Got a new cellphone today, a Nokia 6300. Pretty nice phone, except I can&#8217;t get the SyncML support to work on my Linux system&#8230; SyncML over OBEX is reported several times not to work, although the OpenSuSE wiki claims it should work&#8230; Most sources say one should use the gnokii OpenSync plugin, which does work, [...]]]></description>
+			<content:encoded><![CDATA[<p>Got a new cellphone today, a <a href="http://www.nokia.be/A4330105" title="Nokia 6300">Nokia 6300</a>. Pretty nice phone, except I can&#8217;t get the SyncML support to work on my Linux system&#8230; SyncML over OBEX is reported several times not to work, although the OpenSuSE wiki <a href="http://en.opensuse.org/OpenSync/SyncML-OBEX-Client">claims</a> it should work&#8230; Most sources say one should use the <a href="http://www.gnokii.org">gnokii</a> <a href="http://www.opensync.org">OpenSync</a> plugin, which does work, but has one major drawback: even when configuring the phone only to use it&#8217;s internal memory for contact list storage, the gnokii plugin will also sync the SIM content, which I copied to the phone memory. Result: duplication in my Evolution contact list. I guess I should patch libopensync-gnokii adding a configuration field providing the possibility to select only one storage container? Or try to figure out whether the Novell/SuSE guys have a patch for <a href="http://libsyncml.opensync.org">libsyncml</a>?</p>
+<p>Does anyone know whether there&#8217;s a <a href="http://tango.freedesktop.org/">Tango</a>-style theme for this device? <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<p>Little unrelated rant: thanks to my blog statistics I found out my recent <a href="http://eikke.com/django-generic-ajax-form-validation/">article on AJAX form validation with Django</a> got <a href="http://programming.reddit.com/info/64f3q/comments">featured</a> on <a href="http://programming.reddit.com/">programming.reddit.com</a>. I also saw some people commented on my article over there, comments on which I&#8217;ll reply later. Now I was wondering, why do people leave comments over there, and not beneath the blog entry, where everyone interested in the subject can easily find it, get into the discussion, the blog author will certainly read your comment, reply on it (as most likely he doesn&#8217;t read news-site X where user Y can post his comment, or news-site Z where Q posts his comments, etc, or he got no account on X or Z to be able to reply),&#8230; It&#8217;s as if I&#8217;d start my very own secret little webpage where I put links to all blog entries I want to comment on, and write the comment on that page, but don&#8217;t even do any trackback ping *sigh*</p>
+<p>Oh and, those claiming AJAX form validation is bad: indeed, in some cases it is, except when you, eg, want to do &#8220;check username isn&#8217;t already registered&#8221;-style validation. If you&#8217;d have commented on the right place, we could have discussed this where it was appropriate.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/cellphone-bluetooth-and-reddit-rant/feed/</wfw:commentRss>
+		<slash:comments>15</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.145 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:48 -->
+<!-- Compression = gzip -->

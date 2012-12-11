@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; django-validation</title>
+	<atom:link href="http://eikke.com/tag/django-validation/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>django-validation now includes inheritance support</title>
+		<link>http://eikke.com/django-validation-now-includes-inheritance-support/</link>
+		<comments>http://eikke.com/django-validation-now-includes-inheritance-support/#comments</comments>
+		<pubDate>Fri, 18 Jan 2008 03:33:39 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[django-validation]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-validation-now-includes-inheritance-support/</guid>
+		<description><![CDATA[I&#8217;m happy to announce django-validation got field type inheritance support since a couple of minutes. This means your form fields will be validated starting from the most base field type (django.newforms.Field) up to the actual field type (no multiple-inheritance supported though). In the example I wrote yesterday, when using a TestField field, this field will [...]]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;m happy to announce <a href="http://git.nicolast.be/?p=django-validation.git;a=summary" title="django-validation git">django-validation</a> got field type inheritance support since a couple of minutes. This means your form fields will be validated starting from the most base field type (django.newforms.Field) up to the actual field type (no multiple-inheritance supported though).</p>
+<p>In <a href="http://eikke.com/django-validation-an-introduction/" title="Ikke's blog: django-validation: an introduction">the example I wrote yesterday</a>, when using a TestField field, this field will be validated as a django.newforms.Field (a &#8220;required&#8221; check will be done), then as a django.newforms.CharField (&#8220;min_length&#8221; and &#8220;max_length&#8221; checks), and finally as a TestField. A normal CharField would be validated as a Field first, then as a CharField, etc.</p>
+<p>The returned errors will be a list of all errors found, starting with the most basic one (the ones found by the most general class, Field).</p>
+<p>Next to this, all generated Javascript code should be namespaced now (based on Python module and class names), although there might be some bad things left, I&#8217;m no Javascript guru. The generated code might be somewhat messy.</p>
+<p>Current Python code is most certainly ugly and will need more rewrites. Next to this, other field types should be added, and some tests would be nice too.</p>
+<p>I made a snapshot of yesterday&#8217;s sample (with some changes, the ClientValidator API slightly changed), you can try it <a href="http://key.nicolast.be/files/django-validation-test.html" title="django-validation testpage">here</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-validation-now-includes-inheritance-support/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>django-validation: an introduction</title>
+		<link>http://eikke.com/django-validation-an-introduction/</link>
+		<comments>http://eikke.com/django-validation-an-introduction/#comments</comments>
+		<pubDate>Tue, 15 Jan 2008 23:59:58 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[django-validation]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-validation-an-introduction/</guid>
+		<description><![CDATA[Some time ago I wrote this generic AJAX Django form validation code. Some people didn&#8217;t like this, as AJAX should not be used to perform form validation, which is sometimes true, sometimes not, as I pointed out before. So I&#8217;ve been thinking since some time to create a Django templatetag which allows one to generate [...]]]></description>
+			<content:encoded><![CDATA[<p>Some time ago I wrote this <a href="http://eikke.com/django-generic-ajax-form-validation/" title="Django generic AJAX form validation">generic AJAX Django form validation code</a>. Some people didn&#8217;t like this, as AJAX should not be used to perform form validation, which is sometimes true, sometimes not, as <a href="http://eikke.com/cellphone-bluetooth-and-reddit-rant/">I pointed out before</a>.</p>
+<p>So I&#8217;ve been thinking since some time to create a <a href="http://www.djangoproject.com" title="Django">Django</a> templatetag which allows one to generate <em>client-side Javascript form validation code</em> without writing any code himself (unless using custom widgets). Today I got into it.</p>
+<p><span id="more-48"></span></p>
+<p>The resulting project is called <strong>django-validation</strong>. It basicly allows one to write a Newforms form class, and generate client-side validation code for this form in a template. Currently only CharField validation is implemented, more should follow soon and is easy to add.</p>
+<p>Next to validation of built-in field types, one can also add code to validate custom fields. This can be done inside an inner class of the field class.</p>
+<p>The current release is very alpha-grade software, a lot of enhancements could be done, and most certainly more standard field type validators should be written. Next to this, field type inheritance isn&#8217;t supported for now (so if your field type A inherits CharField, no CharField validation will be done), this should change soon.</p>
+<p>Patches are, obviously, very welcome!</p>
+<p>Here&#8217;s a sample how to use it. First we define a very basic form:</p>
+<pre>class TestForm(forms.Form):
+    first_name = forms.CharField(max_length=128)
+    test = TestField(required_value=u'I like django-validation')</pre>
+<p>This form uses a custom class (just for demonstration purposes). This class only performs client-side validation, no clean() function is provided, although in real field types this should obviously be added. More information can be found in the inline comments:</p>
+<pre>from validation.templatetags.validation import add_error
+class TestField(forms.CharField):
+    def __init__(self, *args, **kwargs):
+        if not 'required_value' in kwargs.keys():
+            raise Exception, 'required_value should be provided'
+        self.required_value = kwargs['required_value']
+        del kwargs['required_value']
+        super(TestField, self).__init__(*args, **kwargs)
+
+    class ClientValidator:
+        '''
+        This inner class knows how to generate Javascript validation code for this field type.
+        The code will be pasted inside a function block. There is at least one assigned variable, 'field',
+        which is the DOM element we got to validate.
+
+        More parameters can be defined in the 'parameters' attribute. These parameters will be added
+        to the Javascript function prototype, and the value of the form field parameter value will be
+        assigned.
+
+        We need to define the field class name, so the django-validation code can generate suitable
+        function names.
+        '''
+        parameters = ('required_value', )
+        field_class = 'TestField'
+
+        def render(self, output):
+            '''
+            The render function should output Javascript code to check the value of the 'field' element.
+            It is called inside a Javascript function scope.
+
+            output is a StringIO object. Normally only write or writelines calls should be used.
+            '''
+            output.write('value = field.value;\n')
+            output.write('if(value != required_value) {\n')
+            # This error message should be internationalized.
+            # See the add_error documentation.
+            add_error(output, 'error_msg', 'Field value should be %(value)d.', (('%(value)d', 'required_value'), ))
+            output.write('    return [error_msg];\n')
+            output.write('}\n')</pre>
+<p>Finally, here&#8217;s how to use it inside a template (this must be one of the worse HTML/Javascript snippets I ever wrote):</p>
+<pre>{% load validation %}
+&lt;html&gt;
+&lt;body&gt;
+    &lt;form&gt;
+        {{ form.as_p }}
+        &lt;p&gt;&lt;input type="submit" onclick="return testform(this.form);" /&gt;
+    &lt;/form&gt;
+    &lt;div id="errors"&gt;&lt;/div&gt;
+    {% validation_js form 'validate_testform' %}
+    &lt;script type="text/javascript"&gt;
+        function testform(form) {
+            valid = true;
+            errors = validate_testform(form);
+            err = "&lt;ul&gt;";
+            for(field in errors) {
+                if(errors[field] != null) {
+                    err += '&lt;li&gt;' + field + ': ' + errors[field][0] + '&lt;/li&gt;';
+                    valid = false;
+                }
+            }
+            err += '&lt;/ul&gt;';
+            if(valid)
+                err = 'Form is valid';
+            document.getElementById('errors').innerHTML = err;
+            return false;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>The current code is available in <a href="http://git.nicolast.be/?p=django-validation.git;a=summary" title="django-validation git">a git repository</a>. Enjoy!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-validation-an-introduction/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.167 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:37 -->
+<!-- Compression = gzip -->

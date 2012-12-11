@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; programming</title>
+	<atom:link href="http://eikke.com/tag/programming/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>On Functional Programming Languages</title>
+		<link>http://eikke.com/on-functional-programming-languages/</link>
+		<comments>http://eikke.com/on-functional-programming-languages/#comments</comments>
+		<pubDate>Wed, 07 Apr 2010 21:50:38 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[fp]]></category>
+		<category><![CDATA[functional programming]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=173</guid>
+		<description><![CDATA[As a programming-language adept I&#8217;ve been studying the ideas, concepts and theory of functional programming (FP) and FP-related languages for about 2 years now, still learning new things everyday. Recently a &#8216;FP User Group&#8217; was started by some people at Ghent University, called GhentFPG, and the first meeting took place last thursday, with great interest [...]]]></description>
+			<content:encoded><![CDATA[<p>As a programming-language adept I&#8217;ve been studying the ideas, concepts and theory of <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> (FP) and FP-related languages for about 2 years now, still learning new things everyday.</p>
+<p>Recently a &#8216;FP User Group&#8217; was started by some people at <a href="http://www.ugent.be">Ghent University</a>, called GhentFPG, and the first meeting took place last thursday, with great interest from students, university employees as well as people working in the industry. You can find some more info in the <a href="http://groups.google.com/group/ghent-fpg">GhentFPG Google Group</a> or in the <a href="http://www.haskell.org/haskellwiki/Ghent_Functional_Programming_Group">wiki</a> (where you can also find the slides of the presentations given during the first meeting).</p>
+<p>Some days ago someone new to FP posted a <a href="http://groups.google.com/group/ghent-fpg/browse_thread/thread/81cee5d8c9a77266">message on the mailing list</a>, asking which language he should study, among other things.</p>
+<p>Since I think my reply might be of general interest (also outside GhentFPG), I decided to post a copy on this blog as well (note I did add some extra markup). Comments welcome!</p>
+<blockquote><p>
+Based on my experience (which is biased, obviously):</p>
+<ul>
+<li>
+<p>Functional Programming is not only a language-related thing. FP<br />
+languages do enforce you to apply functional paradigms, but you can<br />
+easily follow these paradigms in lots of other (more mainstream?)<br />
+languages as well: it is easier to learn people a paradigm using a<br />
+language they already know, rather than telling them FP is really cool<br />
+and useful and interesting, but requires them to learn a new<br />
+language/toolchain/&#8230; first.</p>
+<p>Not talking about <a href="http://www.java.net">Java</a> or <a href="http://en.wikipedia.org/wiki/C%2B%2B">C++</a> or something similar here, rather <a href="http://www.python.org">Python</a><br />
+and <a href="http://ruby-lang.org/">Ruby</a>.</p>
+<li>
+<p>If you&#8217;re into Java/<a href="http://msdn.microsoft.com/en-us/vcsharp/aa336809.aspx">C#</a>/&#8230;, <a href="http://www.scala-lang.org/"><em>Scala</em></a> is a really good introduction to FP:<br />
+it allows you to write OOP code just like you do already, but also<br />
+provides you lots of FP-related features, and pushes you gently into the<br />
+FP approach. The book &#8220;Programming in Scala&#8221; by Odersky et al. (the main<br />
+author of Scala) is IMO a really good intro to both Scala as well as the<br />
+FP concepts it provides, not only showing them but also explaining<br />
+gently why they&#8217;re useful, and why they&#8217;re &#8216;better&#8217; than the approaches<br />
+you&#8217;re taking already.</p>
+<p>The Scala type system is rather interesting as well.</p>
+<p>It&#8217;s the gentle path, so you want <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  Learning Scala before reading<br />
+&#8216;<a href="http://www.realworldhaskell.org/blog/">Real World Haskell</a>&#8216; certainly helped me a lot to understand the latter.</p>
+<li>
+<p><a href="http://haskell.org/"><em>Haskell</em></a> is an incredibly interesting language because of the concepts<br />
+it adopted and types it provides, but it does require an immediate mind<br />
+switch when coming from a non-OOP world (I once spent about 2 hours to<br />
+explain a Java-guy how classes and instances in Haskell relate to<br />
+classes and instances in Java, it wasn&#8217;t obvious). &#8220;Real World Haskell&#8221;<br />
+is certainly worth a read (and if you read &#8220;Programming in Scala&#8221; as<br />
+well, you&#8217;ll notice lots of similarities).</p>
+<p>I for one can read Haskell code pretty easily and learned lots of<br />
+CS/math things thanks to learning it, but I&#8217;m (still) unable to write<br />
+non-trivial code (I need some good project to get my hands dirty I<br />
+guess).</p>
+<li>
+<p><a href="http://www.erlang.org"><em>Erlang</em></a> is really interesting from a (very specific) feature<br />
+perspective: high-availability, distributed computing, the actor system<br />
+and the OTP library on top of it,&#8230;</p>
+<p>It&#8217;s a rather &#8216;old&#8217; language, but I kind of like it. Some people do<br />
+complain about the syntax, but once you figured out &#8216;,&#8217;, &#8216;;&#8217; and &#8216;.&#8217; are<br />
+used almost the same as they are in &#8216;human&#8217; written language, everything<br />
+becomes obvious  <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>Do note though Erlang is not a normal general-purpose language. You can<br />
+code +- everything you want using it, but it&#8217;s really targeted to<br />
+distributed/high-available/network applications. You most likely won&#8217;t<br />
+use it to solve mathematical problems or write a game. It&#8217;s really good<br />
+at what it&#8217;s built for though.</p>
+<p>One final note: please don&#8217;t ever make the mistake I made. If you know<br />
+Erlang, and take a look at Scala (which also has an actor library in the<br />
+standard distribution, as well as the more advanced <a href="http://akkasource.org">Akka</a>-library), don&#8217;t<br />
+judge Scala as being a competitor for Erlang, they&#8217;re both completely<br />
+different languages targeting different applications. &#8216;Scala&#8217; is not<br />
+about &#8216;scalability&#8217; as Erlang is (it&#8217;s a &#8220;Scalable Language&#8221;).</p>
+<li>
+<p><a href="http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/"><em>F#</em></a> (and most likely <a href="http://caml.inria.fr/ocaml/"><em>OCaml</em></a> as well, although I never used it though) is<br />
+certainly worth a look as well. I only read 3/4th of a book on it, but<br />
+it looks really promising and interesting.</p>
+<li>
+<p>There&#8217;s obviously all sorts of <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)"><em>Lisp</em></a> dialects. I have no opinion on<br />
+them, never looked into any Lisp closely enough. I only wrote some<br />
+<a href="http://clojure.org"><em>Clojure</em></a> (a Lisp-dialect for the JVM) code one day, but need to learn<br />
+more about the Lisp-way of programming. Clojure seems to be interesting<br />
+because of the deep integration of <a href="http://en.wikipedia.org/wiki/Software_transactional_memory">Software Transactional Memory</a> (STM)<br />
+in the language (yet another approach to concurrency <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> ).</p>
+</ul>
+<p>As for the IDE question: <a href="http://www.vim.org">Vim</a> and a decent terminal are all you need,<br />
+luckily none of the above languages require you to learn how to use a<br />
+toolchain which enforces you (or some magic IDE) to write 500 lines of<br />
+XML-based build &#8216;programs&#8217; or other insanities.</p>
+<p>My advice: pick some language, learn it, but make sure you don&#8217;t only<br />
+learn the language, but especially the concepts (type system,<br />
+higher-order stuff, list manipulation,&#8230;). Then pick some other<br />
+language and learn it as well (which will be easier since you got the<br />
+concepts already) and so on.</p>
+<p>And read tons of papers available on the internet in between <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  Even if<br />
+you don&#8217;t understand a paper completely, you&#8217;ll pick up some things<br />
+already, and re-reading it 2 weeks later helps a lot <img src='http://eikke.com/wp-includes/images/smilies/icon_biggrin.gif' alt=':-D' class='wp-smiley' /> </p>
+<p>Just my .02,</p>
+<p>Nicolas</p>
+</blockquote>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/on-functional-programming-languages/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.151 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:29 -->
+<!-- Compression = gzip -->

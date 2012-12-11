@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; git</title>
+	<atom:link href="http://eikke.com/tag/git/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Importing a Git tree into a Subversion repository</title>
+		<link>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/</link>
+		<comments>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/#comments</comments>
+		<pubDate>Sat, 25 Jul 2009 18:07:00 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[subversion]]></category>
+		<category><![CDATA[svn]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=125</guid>
+		<description><![CDATA[Recently I worked on some new project, and as always I created a local <a href="http://git-scm.com">Git</a> repository as a start. After working on it several days, creating lots of commits, I had to publish it into the central <a href="http://subversion.tigris.org">Subversion</a> repository (which is one of the <a href="http://en.wikipedia.org/wiki/Version_control_system">VCS</a>s we got). I could have done this by creating a new folder in SVN and add the latest version of all files of the project to it, but that way all history would be gone, which I didn't like.
+
+Git has a feature to work with SVN repositories, <em>git-svn</em>, but that's intended to check out existing code from SVN and work on it, not publishing an existing Git tree into a Subversion repository.
+
+A first rather naive approach didn't work out (as somewhat expected), but then I figured out how to achieve this anyway.]]></description>
+			<content:encoded><![CDATA[<p>Recently I worked on some new project, and as always I created a local <a href="http://git-scm.com">Git</a> repository as a start. After working on it several days, creating lots of commits, I had to publish it into the central <a href="http://subversion.tigris.org">Subversion</a> repository (which is one of the <a href="http://en.wikipedia.org/wiki/Version_control_system">VCS</a>s we got). I could have done this by creating a new folder in SVN and add the latest version of all files of the project to it, but that way all history would be gone, which I didn&#8217;t like.</p>
+<p>Git has a feature to work with SVN repositories, <em>git-svn</em>, but that&#8217;s intended to check out existing code from SVN and work on it, not publishing an existing Git tree into a Subversion repository.</p>
+<p>A first rather naive approach didn&#8217;t work out (as somewhat expected), but then I figured out how to achieve this anyway.<br />
+<span id="more-125"></span></p>
+<p>As a test, let&#8217;s first create an empty SVN repository and a Git repository with some commits:</p>
+<pre>$ svnadmin create repo
+$ svn co file:///Users/nicolas/Temp/git_to_svn/repo svn_repo
+Checked out revision 0.
+$ cd svn_repo
+$ svn mkdir trunk tags branches
+A         trunk
+A         tags
+A         branches
+$ svn commit -m "Create repository structure"
+Adding         branches
+Adding         tags
+Adding         trunk
+
+Committed revision 1.
+$ cd ..
+
+$ mkdir project; cd project
+$ git init
+Initialized empty Git repository in /Users/nicolas/Temp/git_to_svn/project/.git/
+$ echo "foo" > test.txt; git add test.txt; git commit -m "Initial version"
+master (root-commit) 88464cf] Initial version
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+$ echo "bar" > test.txt; git commit test.txt -m "Second version"
+master cb62866] Second version
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+</pre>
+<p>We now can set up <em>git-svn</em>:</p>
+<pre>$ git svn init -s file:///Users/nicolas/Temp/git_to_svn/repo/
+$ git svn fetch
+r1 = 741ab63aea786882eafd38dc74369e651f554c9c (trunk)
+</pre>
+<p>Depending on the layout of your SVN project, you might need to drop the <em>-s</em> parameter and add <em>-t</em>, <em>-T</em> or <em>-b</em> flags, see the <a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html"><em>git-svn</em> manpage</a>.</p>
+<p>A little naive we could try to push everything to the SVN repository now:</p>
+<pre>
+$ git svn dcommit
+Unable to determine upstream SVN information from HEAD history.
+Perhaps the repository is empty. at /opt/local/libexec/git-core/git-svn line 439.
+</pre>
+<p>This fails since the git svn command can&#8217;t figure out which commits to push: there&#8217;s no link between our original Git repository and the Subversion heads.</p>
+<p>To fix this, we can use a Git <em>graft</em> to link them. We&#8217;ll tell Git the commit which created the SVN folder in which we want to store the project is the parent commit of the first commit in our Git repository:</p>
+<pre>
+$ git show-ref trunk
+741ab63aea786882eafd38dc74369e651f554c9c refs/remotes/trunk
+$ git log --pretty=oneline master | tail -n1
+88464cfdf549a82b30ee7c52e53e2b310f0d9ec4 Initial version
+$ echo "88464cfdf549a82b30ee7c52e53e2b310f0d9ec4 741ab63aea786882eafd38dc74369e651f554c9c" >> .git/info/grafts
+</pre>
+<p>If now you execute <em>git log</em>, you&#8217;ll see the &#8220;Create repository structure&#8221; SVN commit is displayed after our &#8220;Initial version&#8221; commit.</p>
+<p>Pushing to SVN now works fine:</p>
+<pre>
+$ git svn dcommit
+Committing to file:///Users/nicolas/Temp/git_to_svn/repo/trunk ...
+	A	test.txt
+Committed r2
+	A	test.txt
+r2 = 8c72757dd3a7d550ed8ef393bb74c0350d22dbac (trunk)
+No changes between current HEAD and refs/remotes/trunk
+Resetting to the latest refs/remotes/trunk
+test.txt: locally modified
+	M	test.txt
+Committed r3
+	M	test.txt
+r3 = ca0fc06d477bcd4dd5c6f6d2ae6d94356b510280 (trunk)
+No changes between current HEAD and refs/remotes/trunk
+Resetting to the latest refs/remotes/trunk
+</pre>
+<p>All set <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/feed/</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.211 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:04 -->
+<!-- Compression = gzip -->

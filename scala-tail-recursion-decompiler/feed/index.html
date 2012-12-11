@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Scala tail recursion and decompiler adventures</title>
+	<atom:link href="http://eikke.com/scala-tail-recursion-decompiler/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com/scala-tail-recursion-decompiler/</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Tue, 04 Dec 2012 00:03:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+	<item>
+		<title>By: Jim</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-35604</link>
+		<dc:creator>Jim</dc:creator>
+		<pubDate>Sat, 05 Jun 2010 06:19:31 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-35604</guid>
+		<description>&quot;Yea and I always wonder how Java handles recursive calls. I always feel that I can’t get more than 3000 calls on some of the most basic code. I figure with the default 64MB jvm heap size, I sure hope the JVM can take more than that. &quot;
+
+The limitation on the number of nested calls is determined by the (per-thread) stack size, not the heap size.  This can be expanded with -Xss jvm parameter.</description>
+		<content:encoded><![CDATA[<p>&#8220;Yea and I always wonder how Java handles recursive calls. I always feel that I can’t get more than 3000 calls on some of the most basic code. I figure with the default 64MB jvm heap size, I sure hope the JVM can take more than that. &#8221;</p>
+<p>The limitation on the number of nested calls is determined by the (per-thread) stack size, not the heap size.  This can be expanded with -Xss jvm parameter.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26508</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Thu, 13 Aug 2009 11:32:46 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26508</guid>
+		<description>Ismael, I saw that while browsing the Scala sources, indeed :-) Still on 2.7 though, looking forward to 2.8!</description>
+		<content:encoded><![CDATA[<p>Ismael, I saw that while browsing the Scala sources, indeed <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' />  Still on 2.7 though, looking forward to 2.8!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ismael Juma</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26506</link>
+		<dc:creator>Ismael Juma</dc:creator>
+		<pubDate>Thu, 13 Aug 2009 10:03:05 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26506</guid>
+		<description>Hi,
+
+A very useful addition to Scala 2.8.0 (unreleased) is the @tailrec annotation. That allows you to tell the compiler to issue an error if it&#039;s unable to apply the optimisation.
+
+Best,
+Ismael</description>
+		<content:encoded><![CDATA[<p>Hi,</p>
+<p>A very useful addition to Scala 2.8.0 (unreleased) is the @tailrec annotation. That allows you to tell the compiler to issue an error if it&#8217;s unable to apply the optimisation.</p>
+<p>Best,<br />
+Ismael</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26503</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Thu, 13 Aug 2009 07:18:55 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26503</guid>
+		<description>@Simon: I can imagine :-) Using *any* functional construct in a primarily imperative language/environment might cause issues, but I do think having notions of functional concepts and techniques can also benefit imperative programmers and code quality.
+
+@Berlin: Regarding number of arguments, I didn&#039;t test it yet, but I expect things to work out fine, at least until 22 arguments (looks like 22 is the largest function arity in the Scala library: http://lampsvn.epfl.ch/svn-repos/scala/scala/trunk/src/library/scala/).
+
+@Daniel: Thanks for the information, although I don&#039;t really see how that applies here: why can&#039;t the Scala compiler emit bytecodes which immediately identify &#039;next&#039; to be of type V? I might be missing something... Don&#039;t know Java bytecodes at all, might need to peek into them one day.</description>
+		<content:encoded><![CDATA[<p>@Simon: I can imagine <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' />  Using *any* functional construct in a primarily imperative language/environment might cause issues, but I do think having notions of functional concepts and techniques can also benefit imperative programmers and code quality.</p>
+<p>@Berlin: Regarding number of arguments, I didn&#8217;t test it yet, but I expect things to work out fine, at least until 22 arguments (looks like 22 is the largest function arity in the Scala library: <a href="http://lampsvn.epfl.ch/svn-repos/scala/scala/trunk/src/library/scala/" rel="nofollow">http://lampsvn.epfl.ch/svn-repos/scala/scala/trunk/src/library/scala/</a>).</p>
+<p>@Daniel: Thanks for the information, although I don&#8217;t really see how that applies here: why can&#8217;t the Scala compiler emit bytecodes which immediately identify &#8216;next&#8217; to be of type V? I might be missing something&#8230; Don&#8217;t know Java bytecodes at all, might need to peek into them one day.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel Gonzalez</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26502</link>
+		<dc:creator>Daniel Gonzalez</dc:creator>
+		<pubDate>Thu, 13 Aug 2009 06:33:37 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26502</guid>
+		<description>&quot;the only thing I don’t get is why ‘next’ is an Object and not a ‘V’&quot;
+That&#039;s due to the way Generics work in Java: They only exist at compile time. JVM does NOT know a thing about Generics, it keeps on dealing with Object. As somebody said, Generics is &quot;syntactical sugar&quot;.
+
+That also mean that you can&#039;t rely on Generics for run time checks, because that information has been lost when transalated to bytecode.</description>
+		<content:encoded><![CDATA[<p>&#8220;the only thing I don’t get is why ‘next’ is an Object and not a ‘V’&#8221;<br />
+That&#8217;s due to the way Generics work in Java: They only exist at compile time. JVM does NOT know a thing about Generics, it keeps on dealing with Object. As somebody said, Generics is &#8220;syntactical sugar&#8221;.</p>
+<p>That also mean that you can&#8217;t rely on Generics for run time checks, because that information has been lost when transalated to bytecode.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Berlin Brown</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26501</link>
+		<dc:creator>Berlin Brown</dc:creator>
+		<pubDate>Thu, 13 Aug 2009 03:39:36 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26501</guid>
+		<description>&quot;the code was failing with the inevitable &quot;
+
+Yea and I always wonder how Java handles recursive calls.  I always feel that I can&#039;t get more than 3000 calls on some of the most basic code.  I figure with the default 64MB jvm heap size, I sure hope the JVM can take more than that. 
+
+To the Scala code, have you tested if you increase the number of parameters in your reduce method.  I wonder if Scala will ever default to the Java recursive call if you have too many args.</description>
+		<content:encoded><![CDATA[<p>&#8220;the code was failing with the inevitable &#8221;</p>
+<p>Yea and I always wonder how Java handles recursive calls.  I always feel that I can&#8217;t get more than 3000 calls on some of the most basic code.  I figure with the default 64MB jvm heap size, I sure hope the JVM can take more than that. </p>
+<p>To the Scala code, have you tested if you increase the number of parameters in your reduce method.  I wonder if Scala will ever default to the Java recursive call if you have too many args.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Simon</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/comment-page-1/#comment-26497</link>
+		<dc:creator>Simon</dc:creator>
+		<pubDate>Wed, 12 Aug 2009 23:12:41 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=129#comment-26497</guid>
+		<description>Ran into an ugly little bit of Java code recently, that surely must have been written by a functional-language programmer - splitting a comma-separated string, implemented by tail recursion. Never mind that Java has better ways of splitting strings, such methods really don&#039;t work under the JVM - the code was failing with the inevitable StackOverflowException...</description>
+		<content:encoded><![CDATA[<p>Ran into an ugly little bit of Java code recently, that surely must have been written by a functional-language programmer &#8211; splitting a comma-separated string, implemented by tail recursion. Never mind that Java has better ways of splitting strings, such methods really don&#8217;t work under the JVM &#8211; the code was failing with the inevitable StackOverflowException&#8230;</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.267 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:46 -->
+<!-- Compression = gzip -->

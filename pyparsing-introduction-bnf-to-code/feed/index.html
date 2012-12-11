@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Pyparsing introduction: BNF to code</title>
+	<atom:link href="http://eikke.com/pyparsing-introduction-bnf-to-code/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com/pyparsing-introduction-bnf-to-code/</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Tue, 04 Dec 2012 00:03:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+	<item>
+		<title>By: Wayne</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-88650</link>
+		<dc:creator>Wayne</dc:creator>
+		<pubDate>Tue, 04 Dec 2012 00:03:23 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-88650</guid>
+		<description>Good introduction to pyparsing.  Thanks Nicolas!</description>
+		<content:encoded><![CDATA[<p>Good introduction to pyparsing.  Thanks Nicolas!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: lerry</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-46616</link>
+		<dc:creator>lerry</dc:creator>
+		<pubDate>Mon, 14 Mar 2011 04:45:53 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-46616</guid>
+		<description>hi poh,, what if the expr is like this A=B+c?</description>
+		<content:encoded><![CDATA[<p>hi poh,, what if the expr is like this A=B+c?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: GDR!</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-30022</link>
+		<dc:creator>GDR!</dc:creator>
+		<pubDate>Fri, 18 Dec 2009 10:20:00 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-30022</guid>
+		<description>Good introduction - thank you!
+
+Although I share the feelings of &quot;sb&quot; about pagination.</description>
+		<content:encoded><![CDATA[<p>Good introduction &#8211; thank you!</p>
+<p>Although I share the feelings of &#8220;sb&#8221; about pagination.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-2734</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Sat, 19 Apr 2008 13:17:29 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-2734</guid>
+		<description>Francis: I guess you&#039;re referring to the snippet on page 2? It says:
+
+from pyparsing import OneOrMore
+sentence = OneOrMore(word)
+
+The definition of &#039;word&#039; is given on the previous page:
+
+word = Word(lowercase)
+
+where &#039;lowercase&#039; is imported from the &#039;string&#039; module and equals
+
+abcdefghijklmnopqrstuvwxyz
+
+The definition of the BNF type &#039;word&#039; is Word(lowercase), ie. a concatenation of any character in the string (or list, so you want) &#039;lowercase&#039;, which is a-z.
+
+A sentence is defined as OneOrMore words.
+
+The string &#039;Hello world&#039; can not be parsed since it does not match OneOrMore(word): the first item in it (&#039;Hello&#039;) contains characters not matching the definition of word: the &#039;H&#039; (since we defined a word to be a concatenation of lowercase characters, it shouldn&#039;t contain any uppercase characters).
+
+As you can see, on page 3 a better definition of sentence is constructed using a &#039;startword&#039; definition which should be a concatenation of one uppercase character, followed by zero or more lowercase characters.The example shows &#039;A valid sentence.&#039; can be parsed and validated. The string &#039;Hello world!&#039; would be valid in this BNF construct too. &#039;Hello world&#039; would not match since we&#039;re missing a punctuation sign.
+
+Using the definitions from page 3
+
+almost_valid_sentence = startword + body
+
+or (even more limited)
+
+hello_caps = startword + word
+
+would validate and parse &#039;Hello world&#039;.</description>
+		<content:encoded><![CDATA[<p>Francis: I guess you&#8217;re referring to the snippet on page 2? It says:</p>
+<p>from pyparsing import OneOrMore<br />
+sentence = OneOrMore(word)</p>
+<p>The definition of &#8216;word&#8217; is given on the previous page:</p>
+<p>word = Word(lowercase)</p>
+<p>where &#8216;lowercase&#8217; is imported from the &#8216;string&#8217; module and equals</p>
+<p>abcdefghijklmnopqrstuvwxyz</p>
+<p>The definition of the BNF type &#8216;word&#8217; is Word(lowercase), ie. a concatenation of any character in the string (or list, so you want) &#8216;lowercase&#8217;, which is a-z.</p>
+<p>A sentence is defined as OneOrMore words.</p>
+<p>The string &#8216;Hello world&#8217; can not be parsed since it does not match OneOrMore(word): the first item in it (&#8216;Hello&#8217;) contains characters not matching the definition of word: the &#8216;H&#8217; (since we defined a word to be a concatenation of lowercase characters, it shouldn&#8217;t contain any uppercase characters).</p>
+<p>As you can see, on page 3 a better definition of sentence is constructed using a &#8216;startword&#8217; definition which should be a concatenation of one uppercase character, followed by zero or more lowercase characters.The example shows &#8216;A valid sentence.&#8217; can be parsed and validated. The string &#8216;Hello world!&#8217; would be valid in this BNF construct too. &#8216;Hello world&#8217; would not match since we&#8217;re missing a punctuation sign.</p>
+<p>Using the definitions from page 3</p>
+<p>almost_valid_sentence = startword + body</p>
+<p>or (even more limited)</p>
+<p>hello_caps = startword + word</p>
+<p>would validate and parse &#8216;Hello world&#8217;.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Francis</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-2726</link>
+		<dc:creator>Francis</dc:creator>
+		<pubDate>Sat, 19 Apr 2008 08:22:25 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-2726</guid>
+		<description>I don&#039;t see the difference in (except for the whitespaces)
+
+print sentence.parseString(&#039;hello    world&#039;) # notice &gt;1 spaces
+# returns [&#039;hello&#039;, &#039;world&#039;]
+print sentence.parseString(&#039;Hello world&#039;)
+# raises a ParseException
+
+Why does the second one raise an exception ?</description>
+		<content:encoded><![CDATA[<p>I don&#8217;t see the difference in (except for the whitespaces)</p>
+<p>print sentence.parseString(&#8216;hello    world&#8217;) # notice &gt;1 spaces<br />
+# returns ['hello', 'world']<br />
+print sentence.parseString(&#8216;Hello world&#8217;)<br />
+# raises a ParseException</p>
+<p>Why does the second one raise an exception ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Olivier Berger</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-189</link>
+		<dc:creator>Olivier Berger</dc:creator>
+		<pubDate>Mon, 21 Jan 2008 10:15:40 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-189</guid>
+		<description>What&#039;s the difference to other parser systems like simpleparse ?
+
+Regards,</description>
+		<content:encoded><![CDATA[<p>What&#8217;s the difference to other parser systems like simpleparse ?</p>
+<p>Regards,</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: jauco</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-185</link>
+		<dc:creator>jauco</dc:creator>
+		<pubDate>Mon, 21 Jan 2008 06:22:21 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-185</guid>
+		<description>very nice tutorial! thanks!</description>
+		<content:encoded><![CDATA[<p>very nice tutorial! thanks!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: sb</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/comment-page-1/#comment-174</link>
+		<dc:creator>sb</dc:creator>
+		<pubDate>Sun, 20 Jan 2008 17:09:30 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/#comment-174</guid>
+		<description>Six pages??  Ouch.  And no next button.  Any chance you could put it all on one page next time?  I feel like I&#039;m reading some ad-infested hardware blog.</description>
+		<content:encoded><![CDATA[<p>Six pages??  Ouch.  And no next button.  Any chance you could put it all on one page next time?  I feel like I&#8217;m reading some ad-infested hardware blog.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.676 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:36:17 -->
+<!-- Compression = gzip -->

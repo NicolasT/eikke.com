@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Re: Python recursion performance test</title>
+	<atom:link href="http://eikke.com/re-python-recursion-performance-test/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com/re-python-recursion-performance-test/</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Tue, 04 Dec 2012 00:03:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26353</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Tue, 04 Aug 2009 18:20:53 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26353</guid>
+		<description>More discussion going on at http://geekfromcairo.wordpress.com/2009/08/04/to-understand-recursion-you-need-to-understand-recursion-take-2/#comment-39 and before...</description>
+		<content:encoded><![CDATA[<p>More discussion going on at <a href="http://geekfromcairo.wordpress.com/2009/08/04/to-understand-recursion-you-need-to-understand-recursion-take-2/#comment-39" rel="nofollow">http://geekfromcairo.wordpress.com/2009/08/04/to-understand-recursion-you-need-to-understand-recursion-take-2/#comment-39</a> and before&#8230;</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: To Understand Recursion You Need To Understand Recursion&#8230; &#171; Another Geek from Cairo</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26275</link>
+		<dc:creator>To Understand Recursion You Need To Understand Recursion&#8230; &#171; Another Geek from Cairo</dc:creator>
+		<pubDate>Sat, 01 Aug 2009 01:39:24 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26275</guid>
+		<description>[...] rightly concluded that recursion in Python is slow. (An interesting counter-gument can be found here as [...]</description>
+		<content:encoded><![CDATA[<p>[...] rightly concluded that recursion in Python is slow. (An interesting counter-gument can be found here as [...]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Mohammed Gamal</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26273</link>
+		<dc:creator>Mohammed Gamal</dc:creator>
+		<pubDate>Fri, 31 Jul 2009 23:49:31 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26273</guid>
+		<description>Great reply! However, I think that even with memoization you&#039;re very likely to hit recursion limits in python, since you still call the function recursively, and in my experience python doesn&#039;t really hold a huge space for the call stack. Try for example running fib2(1000) from first run, where you&#039;ll hit the limit, now try fib2(900) then fib2(1000), you&#039;ll immediately get the result since you only did 100 recursive calls this time.
+Bottom line, you may use recursion in python, but you gotta bit a little bit more careful when designing your algorithms than other compiled programming languages</description>
+		<content:encoded><![CDATA[<p>Great reply! However, I think that even with memoization you&#8217;re very likely to hit recursion limits in python, since you still call the function recursively, and in my experience python doesn&#8217;t really hold a huge space for the call stack. Try for example running fib2(1000) from first run, where you&#8217;ll hit the limit, now try fib2(900) then fib2(1000), you&#8217;ll immediately get the result since you only did 100 recursive calls this time.<br />
+Bottom line, you may use recursion in python, but you gotta bit a little bit more careful when designing your algorithms than other compiled programming languages</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: James Henstridge</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26108</link>
+		<dc:creator>James Henstridge</dc:creator>
+		<pubDate>Fri, 17 Jul 2009 03:28:19 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26108</guid>
+		<description>Mohamed: I do use recursion in Python (e.g. for processing tree data structures) -- I just don&#039;t use it in cases where I am going to hit the recursion limit.  Python has other tools for those sort of situations (ones that leave you with a readable stack trace when things go wrong too).
+
+Furthermore, the naive recursive fib() implementation given here can&#039;t take advantage of tail call optimisation anyway, due to it not simply returning the result of another function call.
+
+To take advantage of tail call optimisation, you&#039;d need an implementation like:
+
+    def fib_helper(x, y, n):
+        if n == 0: return x
+        return fib_helper(y, x + y, n - 1)
+    def fib4(n):
+        return fib_helper(0, 1, n)
+
+While I agree that my fib3() implementation is slightly more difficult to read than the original naive fib() implementation, it isn&#039;t clear to me that fib4() is better.  If I was using a different language, things might tip in the other direction, but we are talking about Python here.</description>
+		<content:encoded><![CDATA[<p>Mohamed: I do use recursion in Python (e.g. for processing tree data structures) &#8212; I just don&#8217;t use it in cases where I am going to hit the recursion limit.  Python has other tools for those sort of situations (ones that leave you with a readable stack trace when things go wrong too).</p>
+<p>Furthermore, the naive recursive fib() implementation given here can&#8217;t take advantage of tail call optimisation anyway, due to it not simply returning the result of another function call.</p>
+<p>To take advantage of tail call optimisation, you&#8217;d need an implementation like:</p>
+<p>    def fib_helper(x, y, n):<br />
+        if n == 0: return x<br />
+        return fib_helper(y, x + y, n &#8211; 1)<br />
+    def fib4(n):<br />
+        return fib_helper(0, 1, n)</p>
+<p>While I agree that my fib3() implementation is slightly more difficult to read than the original naive fib() implementation, it isn&#8217;t clear to me that fib4() is better.  If I was using a different language, things might tip in the other direction, but we are talking about Python here.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Mohamed Fawzy</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26104</link>
+		<dc:creator>Mohamed Fawzy</dc:creator>
+		<pubDate>Thu, 16 Jul 2009 18:36:59 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26104</guid>
+		<description>it is an intelligent solution James,But am i supposed not to use recursion at all in Python,i wish there is a plan for optimizing the python interpreter functions call.
+I think programmers should be able to choose their problem solving technique,not to be  compelled to avoid using someone i mean recursion here.</description>
+		<content:encoded><![CDATA[<p>it is an intelligent solution James,But am i supposed not to use recursion at all in Python,i wish there is a plan for optimizing the python interpreter functions call.<br />
+I think programmers should be able to choose their problem solving technique,not to be  compelled to avoid using someone i mean recursion here.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: James Henstridge</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/comment-page-1/#comment-26098</link>
+		<dc:creator>James Henstridge</dc:creator>
+		<pubDate>Thu, 16 Jul 2009 09:02:59 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/?p=113#comment-26098</guid>
+		<description>In your fib2() function, you construct a list of all the Fibonacci numbers up to the point in the sequence you&#039;re asked for.  This means that it&#039;s memory requirements will be proportional to the number you ask for: the same problem with naive recursive solutions.
+
+But each iteration of the loop only requires access to the previous two items in the sequence, so you could get away with only storing those two items.  Something like this should be sufficient:
+
+    def fib3(n):
+        if n == 0 or n == 1: return n
+        x, y = 0, 1
+        for i in xrange(n-1):
+            x, y = y, x + y
+        return y
+
+It&#039;d be interesting to see how Unladen Swallow fairs with this version: as well as getting rid of the list reallocation, it also moves the logic to be in terms of local variables which should be easier to optimise.</description>
+		<content:encoded><![CDATA[<p>In your fib2() function, you construct a list of all the Fibonacci numbers up to the point in the sequence you&#8217;re asked for.  This means that it&#8217;s memory requirements will be proportional to the number you ask for: the same problem with naive recursive solutions.</p>
+<p>But each iteration of the loop only requires access to the previous two items in the sequence, so you could get away with only storing those two items.  Something like this should be sufficient:</p>
+<p>    def fib3(n):<br />
+        if n == 0 or n == 1: return n<br />
+        x, y = 0, 1<br />
+        for i in xrange(n-1):<br />
+            x, y = y, x + y<br />
+        return y</p>
+<p>It&#8217;d be interesting to see how Unladen Swallow fairs with this version: as well as getting rid of the list reallocation, it also moves the logic to be in terms of local variables which should be easier to optimise.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.208 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:11 -->
+<!-- Compression = gzip -->

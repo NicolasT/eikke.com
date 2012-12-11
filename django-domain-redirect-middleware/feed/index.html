@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Django domain redirect middleware</title>
+	<atom:link href="http://eikke.com/django-domain-redirect-middleware/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com/django-domain-redirect-middleware/</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Tue, 04 Dec 2012 00:03:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-72281</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Wed, 28 Mar 2012 11:26:41 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-72281</guid>
+		<description>oh and say         host = request.get_host().split(&#039;:&#039;)[0]  above there</description>
+		<content:encoded><![CDATA[<p>oh and say         host = request.get_host().split(&#8216;:&#8217;)[0]  above there</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-72279</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Wed, 28 Mar 2012 09:59:15 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-72279</guid>
+		<description>Thanks a lot! 
+If you&#039;re running Django on a non-default port, you might want to add the port number to the newly constructed URI:
+
+        new_uri = &#039;%s://%s%s%s%s&#039; % (
+                request.is_secure() and &#039;https&#039; or &#039;http&#039;,
+                site.domain,
+                (&quot;:&quot; + request.META[&quot;SERVER_PORT&quot;]) if request.META[&quot;SERVER_PORT&quot;]!=80 else &quot;&quot;,
+                urlquote(request.path),
+                (request.method == &#039;GET&#039; and len(request.GET) &gt; 0) and &#039;?%s&#039; % request.GET.urlencode() or &#039;&#039;
+            )</description>
+		<content:encoded><![CDATA[<p>Thanks a lot!<br />
+If you&#8217;re running Django on a non-default port, you might want to add the port number to the newly constructed URI:</p>
+<p>        new_uri = &#8216;%s://%s%s%s%s&#8217; % (<br />
+                request.is_secure() and &#8216;https&#8217; or &#8216;http&#8217;,<br />
+                site.domain,<br />
+                (&#8220;:&#8221; + request.META["SERVER_PORT"]) if request.META["SERVER_PORT"]!=80 else &#8220;&#8221;,<br />
+                urlquote(request.path),<br />
+                (request.method == &#8216;GET&#8217; and len(request.GET) &gt; 0) and &#8216;?%s&#8217; % request.GET.urlencode() or &#8221;<br />
+            )</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: trd</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-65139</link>
+		<dc:creator>trd</dc:creator>
+		<pubDate>Tue, 29 Nov 2011 11:02:06 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-65139</guid>
+		<description>Does the last solution of Nicolas keep the whole URL?
+
+For example if I&#039;m poiting to http://website.org/cars/view/1/, I want to redirect to http://www.website.org/cars/view/1/, right?</description>
+		<content:encoded><![CDATA[<p>Does the last solution of Nicolas keep the whole URL?</p>
+<p>For example if I&#8217;m poiting to <a href="http://website.org/cars/view/1/" rel="nofollow">http://website.org/cars/view/1/</a>, I want to redirect to <a href="http://www.website.org/cars/view/1/" rel="nofollow">http://www.website.org/cars/view/1/</a>, right?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Sagi</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-50105</link>
+		<dc:creator>Sagi</dc:creator>
+		<pubDate>Fri, 13 May 2011 14:53:11 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-50105</guid>
+		<description>The forum is a bihrtger place thanks to your posts. Thanks!</description>
+		<content:encoded><![CDATA[<p>The forum is a bihrtger place thanks to your posts. Thanks!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Martin</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-37338</link>
+		<dc:creator>Martin</dc:creator>
+		<pubDate>Thu, 08 Jul 2010 08:34:43 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-37338</guid>
+		<description>I just used your solution, it works flawlessly.  Thanks !
+
+I know I could have used apache mod_rewrite instead, but I felt more secure with your solution, since I understand django/python much better.</description>
+		<content:encoded><![CDATA[<p>I just used your solution, it works flawlessly.  Thanks !</p>
+<p>I know I could have used apache mod_rewrite instead, but I felt more secure with your solution, since I understand django/python much better.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicolas</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-26</link>
+		<dc:creator>Nicolas</dc:creator>
+		<pubDate>Fri, 28 Dec 2007 00:28:17 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-26</guid>
+		<description>Vincent: my solution also uses a HTTP 301 (a HttpResponsePermanentRedirect also translates to a HTTP 301 reply). One of the main benefits is it doesn&#039;t force you to use multiple vhosts, which is not always possible in shared hosting environments.
+
+By the way, your solution could be simplified by using something like &lt;pre&gt;Redirect permanent / http://foo.bar/&lt;/pre&gt; in your Apache configuration, instead of pulling in mod_rewrite ;-)</description>
+		<content:encoded><![CDATA[<p>Vincent: my solution also uses a HTTP 301 (a HttpResponsePermanentRedirect also translates to a HTTP 301 reply). One of the main benefits is it doesn&#8217;t force you to use multiple vhosts, which is not always possible in shared hosting environments.</p>
+<p>By the way, your solution could be simplified by using something like
+<pre>Redirect permanent / <a href="http://foo.bar/" rel="nofollow">http://foo.bar/</a></pre>
+<p> in your Apache configuration, instead of pulling in mod_rewrite <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Vincent van Adrighem</title>
+		<link>http://eikke.com/django-domain-redirect-middleware/comment-page-1/#comment-25</link>
+		<dc:creator>Vincent van Adrighem</dc:creator>
+		<pubDate>Thu, 27 Dec 2007 23:57:20 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/2007/12/26/django-domain-redirect-middleware/#comment-25</guid>
+		<description>Why not use virtual hosts with rewriterules?
+If you&#039;re using apache anyway, then this is the most elegant solution IMHO.
+You want every request to go to www.somesite.net, but used to have www.oldsite.org, then set up a virtual host on www.oldsite.org containing nothing but a rewriterule:
+
+RewriteEngine On
+RewriteRule ^(.*)$ http://www.somesite.net/$1 [R=permanent]
+
+That way, client software even gets a 301 signal, giving the browser the possibility to automatically update your bookmarks.</description>
+		<content:encoded><![CDATA[<p>Why not use virtual hosts with rewriterules?<br />
+If you&#8217;re using apache anyway, then this is the most elegant solution IMHO.<br />
+You want every request to go to <a href="http://www.somesite.net" rel="nofollow">http://www.somesite.net</a>, but used to have <a href="http://www.oldsite.org" rel="nofollow">http://www.oldsite.org</a>, then set up a virtual host on <a href="http://www.oldsite.org" rel="nofollow">http://www.oldsite.org</a> containing nothing but a rewriterule:</p>
+<p>RewriteEngine On<br />
+RewriteRule ^(.*)$ <a href="http://www.somesite.net/$1" rel="nofollow">http://www.somesite.net/$1</a> [R=permanent]</p>
+<p>That way, client software even gets a 301 signal, giving the browser the possibility to automatically update your bookmarks.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.206 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:38:51 -->
+<!-- Compression = gzip -->

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; javascript</title>
+	<atom:link href="http://eikke.com/tag/javascript/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Scripting your app</title>
+		<link>http://eikke.com/scripting-your-app/</link>
+		<comments>http://eikke.com/scripting-your-app/#comments</comments>
+		<pubDate>Tue, 09 Sep 2008 21:12:28 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[Development]]></category>
+		<category><![CDATA[gnome]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[scripting]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/scripting-your-app/</guid>
+		<description><![CDATA[Lots of buzz on adding scripting interfaces to applications on Planet GNOME recently, cool. Looks like Alexander Larsson hacked together a wrapper around SpiderMonkey (the Mozilla Engine) to get JavaScript integrated. Related to the jscore-python thing I blogged about before. Not sure this is the best way to tackle this cool new opportunity though. JavaScript [...]]]></description>
+			<content:encoded><![CDATA[<p>Lots of buzz on adding scripting interfaces to applications on <a href="http://planet.gnome.org" title="Planet GNOME">Planet GNOME</a> recently, cool. Looks like <a href="http://blogs.gnome.org/alexl" title="Alexander Larsson">Alexander Larsson</a> hacked together a wrapper around SpiderMonkey (the Mozilla Engine) to get JavaScript integrated. Related to the jscore-python thing I blogged about <a href="http://eikke.com/embedding-javascript-in-python/" title="Embedding JavaScript in Python - Ikke's Blog">before</a>.</p>
+<p>Not sure this is the best way to tackle this cool new opportunity though. JavaScript can be pretty hard to &#8220;get&#8221; for people not used to it, but more familiar with classical languages (wrt object oriented paradigms). I guess lots of current code contributors are not very familiar with JavaScript, but do have an in-depth knowledge of some other scripting language though (not listing any here, you certainly can name some).</p>
+<p>So, wouldn&#8217;t it be nice if the GScript interface would be abstract for the application developer, who should just create a script context, put some objects in it, and launch a script, after which the GScript runtime figures out which interpreter to use for this script, so scripting languages become plugable?</p>
+<p>Reminds me a little of my old OPluginManager work <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/scripting-your-app/feed/</wfw:commentRss>
+		<slash:comments>12</slash:comments>
+		</item>
+		<item>
+		<title>Embedding JavaScript in Python</title>
+		<link>http://eikke.com/embedding-javascript-in-python/</link>
+		<comments>http://eikke.com/embedding-javascript-in-python/#comments</comments>
+		<pubDate>Mon, 25 Aug 2008 23:05:16 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[javascriptcore]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[webkit]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/embedding-javascript-in-python/</guid>
+		<description><![CDATA[Reading some posts about embedding languages/runtimes in applications on Planet GNOME reminded me I still had to announce some really quick and incomplete code blob I created some days after last GUADEC edition (which was insanely cool, thanks guys). It takes WebKit&#8216;s JavaScriptCore and allows you to embed it in some Python program, so you, [...]]]></description>
+			<content:encoded><![CDATA[<p>Reading some posts about embedding languages/runtimes in applications on <a href="http://planet.gnome.org" title="Planet GNOME">Planet GNOME</a> reminded me I still had to announce some really quick and incomplete code blob I created some days after last <a href="http://www.guadec.org" title="GUADEC">GUADEC</a> edition (which was insanely cool, thanks guys).</p>
+<p>It takes <a href="http://www.webkit.org" title="WebKit">WebKit</a>&#8216;s JavaScriptCore and allows you to embed it in some <a href="http://www.python.org" title="Python">Python</a> program, so you, as a Python developer, can allow consumers to write plugins using JavaScript. Don&#8217;t ask me whether it&#8217;s useful, maybe it&#8217;s not, but anyway.</p>
+<p>There&#8217;s one catch: currently there is no support to expose custom Python objects to the JavaScript runtime: you&#8217;re able to use JavaScript objects and functions etc. from within Python, but not the other way around. I started working on this, but the JSCore API lacked some stuff to be able to implement this cleanly (or I missed a part of it, that&#8217;s possible as well), maybe it has changed by now&#8230; There is transparent translation of JavaScript base types: unicode strings, booleans, null (which becomes None in Python), undefined (which becomes jscore.UNDEFINED) and floats.</p>
+<p>I did not work on the code for quite a long time because of too much real-job-work, maybe it no longer compiles, sorry&#8230; Anyway, it&#8217;s available in git <a href="http://git.nicolast.be/?p=python-jscore.git;a=summary" title="python-jscore git">here</a>, patches welcome etc. I guess <a href="http://git.nicolast.be/?p=python-jscore.git;a=blob;f=test/test_object.py;h=1604e4db7bb1e9333bcbed305ec3107921708ab0;hb=HEAD#l261">this</a> is the best sample code around. It&#8217;s using <a href="http://www.cython.org" title="Cython">Cython</a> for compilation (never tried with Pyrex, although this might work as well). If anyone can use it, great, if not, too bad, I did learn Cython doing this <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/embedding-javascript-in-python/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>django-validation now includes inheritance support</title>
+		<link>http://eikke.com/django-validation-now-includes-inheritance-support/</link>
+		<comments>http://eikke.com/django-validation-now-includes-inheritance-support/#comments</comments>
+		<pubDate>Fri, 18 Jan 2008 03:33:39 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[django-validation]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-validation-now-includes-inheritance-support/</guid>
+		<description><![CDATA[I&#8217;m happy to announce django-validation got field type inheritance support since a couple of minutes. This means your form fields will be validated starting from the most base field type (django.newforms.Field) up to the actual field type (no multiple-inheritance supported though). In the example I wrote yesterday, when using a TestField field, this field will [...]]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;m happy to announce <a href="http://git.nicolast.be/?p=django-validation.git;a=summary" title="django-validation git">django-validation</a> got field type inheritance support since a couple of minutes. This means your form fields will be validated starting from the most base field type (django.newforms.Field) up to the actual field type (no multiple-inheritance supported though).</p>
+<p>In <a href="http://eikke.com/django-validation-an-introduction/" title="Ikke's blog: django-validation: an introduction">the example I wrote yesterday</a>, when using a TestField field, this field will be validated as a django.newforms.Field (a &#8220;required&#8221; check will be done), then as a django.newforms.CharField (&#8220;min_length&#8221; and &#8220;max_length&#8221; checks), and finally as a TestField. A normal CharField would be validated as a Field first, then as a CharField, etc.</p>
+<p>The returned errors will be a list of all errors found, starting with the most basic one (the ones found by the most general class, Field).</p>
+<p>Next to this, all generated Javascript code should be namespaced now (based on Python module and class names), although there might be some bad things left, I&#8217;m no Javascript guru. The generated code might be somewhat messy.</p>
+<p>Current Python code is most certainly ugly and will need more rewrites. Next to this, other field types should be added, and some tests would be nice too.</p>
+<p>I made a snapshot of yesterday&#8217;s sample (with some changes, the ClientValidator API slightly changed), you can try it <a href="http://key.nicolast.be/files/django-validation-test.html" title="django-validation testpage">here</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-validation-now-includes-inheritance-support/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>django-validation: an introduction</title>
+		<link>http://eikke.com/django-validation-an-introduction/</link>
+		<comments>http://eikke.com/django-validation-an-introduction/#comments</comments>
+		<pubDate>Tue, 15 Jan 2008 23:59:58 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[django-validation]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-validation-an-introduction/</guid>
+		<description><![CDATA[Some time ago I wrote this generic AJAX Django form validation code. Some people didn&#8217;t like this, as AJAX should not be used to perform form validation, which is sometimes true, sometimes not, as I pointed out before. So I&#8217;ve been thinking since some time to create a Django templatetag which allows one to generate [...]]]></description>
+			<content:encoded><![CDATA[<p>Some time ago I wrote this <a href="http://eikke.com/django-generic-ajax-form-validation/" title="Django generic AJAX form validation">generic AJAX Django form validation code</a>. Some people didn&#8217;t like this, as AJAX should not be used to perform form validation, which is sometimes true, sometimes not, as <a href="http://eikke.com/cellphone-bluetooth-and-reddit-rant/">I pointed out before</a>.</p>
+<p>So I&#8217;ve been thinking since some time to create a <a href="http://www.djangoproject.com" title="Django">Django</a> templatetag which allows one to generate <em>client-side Javascript form validation code</em> without writing any code himself (unless using custom widgets). Today I got into it.</p>
+<p><span id="more-48"></span></p>
+<p>The resulting project is called <strong>django-validation</strong>. It basicly allows one to write a Newforms form class, and generate client-side validation code for this form in a template. Currently only CharField validation is implemented, more should follow soon and is easy to add.</p>
+<p>Next to validation of built-in field types, one can also add code to validate custom fields. This can be done inside an inner class of the field class.</p>
+<p>The current release is very alpha-grade software, a lot of enhancements could be done, and most certainly more standard field type validators should be written. Next to this, field type inheritance isn&#8217;t supported for now (so if your field type A inherits CharField, no CharField validation will be done), this should change soon.</p>
+<p>Patches are, obviously, very welcome!</p>
+<p>Here&#8217;s a sample how to use it. First we define a very basic form:</p>
+<pre>class TestForm(forms.Form):
+    first_name = forms.CharField(max_length=128)
+    test = TestField(required_value=u'I like django-validation')</pre>
+<p>This form uses a custom class (just for demonstration purposes). This class only performs client-side validation, no clean() function is provided, although in real field types this should obviously be added. More information can be found in the inline comments:</p>
+<pre>from validation.templatetags.validation import add_error
+class TestField(forms.CharField):
+    def __init__(self, *args, **kwargs):
+        if not 'required_value' in kwargs.keys():
+            raise Exception, 'required_value should be provided'
+        self.required_value = kwargs['required_value']
+        del kwargs['required_value']
+        super(TestField, self).__init__(*args, **kwargs)
+
+    class ClientValidator:
+        '''
+        This inner class knows how to generate Javascript validation code for this field type.
+        The code will be pasted inside a function block. There is at least one assigned variable, 'field',
+        which is the DOM element we got to validate.
+
+        More parameters can be defined in the 'parameters' attribute. These parameters will be added
+        to the Javascript function prototype, and the value of the form field parameter value will be
+        assigned.
+
+        We need to define the field class name, so the django-validation code can generate suitable
+        function names.
+        '''
+        parameters = ('required_value', )
+        field_class = 'TestField'
+
+        def render(self, output):
+            '''
+            The render function should output Javascript code to check the value of the 'field' element.
+            It is called inside a Javascript function scope.
+
+            output is a StringIO object. Normally only write or writelines calls should be used.
+            '''
+            output.write('value = field.value;\n')
+            output.write('if(value != required_value) {\n')
+            # This error message should be internationalized.
+            # See the add_error documentation.
+            add_error(output, 'error_msg', 'Field value should be %(value)d.', (('%(value)d', 'required_value'), ))
+            output.write('    return [error_msg];\n')
+            output.write('}\n')</pre>
+<p>Finally, here&#8217;s how to use it inside a template (this must be one of the worse HTML/Javascript snippets I ever wrote):</p>
+<pre>{% load validation %}
+&lt;html&gt;
+&lt;body&gt;
+    &lt;form&gt;
+        {{ form.as_p }}
+        &lt;p&gt;&lt;input type="submit" onclick="return testform(this.form);" /&gt;
+    &lt;/form&gt;
+    &lt;div id="errors"&gt;&lt;/div&gt;
+    {% validation_js form 'validate_testform' %}
+    &lt;script type="text/javascript"&gt;
+        function testform(form) {
+            valid = true;
+            errors = validate_testform(form);
+            err = "&lt;ul&gt;";
+            for(field in errors) {
+                if(errors[field] != null) {
+                    err += '&lt;li&gt;' + field + ': ' + errors[field][0] + '&lt;/li&gt;';
+                    valid = false;
+                }
+            }
+            err += '&lt;/ul&gt;';
+            if(valid)
+                err = 'Form is valid';
+            document.getElementById('errors').innerHTML = err;
+            return false;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>The current code is available in <a href="http://git.nicolast.be/?p=django-validation.git;a=summary" title="django-validation git">a git repository</a>. Enjoy!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-validation-an-introduction/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Django generic AJAX form validation</title>
+		<link>http://eikke.com/django-generic-ajax-form-validation/</link>
+		<comments>http://eikke.com/django-generic-ajax-form-validation/#comments</comments>
+		<pubDate>Mon, 31 Dec 2007 13:20:26 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[ajax]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[jquery]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[snippet]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-generic-ajax-form-validation/</guid>
+		<description><![CDATA[I just created a generic view for Django which allows a developer to easily add AJAX-style form validation to a newforms based form. The system needs one server-side view, and some client-side JavaScript. You can find the view code in my Django snippets Git repository. The view only works with POST requests. It takes a [...]]]></description>
+			<content:encoded><![CDATA[<p>I just created a generic view for <a href="http://www.djangoproject.com" title="Django">Django</a> which allows a developer to easily add AJAX-style form validation to a <a href="http://www.djangoproject.com/documentation/newforms" title="Django newforms documentation">newforms</a> based form.</p>
+<p>The system needs one server-side view, and some client-side JavaScript. You can find the <a href="http://git.nicolast.be/?p=django-snippets.git;a=blob;f=ajax/form-validation-view.py;hb=HEAD" title="Django AJAX form validation view">view code</a> in my <a href="http://git.nicolast.be/?p=django-snippets.git;a=summary" title="Django snippets">Django snippets Git repository</a>. The view only works with POST requests. It takes a standard HttpRequest and some options:</p>
+<ul>
+<li>form_class: this parameter defines the newforms class to validate against. It can be specified in the extra args parameter of the view&#8217;s urlconf. If you don&#8217;t specify it, the &#8216;form_class&#8217; POST field will be used. If this doesn&#8217;t exist either, an exception is raised. The parameter can be a newforms form instance, a string, or a class (which should be a subclass of BaseForm).</li>
+<li>format: the serialization format to use. Currently only &#8216;json&#8217; is supported.</li>
+<li>args: extra argument list to provide to the form constructor (shouldn&#8217;t be provided in most cases)</li>
+<li>kwargs: extra argument dics to provide to the form constructor (shouldn&#8217;t be provided in most cases)</li>
+</ul>
+<p>Next to the server-side view you&#8217;ll need some pretty basic JavaScript code on client side. I use <a href="http://www.jquery.com" title="JQuery">JQuery</a> and the <a href="http://www.malsup.com/jquery/form/" title="JQuery form plugin">JQuery Form plugin</a>. Here&#8217;s some sample code, assuming the form ID is &#8216;my_form&#8217;, and form fields are represented like this:</p>
+<pre>&lt;p id="{{ form.field.name }}_container"&gt;&lt;label for="{{ form.field.auto_id }}"&gt;{{ form.field.label|capfirst }}:&lt;/label&gt;{{ form.field }}
+{% if form.field.errors %}&lt;span id="{{ form.field.name }}_error" class="error"&gt;{{ form.field.errors.0 }}&lt;/span&gt;{% endif %}
+&lt;/p&gt;</pre>
+<p>Here&#8217;s the corresponding JavaScript code:</p>
+<pre>function do_something() {
+}
+function process_validation(data) {
+    if(data['form_valid'] == true) {
+        do_something();
+        return;
+    }
+    for(var field in data["errors"]) {
+        errors = data["errors"][field]
+        if(errors.length &gt; 0) {
+            error = errors[0];
+            if($("#" + field + "_error").length == 0) {
+                s = $("&lt;br /&gt;&lt;span style=\"display: none;\" id=\"" + field + "_error\" class=\"error\"&gt;" + error + "&lt;/span&gt;");
+                $("#" + field + "_container").append(s);
+            }
+            $("#" + field + "_error").html(error).fadeIn("slow");
+        }
+    }
+}
+function validate_form(data) {
+    data.push({name: 'form_class', value: 'project.application.forms.ApplicationForm'});
+    $.post("{% url validate_form %}", data, process_validation, "json");
+}
+$(document).ready(function() {
+    $("#my_form").submit(function() {
+        data = $("#my_form").formToArray();
+        $(".error").fadeOut("slow");
+        validate_form(data);
+        return false;
+    });
+});</pre>
+<p>Obviously this should be changed to suit your needs.</p>
+<p>I hope this code can be useful for someone&#8230;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-generic-ajax-form-validation/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.205 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:41 -->
+<!-- Compression = gzip -->

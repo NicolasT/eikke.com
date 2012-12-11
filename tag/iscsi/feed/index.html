@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; iscsi</title>
+	<atom:link href="http://eikke.com/tag/iscsi/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>VirtualBox launch script</title>
+		<link>http://eikke.com/virtualbox-launch-script/</link>
+		<comments>http://eikke.com/virtualbox-launch-script/#comments</comments>
+		<pubDate>Thu, 31 Jan 2008 01:55:55 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[iscsi]]></category>
+		<category><![CDATA[virtualbox]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/virtualbox-launch-script/</guid>
+		<description><![CDATA[I&#8217;ve been playing around with VirtualBox some more today (more on it, and other virtualization related stuff might follow later). I got a Windows XP instance running fine (and fast!) in it. Still got some issues (shared folders seem not to work when logged in as a non-administrator user in XP, although I tend to [...]]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been playing around with VirtualBox some more today (more on it, and other virtualization related stuff might follow later). I got a Windows XP instance running fine (and fast!) in it. Still got some issues (shared folders seem not to work when logged in as a non-administrator user in XP, although I tend to blame Windows for this issue, not VirtualBox), played around with a little Linux installation acting as an iSCSI target for its virtual block devices, accessing them from Windows using the Microsoft iSCSI initiator, etc. Here&#8217;s a <a href="http://key.nicolast.be/files/vbox-iscsi-seamless.png" title="VirtualBox, LIO, seamless Windows XP and iSCSI">screenshot</a> of all this.</p>
+<p>I added a launcher for my Windows VM to my panel, which was simply running &#8216;VBoxManage startvm &lt;VM UUID&gt;&#8217;. This was not an optimal solution though, as I wanted it to show a little error dialog when something went wrong when attempting to launch the VM (eg because I forgot it was already running), when the virtual disk files aren&#8217;t accessible (because I forgot to mount the volume they reside on), etc.</p>
+<p>So I cooked a little script which runs some sanity checks before launching the virtual machine, and reports any errors. Here it is:</p>
+<p><span id="more-57"></span></p>
+<pre>#!/bin/bash
+
+# This script was written by Nicolas Trangez &lt;eikke eikke com&gt;
+# It can act as a launcher script for VirtualBox virtual machines
+# and provides some basic error checking/reporting when doing so.
+# It might be useful when using a shortcut to launch machines in a
+# desktop environment.
+
+VBOXMANAGE=$(which VBoxManage)
+ZENITY=$(which zenity)
+VBOXVMUUID=$1
+
+if [ ! -x ${ZENITY} ]; then
+        echo "Error: The zenity tool could not be found."
+        exit 1
+fi
+
+if [ ! $# = 1 ]; then
+        ${ZENITY} --error --title "Argument required" --text "This script should be called with one argument: the UUID of the VirtualBox virtual machine you want to start.
+
+To find out this UUID, run \"${VBOXMANAGE} list vms\"."
+        exit 2
+fi
+
+if ! ${VBOXMANAGE} list vms | grep ^UUID | grep ${VBOXVMUUID} &gt; /dev/null; then
+        ${ZENITY} --error --title "Unknown Virtual Machine" --text "No VirtualBox virtual machine with UUID \"${VBOXVMUUID}\" could be found."
+        exit 3
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ master &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ master | sed -e "s/Primary\ master:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Primary master not found" --text "The image file for the primary master disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ slave &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ slave | sed -e "s/Primary\ slave:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Primary slave not found" --text "The image file for the primary slave disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Secondary\ slave &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Secondary\ slave | sed -e "s/Secondary\ slave:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Secondary slave not found" --text "The image file for the secondary slave disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+VBOXOUT=$(${VBOXMANAGE} startvm ${VBOXVMUUID})
+VBOXCODE=$?
+
+if [ ! ${VBOXCODE} = 0 ]; then
+        echo -e ${VBOXOUT}
+        VBOXERROR=$(echo ${VBOXOUT} | grep "\[\!\]\ Text" | sed "s/.*\[\!\]\ Text\ *=\ *//")
+        VBOXERROR=$(echo ${VBOXERROR} | sed "s/\ \[\!\].*//")
+        ${ZENITY} --error --title "Error starting Virtual Machine" --text "An error occured while starting the virtual machine:
+
+${VBOXERROR}
+
+Run \"${VBOXMANAGE} startvm ${VBOXVMUUID}\" to see more details."
+        exit 4
+fi</pre>
+<p>Enjoy!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/virtualbox-launch-script/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.174 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:39:22 -->
+<!-- Compression = gzip -->

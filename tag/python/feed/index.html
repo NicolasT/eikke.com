@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; python</title>
+	<atom:link href="http://eikke.com/tag/python/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Book review: Python Testing &#8211; Beginner&#8217;s Guide</title>
+		<link>http://eikke.com/book-review-python-testing-beginners-guide-2/</link>
+		<comments>http://eikke.com/book-review-python-testing-beginners-guide-2/#comments</comments>
+		<pubDate>Sun, 14 Mar 2010 20:49:54 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[book]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[testing]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=170</guid>
+		<description><![CDATA[As mentioned before, some days ago I received a copy of a recent book from Packt Publishing titled &#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221; by Daniel Arbuckle. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt. The book targets people who know Python (it doesn&#8217;t contain [...]]]></description>
+			<content:encoded><![CDATA[<p>As mentioned <a href="/book-review-python-testing-beginners-guide/">before</a>, some days ago I received a copy of a recent book from <em>Packt Publishing</em> titled <strong><a href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=eikke.com&#038;utm_medium=bookrev&#038;utm_content=blog&#038;utm_campaign=mdb_002562">&#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221;</a></strong> by <em>Daniel Arbuckle</em>. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt.</p>
+<p>The book targets people who know Python (it doesn&#8217;t contain a language introduction chapter or something alike, which would be rather pointless anyway), and want to start testing the code they write. Even though the author starts by explaining basic tools like <em>doctests</em> and the <em>unittest</em> framework contained in the Python standard library, it could be a useful read even if you used these tools before, e.g. when the Mock library is explained, or in the chapter on web application testing using Twill.</p>
+<p>The text is easy to read, and contains both hands-on code examples, explanations as well as tasks for the reader and quiz questions. I did not audit all code for correctness (although in my opinion some more time should have been invested here before the book was publishing: some code samples contain errors, even invalid syntax (p45: &#8220;<code>self.integrated_error +q= err * delta</code>&#8220;), which is not what I expect in a book about code testing), nor all quizes. These could&#8217;ve used some more care as well, e.g. on p94 one can read</p>
+<blockquote><p>What is the unittest equivalent of this doctest?</p>
+<pre><code>>>> try:
+...     int('123')
+... except ValueError:
+...     pass
+... else:
+...     print 'Expected exception was not raised'
+</code></pre>
+</blockquote>
+<p>I was puzzled by this, since as far as I could remember, int(&#8217;123&#8242;) works just fine, and I didn&#8217;t have a computer at hand to check. Checked now, and it works as I expected, so maybe I&#8217;m missing something here? The solution found in the back of the book is a literal <em>unittest</em>-port of the above <em>doctest</em>, and should fail, if I&#8217;m not mistaken:</p>
+<blockquote><pre><code>>>> def test_exceptions(TestCase):
+...     def test_ValueError(self):
+...         self.assertRaises(ValueError, int, '123')
+</code></pre>
+</blockquote>
+<p>This example also shows one more negative point of the book, IMHO: the code samples don&#8217;t follow <strong>PEP-8</strong> (or similar) capitalization, which makes code rather hard to read sometimes.</p>
+<p>The solutions for the last quiz questions are missing as well, and accidently I did want to read those.</p>
+<p>Don&#8217;t be mistaken though: these issues don&#8217;t reduce the overall value of the book, it&#8217;s certainly worth your time, as long as you keep in mind not to be too confused by the mistakes as shown above.</p>
+<h3>Topic overview</h3>
+<p>The book starts with a short overview of types of testing, including unit, integration and system testing, and why testing is worth the effort. This is a very short overview of 3 pages.</p>
+<p>Starting from chapter 2, the <em>doctest</em> system is introduced. I think it&#8217;s an interesting approach to start with <em>doctest</em> instead of using <em>unittest</em>, which is modeled after the more &#8216;standard&#8217; xUnit packages. Doctests are useful during specification writing as well, which is in most project the first stage, before any unittestable code is written. The chapter also introduces an overview of the <em>doctest</em> directives, which was useful to read.</p>
+<p>In chapter 3 gives an example of the development of a small project, and all stages involved, including how doctests fit in every stage.</p>
+<p>Maybe a sample of <strong>Sphinx</strong> and its <em>doctest</em> integration would have been a nice addition to one of the previous chapters, since the book introduced <em>doctest</em> as part of stand-alone text files, not as part of code docstrings (although it does talk about those as well). When writing documentation in plain text files, Sphinx is certainly the way to go, and its <em>doctest</em> plugin is a useful extra.</p>
+<p>Starting in chapter 4, the Python &#8216;<em>mocking</em>&#8216; library is introduced. The chapter itself is a rather good introduction to mock-based testing, but I don&#8217;t think mocks should be used in doctests, which should be rather small, examplish snippets. Mock definitions don&#8217;t belong there, IMO. This chapter also shows some lack of pre-publishing reviews in a copy-paste error, in the block explaining how to install mocker on page 62, telling from now on Nose is ready to be used.</p>
+<p>Chapter 5, which you can read <a href="http://www.packtpub.com/files/8846-python-testing-beginners-guide-sample-chapter-5-when-doctest-isnt-enough-unittest-to-the-rescue.pdf">here</a> introduces the <em>unittest</em> framework, its assertion methods, fixtures and mocking integration.</p>
+<p>In chapter 6 &#8216;<em>nose</em>&#8216; is introduced, a tool to find and run tests in a project. I use nose myself in almost every project, and it&#8217;s certainly a good choice. The chapter gives a pretty good overview of the useful features nose provides. It does contain a strange example of module-level setup and teardown methods, whilst IMHO subclassing <em>TestCase</em> would be more suited (and more portable).</p>
+<p>Chapter 7 implements a complete project from specification to implementation and maintenance. Useful to read, but I think the chapter contains too much code, and it&#8217;s repeated too often.</p>
+<p>Chapter 8 introduces web application testing using Twill, which I never used before (nor did I ever test a web application before). Useful to read, but Twill might be a strange choice, since there have been no releases since end 2007&#8230; Selenium might have been a better choice?</p>
+<p>A large part of the chapter is dedicated to list all possible Twill commands as well, which I think is a waste of space, this can be easily found in the Twill language reference.</p>
+<p>Chapter 9 introduces integration and system testing. Interesting to read, the diagram-drawing method used is certainly useful, but it also contains too much code listings.</p>
+<p>Finally, chapter 10 gives a short overview of some other testing tools. First <em>coverage.py</em> is explained, which is certainly useful. Then integration of test execution with version control systems is explained. I think this is certainly useful, but not at this level of detail. Setting up a Subversion repository is not exactly what I expect here, especially not when non-anonymous, password-based authentication over svn:// is used (which is a method which should be avoided, AFAIK).<br />
+Finally, continuous integration using Buildbot is tackled. No comments here, although I tend to use Hudson myself <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<h3>Final words</h3>
+<p>Is this book worth your time and money? If you&#8217;re into Python and you don&#8217;t have lots of experience with testing Python code, it certainly is. Even if you wrote tests using unittest or doctests before, you&#8217;ll most likely learn some new things, like using mocks.</p>
+<p>I&#8217;m glad Packt gave me the opportunity to read and review the book. I&#8217;d advise them to put some more effort in pre-publishing reviews for future titles, but the overall quality of the non-code content was certainly OK, and I hope lots of readers will enjoy and learn from this book.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/book-review-python-testing-beginners-guide-2/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Re: Python recursion performance test</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/</link>
+		<comments>http://eikke.com/re-python-recursion-performance-test/#comments</comments>
+		<pubDate>Thu, 16 Jul 2009 01:00:57 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=113</guid>
+		<description><![CDATA[(This is a reply on a post by Ahmed Soliman on recursion performance in (C)Python, and CPython function call overhead in general. I started to write this as a comment on his post, but it turned out much longer, so sending it over here in the end.) Hey, As discussed before, this is not a [...]]]></description>
+			<content:encoded><![CDATA[<p>(This is a reply on a <a href="http://www.ahmedsoliman.com/2009/07/15/python-recursion-performance-test/" title="Ahmed Soliman: Python recursion performance test">post</a> by <a href="http://www.ahmedsoliman.com" title="Ahmed Soliman">Ahmed Soliman</a> on recursion performance in (C)Python, and CPython function call overhead in general. I started to write this as a comment on his post, but it turned out much longer, so sending it over here in the end.)</p>
+<p>Hey,</p>
+<p>As discussed before, this is not a fair comparison, since the non-recursive version is much &#8216;smarter&#8217; than the recursive one: it calculates values and will never recalculates them, whilst the recursive version calculates everything over and over again.</p>
+<p>Adding some simple memoization helps a lot. First, my testing code:<br />
+<span id="more-113"></span><br />
+<script src="http://gist.github.com/148082.js"></script></p>
+<p>Here are the benchmarks on my MacBook Pro Intel Core2Duo 2.33GHz with 3GB RAM (running quite a lot of applications). Do note the &#8216;dumb&#8217; version calculates <em>fib(35)</em>, whilst the slightly optimized versions, which still use recursion but much less recursive calls (as they should) or your second version calculate <em>fib(150)</em>.</p>
+<p>Using MacOS X 10.5.6 stock CPython 2.5.1:</p>
+<pre>
+MacBook:Projects nicolas $ python -V
+Python 2.5.1
+
+MacBook:Projects nicolas $ python fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.8542108536 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.00020694732666 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00141310691833 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.000310182571411 seconds
+</pre>
+<p>Overall it looks like <em>fib2</em> and <em>memoize_constant_list</em> perform fairly similar, I guess function call overhead and <em>list.append</em> have a similar influence on performance in this case.</p>
+<p>Using Jython 2.5.0 from the binary distribution on the Java HotSpot 64bit Server VM as shipped for OS X 10.5.6:</p>
+<pre>
+MacBook:Projects nicolas $ ./Jython/jython2.5.0/jython -V 
+Jython 2.5.0
+
+MacBook:Projects nicolas $ ./Jython/jython2.5.0/jython fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.5539999008 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.0519998073578 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00399994850159 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00300002098083 seconds
+</pre>
+<p>The &#8216;dumb&#8217; <em>fib</em> implementation performs similar in both CPython and Jython. Jython performs significantly less good on the other implementations though, but maybe todays <a href="http://journal.thobe.org/2009/07/improving-performance-in-jython.html">news</a> could help here, not sure how much locking on <em>dict</em> and <em>list</em> access Jython introduces.</p>
+<p>Finally, using <a href="http://code.google.com/p/unladen-swallow/">Unladen Swallow</a> 2009Q2, self-compiled from SVN on the same system, using standard settings:</p>
+<pre>
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python -V
+Python 2.6.1
+
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.2675719261 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.000118970870972 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.000972986221313 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00036096572876 seconds
+</pre>
+<p>which is similar to, slighly better or slightly worse than the CPython run, and when enforcing JIT (which introduces a significant startup time, which is not measured here):</p>
+<pre>
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python -j always fib.py 35 150
+fib(35) = 9227465
+Calculation took 14.6129109859 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.0432291030884 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.0363459587097 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.0335609912872 seconds
+</pre>
+<p>which, to my surprise, performs pretty worse than the default settings.</p>
+<p>Overall: your first implementation performs tons and tons of function calls, whilst the second one, which resembles <em>memoize_list_fib</em> in my code (which is recursive), performs significantly less function calls and in the end <em>memoize_list_fib</em> performs almost as good as your second version (it performs +- the same number of function calls as the number of times you&#8217;re going through your loop).</p>
+<p>So whilst I do agree function calls in Python are reasonably slow compared to plain C function calls (which is just a jmp, no frame handling etc. etc. required), your comparison between your recursive and non-recursive implementation is completely unfair, and even if calculating <em>fib(35)</em> takes several seconds, consider you&#8217;re doing a pretty impressive 29860703 function calls to perform the calculation.</p>
+<p>Time to get some sleep.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/re-python-recursion-performance-test/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Python value swap</title>
+		<link>http://eikke.com/python-value-swap/</link>
+		<comments>http://eikke.com/python-value-swap/#comments</comments>
+		<pubDate>Wed, 22 Apr 2009 18:44:55 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=103</guid>
+		<description><![CDATA[Been looking (again) at XMPP recently. While browsing through existing source code and samples in several languages, there&#8217;s one pattern which comes back quite frequently in &#8216;echobot&#8217; demos: when a message comes in, the to and from attributes are swapped, and the message is sent. The most common approach is something like (pseudocode): temp = [...]]]></description>
+			<content:encoded><![CDATA[<p>Been looking (again) at XMPP recently. While browsing through existing source code and samples in several languages, there&#8217;s one pattern which comes back quite frequently in &#8216;echobot&#8217; demos: when a message comes in, the to and from attributes are swapped, and the message is sent.</p>
+<p>The most common approach is something like (pseudocode):<br />
+<code>
+<pre>temp = from
+from = to
+to = temp</pre>
+<p></code></p>
+<p>In Python there&#8217;s an easier approach though which seems to be unknown to several developers. It uses the multi-assignment/expansion syntax:<br />
+<code>
+<pre>from, to = to, from</pre>
+<p></code></p>
+<p>Basically, the tuple on the right (to, from) is constructed, then expanded to locals &#8216;from&#8217; and &#8216;to&#8217;.</p>
+<p>Just a hint <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' />  It&#8217;s a pretty elegant line of code IMHO.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/python-value-swap/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Erlang, Python and Twisted mashup using TwOTP</title>
+		<link>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/</link>
+		<comments>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/#comments</comments>
+		<pubDate>Sun, 19 Apr 2009 19:03:30 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[erlang]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[twisted]]></category>
+		<category><![CDATA[twotp]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=90</guid>
+		<description><![CDATA[Recently, I&#8217;ve been toying around with Erlang again. After creating some simple apps I wanted to integrate some Erlang code inside a Python application (since that&#8217;s still my favorite day-to-day language, it&#8217;s used at work and I&#8217;m sort-of convinced Erlang would be a good choice for several of the applications we need to develop, integrated [...]]]></description>
+			<content:encoded><![CDATA[<p>Recently, I&#8217;ve been toying around with <a href="http://erlang.org">Erlang</a> again. After creating some simple apps I wanted to integrate some Erlang code inside a <a href="http://www.python.org">Python</a> application (since that&#8217;s still my favorite day-to-day language, it&#8217;s used at work and I&#8217;m sort-of convinced Erlang would be a good choice for several of the applications we need to develop, integrated with our existing Python code). The most obvious solution would be to use an Erlang port, but this is IMHO rather cumbersome: it requires a developer to define a messaging format, parsing code for incoming messages, etc. There&#8217;s a <a href="http://www.kazmier.net/computer/port-howto/">tutorial</a> available if you want to take this route.</p>
+<p>A more elegant solution is creating a node using Python, similar to <a href="http://erlang.org/doc/apps/jinterface/index.html">JInterface</a> and equivalents. Luckily there&#8217;s an existing project working on a library to create Erlang nodes using Python and <a href="http://www.twistedmatrix.com">Twisted</a>: <a href="https://code.launchpad.net/twotp">TwOTP</a>.</p>
+<p>One downside: it&#8217;s rather underdocumented&#8230; So here&#8217;s a very quick demo how to call functions on an Erlang node from within a Twisted application.</p>
+<p>First of all we&#8217;ll create 2 Erlang functions: one which returns a simple &#8220;Hello&#8221; message, one which uses an extra process to return &#8216;pong&#8217; messages on calls to &#8216;ping&#8217;, and counts those.</p>
+<p>The code:</p>
+<p><code>
+<pre>-module(demo).
+-export([hello/1, ping/0, start/0]).
+
+hello(Name) ->
+    Message = "Hello, " ++ Name,
+    io:format(Message ++ "~n", []),
+    Message.
+
+ping_loop(N) ->
+    receive
+        {get_id, From} ->
+            From ! {pong, N},
+            ping_loop(N + 1)
+    end.
+
+ping() ->
+    pingsrv ! {get_id, self()},
+    receive
+        {pong, N} -&gt; ok
+    end,
+    {pong, N}.
+
+start() ->
+    Pid = spawn_link(fun() -> ping_loop(1) end),
+    register(pingsrv, Pid).
+</pre>
+<p></code></p>
+<p>This should be straight-forward if you&#8217;re familiar with Erlang (which I assume).</p>
+<p>The Python code is not that hard to get either: it follows the basic Twisted pattern. First one should create a connection to EPMD, the Erlang Port Mapper Daemon (used to find other nodes), then a connection to the server node should be created, and finally functions can be called (calls happen the same way as Erlang&#8217;s <a href="http://erlang.org/doc/man/rpc.html">RPC module</a>).</p>
+<p>Here&#8217;s the code. I&#8217;d advise to read it bottom-to-top:</p>
+<p><code>
+<pre>import sys
+
+from twisted.internet import reactor
+import twotp
+
+def error(e):
+    '''A generic error handler'''
+    print 'Error:'
+    print e
+    reactor.stop()
+
+def do_pingpong(proto):
+    def handle_pong(result):
+        # Parse the result
+        # 'ping' returns a tuple of an atom ('pong') and an integer (the pong
+        # id)
+        # In TwOTP, an Atom object has a 'text' attribute, which is the string
+        # form of the atom
+        text, id_ = result[0].text, result[1]
+        print 'Got ping result: %s %d' % (text, id_)
+        # Recurse
+        reactor.callLater(1, do_pingpong, proto)
+
+    # Call the 'ping' function of the 'demo' module
+    d = proto.factory.callRemote(proto, 'demo', 'ping')
+    # Add an RPC call handler
+    d.addCallback(handle_pong)
+    # And our generic error handler
+    d.addErrback(error)
+
+def call_hello(proto, name):
+    def handle_hello(result):
+        print 'Got hello result:', result
+        # Erlang strings are lists of numbers
+        # The default encoding is Latin1, this might need to be changed if your
+        # Erlang node uses another encoding
+        text = ''.join(chr(c) for c in result).decode('latin1')
+        print 'String form:', text
+        # Start pingpong loop
+        do_pingpong(proto)
+
+    # Call the 'hello' function of the 'demo' module, and pass in argument
+    # 'name'
+    d = proto.factory.callRemote(proto, 'demo', 'hello', name)
+    # Add a callback for this function call
+    d.addCallback(handle_hello)
+    # And our generic error handler
+    d.addErrback(error)
+
+def launch(epmd, remote, name):
+    '''Entry point of our demo application'''
+    # Connect to a node. This returns a deferred
+    d = epmd.connectToNode(remote)
+    # Add a callback, called when the connection to the node is established
+    d.addCallback(call_hello, name)
+    # And add our generic error handler
+    d.addErrback(error)
+
+def main():
+    remote = sys.argv[1]
+    name = sys.argv[2]
+    # Read out the Erlang cookie value
+    cookie = twotp.readCookie()
+    # Create a name for this node
+    this_node = twotp.buildNodeName('demo_client')
+    # Connect to EPMD
+    epmd = twotp.OneShotPortMapperFactory(this_node, cookie)
+    # Call our entry point function when the Twisted reactor is started
+    reactor.callWhenRunning(launch, epmd, remote, name)
+    # Start the reactor
+    reactor.run()
+
+if __name__ == '__main__':
+    main()</pre>
+<p></code></p>
+<p>Finally, to run it, you should first start a server node, and run the &#8216;pingsrv&#8217; process:</p>
+<p><code>
+<pre>MacBook:pyping nicolas$ erl -sname test@localhost
+Erlang (BEAM) emulator version 5.6.5 [source] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.6.5  (abort with ^G)
+(test@localhost)1> c(demo).
+{ok,demo}
+(test@localhost)2> demo:start().
+true</pre>
+<p></code></p>
+<p>Notice we started <em>erl</em> providing <em>test@localhost</em> as short node name.</p>
+<p>Now we can launch our client:</p>
+<p><code>
+<pre>(pythonenv)MacBook:pyping nicolas$ python hello.py 'test' Nicolas
+Got hello result: [72, 101, 108, 108, 111, 44, 32, 78, 105, 99, 111, 108, 97, 115]
+String form: Hello, Nicolas
+Got ping result: pong 1
+Got ping result: pong 2
+Got ping result: pong 3</pre>
+<p></code></p>
+<p>&#8216;test&#8217; is the shortname of the server node.</p>
+<p>You can stop the ping loop using <em>CTRL-C</em>. If you restart the client afterwards, you can see the ping IDs were retained:</p>
+<p><code>
+<pre>(pythonenv)MacBook:pyping nicolas$ python hello.py 'test' Nicolas
+Got hello result: [72, 101, 108, 108, 111, 44, 32, 78, 105, 99, 111, 108, 97, 115]
+String form: Hello, Nicolas
+Got ping result: pong 4
+Got ping result: pong 5</pre>
+<p></code></p>
+<p>That&#8217;s about it. Using TwOTP you can also develop a node which exposes functions, which can be called from an Erlang node using <em>rpc:call/4</em>. Check the documentation provided with TwOTP for a basic example of this feature.</p>
+<p>Combining Erlang applications as distributed, fault tolerant core infrastructure and Python/Twisted applications for &#8216;everyday coding&#8217; can be an interesting match in several setups, an TwOTP provides all required functionalities to integrate the 2 platforms easily.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+		<item>
+		<title>Python gotcha</title>
+		<link>http://eikke.com/python-gotcha/</link>
+		<comments>http://eikke.com/python-gotcha/#comments</comments>
+		<pubDate>Fri, 26 Sep 2008 19:35:37 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/python-gotcha/</guid>
+		<description><![CDATA[Don&#8217;t ever do this unless it&#8217;s really what you want: import os def some_func(fd):   f = os.fdopen(fd, 'w')   f.write('abc') fd = get_some_fd() some_func(fd) some_other_func(fd) Here&#8217;s what goes wrong: when some_func comes to an end, f (which is a file-like objects) goes out of scope, is destructed, which causes fd to be closed. I [...]]]></description>
+			<content:encoded><![CDATA[<p>Don&#8217;t ever do this unless it&#8217;s really what you want:</p>
+<pre>import os
+
+def some_func(fd):
+    f = os.fdopen(fd, 'w')
+    f.write('abc')
+
+fd = get_some_fd()
+some_func(fd)
+some_other_func(fd)</pre>
+<p>Here&#8217;s what goes wrong: when some_func comes to an end, f (which is a file-like objects) goes out of scope, is destructed, which causes fd to be closed. I think this is pretty weird behavior (an object closing an fd it didn&#8217;t open itself), but well.</p>
+<p>Here&#8217;s a better version, for reference:</p>
+<pre>def some_func(fd):
+    f = os.fdopen(os.dup(fd), 'w')
+    #Use f here</pre>
+<p>Try this on fd 0/1/2 in an (I)Python shell <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/python-gotcha/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Embedding JavaScript in Python</title>
+		<link>http://eikke.com/embedding-javascript-in-python/</link>
+		<comments>http://eikke.com/embedding-javascript-in-python/#comments</comments>
+		<pubDate>Mon, 25 Aug 2008 23:05:16 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[javascriptcore]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[webkit]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/embedding-javascript-in-python/</guid>
+		<description><![CDATA[Reading some posts about embedding languages/runtimes in applications on Planet GNOME reminded me I still had to announce some really quick and incomplete code blob I created some days after last GUADEC edition (which was insanely cool, thanks guys). It takes WebKit&#8216;s JavaScriptCore and allows you to embed it in some Python program, so you, [...]]]></description>
+			<content:encoded><![CDATA[<p>Reading some posts about embedding languages/runtimes in applications on <a href="http://planet.gnome.org" title="Planet GNOME">Planet GNOME</a> reminded me I still had to announce some really quick and incomplete code blob I created some days after last <a href="http://www.guadec.org" title="GUADEC">GUADEC</a> edition (which was insanely cool, thanks guys).</p>
+<p>It takes <a href="http://www.webkit.org" title="WebKit">WebKit</a>&#8216;s JavaScriptCore and allows you to embed it in some <a href="http://www.python.org" title="Python">Python</a> program, so you, as a Python developer, can allow consumers to write plugins using JavaScript. Don&#8217;t ask me whether it&#8217;s useful, maybe it&#8217;s not, but anyway.</p>
+<p>There&#8217;s one catch: currently there is no support to expose custom Python objects to the JavaScript runtime: you&#8217;re able to use JavaScript objects and functions etc. from within Python, but not the other way around. I started working on this, but the JSCore API lacked some stuff to be able to implement this cleanly (or I missed a part of it, that&#8217;s possible as well), maybe it has changed by now&#8230; There is transparent translation of JavaScript base types: unicode strings, booleans, null (which becomes None in Python), undefined (which becomes jscore.UNDEFINED) and floats.</p>
+<p>I did not work on the code for quite a long time because of too much real-job-work, maybe it no longer compiles, sorry&#8230; Anyway, it&#8217;s available in git <a href="http://git.nicolast.be/?p=python-jscore.git;a=summary" title="python-jscore git">here</a>, patches welcome etc. I guess <a href="http://git.nicolast.be/?p=python-jscore.git;a=blob;f=test/test_object.py;h=1604e4db7bb1e9333bcbed305ec3107921708ab0;hb=HEAD#l261">this</a> is the best sample code around. It&#8217;s using <a href="http://www.cython.org" title="Cython">Cython</a> for compilation (never tried with Pyrex, although this might work as well). If anyone can use it, great, if not, too bad, I did learn Cython doing this <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/embedding-javascript-in-python/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Python &#8216;all&#8217; odity</title>
+		<link>http://eikke.com/python-all-odity/</link>
+		<comments>http://eikke.com/python-all-odity/#comments</comments>
+		<pubDate>Thu, 01 May 2008 13:57:00 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[performance]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/python-all-odity/</guid>
+		<description><![CDATA[[update] Question solved, see bottom of post. Since Python 2.5 the language got a new built-in method &#8216;all&#8217; (and it&#8217;s nephew &#8216;any&#8217;). I wanted to play around with this a little, combined with generators, so I created a little testcase to test performance. Here&#8217;s the test-case: take a list L of X random numbers in [...]]]></description>
+			<content:encoded><![CDATA[<p>[update] Question solved, see bottom of post.</p>
+<p>Since Python 2.5 the language got a new built-in method &#8216;all&#8217; (and it&#8217;s nephew &#8216;any&#8217;). I wanted to play around with this a little, combined with generators, so I created a little testcase to test performance.</p>
+<p>Here&#8217;s the test-case: take a list L of X random numbers in a given range [A, B], and check whether</p>
+<ul>
+<li>all elements in L are &gt;= A</li>
+<li>all elements in L are &gt;= (A + Z) where Z is a number in [0, (B - A)]</li>
+</ul>
+<p>The first test should always result True, the second test could result to False.</p>
+<p>Here&#8217;s the output of a test-run:</p>
+<pre>In [1]: import random, sys
+
+In [2]: a = [random.randint(100, sys.maxint) for i in xrange(2000000)]
+
+In [3]: len(a)
+Out[3]: 2000000
+
+In [4]: #Check whether all elements are &gt;= 100 
+
+In [5]: %timeit all(i &gt;= 100 for i in a)
+10 loops, best of 3: 515 ms per loop
+
+In [6]: %timeit any(i &lt; 100 for i in a)
+10 loops, best of 3: 454 ms per loop
+
+In [7]: def f(l):
+   ...:     for i in l:
+   ...:         if i &lt; 100:
+   ...:             return False
+   ...:     return True
+   ...: 
+
+In [8]: %timeit f(a)
+10 loops, best of 3: 292 ms per loop
+
+In [9]: #Same thing for 100000, since now the list shouldn't be completely iterated
+
+In [10]: %timeit all(i &gt;= 100000 for i in a)
+100 loops, best of 3: 4.73 ms per loop
+
+In [11]: %timeit any(i &lt; 100000 for i in a)
+100 loops, best of 3: 4.29 ms per loop
+
+In [12]: def g(l):
+   ....:     for i in l:
+   ....:         if i &lt; 100000:
+   ....:             return False
+   ....:     return True
+   ....: 
+
+In [13]: %timeit g(a)
+100 loops, best of 3: 2.82 ms per loop
+
+In [14]: #For reference
+
+In [15]: %timeit False in (i &gt;= 100 for i in a)
+10 loops, best of 3: 531 ms per loop
+
+In [16]: %timeit False in (i &gt;= 100000 for i in a)
+100 loops, best of 3: 5.03 ms per loop</pre>
+<p>It&#8217;s as if &#8216;all&#8217;, &#8216;any&#8217; or &#8216;in&#8217; don&#8217;t break/return when a first occurence of False (or True, obviously) is found. Is this the desired behaviour, and if it is, why? The calculation time difference between using all/any/in or a custom-made function (which is, unlike all etc, not written in C) which breaks whenever it can, is pretty astonishing.</p>
+<p>[update] Question solved. It&#8217;s pretty normal the function-based approach performs better, since it combines what &#8216;all&#8217; and the generator provided to &#8216;all&#8217; do, taking away the generator function-call overhead. Damn <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/python-all-odity/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Python if/else in lambda</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/</link>
+		<comments>http://eikke.com/python-ifelse-in-lambda/#comments</comments>
+		<pubDate>Sat, 16 Feb 2008 21:24:43 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[functional programming]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/</guid>
+		<description><![CDATA[Scott, in your &#8220;Functional Python&#8221; introduction you write: The one limitation that most disappoints me is that Python lacks is a functional way of writing if/else. Sometimes you just want to do something like this: lambda x : if_else(x&#62;100, “big number”, “little number”) (This would return the string “big number” if x was greater than [...]]]></description>
+			<content:encoded><![CDATA[<p><a href="http://scott.andstuff.org/" title="Scott Moonen">Scott</a>, in your &#8220;<a href="http://scott.andstuff.org/FunctionalPython" title="Scott Moonen: Functional Python">Functional Python</a>&#8221; introduction you write:</p>
+<blockquote><p>The one limitation that most disappoints me is that Python lacks is a functional way of writing <tt>if</tt>/<tt>else</tt>.  Sometimes you just want to do something like this:</p>
+<blockquote>
+<pre>lambda x : if_else(x&gt;100, “big number”, “little number”)</pre>
+</blockquote>
+<p>(This would return the string “big number” if <em>x</em> was greater than 100, and “little number” otherwise.)  Sometimes I get around this by defining my own <tt>if_else</tt> that I can use in lambda-functions:</p>
+<blockquote>
+<pre>def if_else(condition, a, b) :
+   if condition : return a
+   else         : return b</pre>
+</blockquote>
+</blockquote>
+<p>Actually, you don&#8217;t need this helper if_else function at all:</p>
+<pre>In [1]: f = lambda x: x &gt; 100 and 'big' or 'small'</pre>
+<pre>In [2]: for i in (1, 10, 99, 100, 101, 110):
+...:     print i, 'is', f(i)
+...:
+1 is small
+10 is small
+99 is small
+100 is small
+101 is big
+110 is big</pre>
+<p><a href="http://blogs.gnome.org/jamesh/2008/02/12/python-metaclasses/" title="James Henstridge: Python metaclasses">James</a>, obviously you&#8217;re right&#8230; Stupid me didn&#8217;t think about that. Your version won&#8217;t work when a discriminator isn&#8217;t known at import time. But even then a function taking <tt>*args</tt> and <tt>**kwargs</tt> with a class-like name, returning a correct class instance, would cut the job.</p>
+<p>Regarding the module/plugin stuff, I&#8217;d rather use setuptools/pkg_resources <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/python-ifelse-in-lambda/feed/</wfw:commentRss>
+		<slash:comments>17</slash:comments>
+		</item>
+		<item>
+		<title>Python factory-like type instances</title>
+		<link>http://eikke.com/python-factory-like-type-instances/</link>
+		<comments>http://eikke.com/python-factory-like-type-instances/#comments</comments>
+		<pubDate>Mon, 11 Feb 2008 19:31:20 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/python-factory-like-type-instances/</guid>
+		<description><![CDATA[When designing applications or libraries, sometimes you need to be able to create instances of a certain interface (in a liberal sense) at runtime without knowing at write/compile time which specific implementation (class) you&#8217;ll need to use, as this could depend on runtime variables. An example of this is an interface providing some functionality which [...]]]></description>
+			<content:encoded><![CDATA[<p>When designing applications or libraries, sometimes you need to be able to create instances of a certain interface (in a liberal sense) at runtime without knowing at write/compile time which specific implementation (class) you&#8217;ll need to use, as this could depend on runtime variables.</p>
+<p>An example of this is an interface providing some functionality which should be implemented differently on different platforms, eg Linux and Windows.</p>
+<p>There are some standard patterns how to achieve this. One of them is the <a href="http://en.wikipedia.org/wiki/Factory_method_pattern" title="Wikipedia: Factory method pattern">factory pattern</a>, which works somewhat like this <a href="http://www.python.org" title="Python">Python</a> example (let&#8217;s pretend &#8216;PLATFORM&#8217; is &#8216;linux2&#8242; or &#8216;win32&#8242;, ie sys.platform):</p>
+<pre>#Pretend we use sys.platform instead of PLATFORM where we use it
+PLATFORM = 'linux2'
+
+class FooBase(object):
+    def say_foo(self):
+        print 'foo'
+
+class PlatformFoo(FooBase):
+    def say_platform_foo(self):
+        raise NotImplementedError
+
+    @staticmethod
+    def get_class():
+        #Several ways to get this (dict, introspection, if-tree,...), pick yours
+        klass = {
+            'linux2': LinuxFoo,
+            'win32': WindowsFoo,
+        }.get(PLATFORM, None)
+        if not klass:
+            raise Exception, 'Platform not supported'
+        return klass
+
+class WindowsFoo(PlatformFoo):
+    def say_platform_foo(self):
+        print 'win32 foo'
+
+class LinuxFoo(PlatformFoo):
+    def say_platform_foo(self):
+        print 'linux foo'
+
+def main():
+    foo_class = PlatformFoo.get_class()
+    foo = foo_class()
+    foo.say_platform_foo()
+
+if __name__ == '__main__':
+    main()</pre>
+<p>Executing this code will, as expected, write &#8216;linux foo&#8217; to the console. Obviously we could not return the platform-specific class in a PlatformFoo function, but an actual instance, up to you.</p>
+<p>Python allows you to handle this situation somewhat nicer though, without introducing any intermediate functions, by using metaclasses.</p>
+<p><span id="more-61"></span></p>
+<p>I won&#8217;t explain what metaclasses are here, or how they work, there are several resources on the internet explaining them. Let&#8217;s just get to the code:</p>
+<pre>#Pretend we use sys.platform instead of PLATFORM where we use it
+PLATFORM = 'linux2'
+
+class FooBase(object):
+    def say_foo(self):
+        print 'foo'
+
+    def say_platform_foo(self):
+        raise NotImplementedError
+
+class WindowsFoo(FooBase):
+    def say_platform_foo(self):
+        print 'win32 foo'
+         
+class LinuxFoo(FooBase):
+    def say_platform_foo(self):
+        print 'linux foo'
+
+
+class FooMeta(type):
+    def __new__(cls, name, bases, attrs):
+        #Several ways to get this (dict, introspection, if-tree,...), pick yours
+        klass = {
+            'linux2': LinuxFoo,
+            'win32': WindowsFoo,
+        }.get(PLATFORM, None)
+        if not klass:
+            raise Exception, 'Platform not supported'
+        return klass
+
+class Foo:
+    __metaclass__ = FooMeta
+
+
+def main():
+    foo = Foo()
+    foo.say_platform_foo()
+
+if __name__ == '__main__':
+    main()</pre>
+<p>See we don&#8217;t need any getter-function here, but we can just create a &#8216;Foo&#8217; instance? The resulting object will be a &#8216;LinuxFoo&#8217; or a &#8216;WindowsFoo&#8217; as expected, depending on the value of &#8216;PLATFORM&#8217;. The above code also displays &#8216;linux foo&#8217;.</p>
+<p>There&#8217;s something nifty about it too: you don&#8217;t loose any class inheritance information:</p>
+<pre>In [1]: from test2 import Foo, LinuxFoo, FooBase
+
+In [2]: f = Foo()
+
+In [3]: f.say_platform_foo()
+linux foo
+
+In [4]: type(f)
+Out[4]: <class 'test2.LinuxFoo'>
+
+In [5]: isinstance(f, LinuxFoo)
+Out[5]: True
+
+In [6]: isinstance(f, FooBase)
+Out[6]: True
+
+In [7]: isinstance(f, Foo)
+Out[7]: True</pre>
+<p>This shouldn&#8217;t surprise you, as &#8216;Foo&#8217; actually became an alias for &#8216;LinuxFoo&#8217;.</p>
+<p>Maybe this pattern will be useful in one of your projects one day, who know <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/python-factory-like-type-instances/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>How not to write Python code</title>
+		<link>http://eikke.com/how-not-to-write-python-code/</link>
+		<comments>http://eikke.com/how-not-to-write-python-code/#comments</comments>
+		<pubDate>Fri, 08 Feb 2008 20:50:16 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/how-not-to-write-python-code/</guid>
+		<description><![CDATA[Lately I&#8217;ve been reading some rather unclean Python code. Maybe this is mainly because the author(s) of the code had no in-depth knowledge of the Python language itself, the &#8216;platform&#8217; delivered with cPython,&#8230; Here&#8217;s a list of some of the mistakes you should really try to avoid when writing Python code: Remember Python comes batteries [...]]]></description>
+			<content:encoded><![CDATA[<p>Lately I&#8217;ve been reading some rather unclean Python code. Maybe this is mainly because the author(s) of the code had no in-depth knowledge of the Python language itself, the &#8216;platform&#8217; delivered with cPython,&#8230; Here&#8217;s a list of some of the mistakes you should really try to avoid when writing Python code:</p>
+<ul>
+<li>Remember Python comes batteries included<br />
+Python is shipped with  a whole bunch of standard modules implementing a broad range of functionality, including text handling, various data types, networking stuff (both low- and high-level), document processing, file archive handling, logging, etc. All these are documented in the <a href="http://docs.python.org/lib/" title="Python Library Documentation">Python Library Documentation</a>, so it is a must to browse at least through the list of available modules, so you get some notions of what you can use by default. An example: don&#8217;t introduce a dependency on <a href="http://www.twistedmatrix.com" title="Twisted">Twisted</a> to implement a very basic and simple custom HTTP server if you don&#8217;t have any performance needs, use <a href="http://docs.python.org/lib/module-BaseHTTPServer.html" title="Python BaseHTTPServer">BaseHTTPServer</a> and derivates.</li>
+<li>Python is Python, don&#8217;t try to emulate bad coding patterns from other languages<br />
+Python is a mature programming language which provides great flexibility, but also has some pretty specific patterns which you might not know in other languages you used before.<br />
+As an example, don&#8217;t try to emulate PHP&#8217;s &#8216;include&#8217; or &#8216;require&#8217; function, at all. This could be done, somewhat, by writing the code to be included (and executed on inclusion) in a module on the top level (ie. not in functions/classes/&#8230;), and using something like &#8216;from foo import *&#8217; where you want this code to be executed. This will work, but it can become hard to maintain this. Modules are not meant to be used like this, so don&#8217;t. If you need to execute some code at some point, put it in a module as a function, import the function and call it wherever you want.</li>
+<p><span id="more-59"></span></p>
+<li>Don&#8217;t pollute the global namespace<br />
+Do not use &#8216;from foo import *&#8217;, as this will pull in everything defined in foo, but also all modules imported in foo, and maybe even their imports, etc. Try to &#8216;import foo&#8217; and use foo.whatever, or use &#8216;from foo import whatever, somethingelse&#8217;. Explicit imports make code much more readable, and make it much easier to figure out in which module something you&#8217;re using in the current module is defined, if it&#8217;d be imported by one of your many global imports otherwise.</li>
+<li>Use Pythonesque coding pattern<br />
+This is very related to the previous item, obviously. Python has some well-known constructs to handle some situations. Get to know and understand them.<br />
+An example: as you might know, Python has no switch/case construct. There&#8217;s a very neat way to implement this though by simply using a dict and function objects (or lambda functions). An example:</p>
+<pre>def handle_one():
+    return 'one'
+def handle_two():
+    return 'two'
+def handle_default():
+    return 'unknown'
+cases = {
+    'one': handle_one,
+    'two': handle_two,
+    'three': lambda: 'three',
+}
+for i in ('one', 'two', 'three', 'four', ):
+    handler = cases.get(i, handle_default)
+    print handler()</pre>
+<p>We&#8217;re using the dict.get method here, which can take an optional &#8216;default&#8217; argument. Pretty neat, huh?</li>
+<li>Don&#8217;t reinvent the wheel<br />
+Related to #1. An example? Python contains a great &#8216;logger&#8217; module, which includes advanced functionality like logging over network, over HTTP, defining multiple logging targets, target trees,&#8230; No need to reimplement this yourself!</li>
+<li>Document your code<br />
+Python has this great language feature called docstrings. Sprinkle them throughout your code rigorously. Do this while writing your functions/classes, not afterwards. Everyone knows that&#8217;s extremely boring and depressing.</li>
+<li>Write tests<br />
+Write testing code. Python includes at least 2 ways to write tests: using standard unit tests, or using doctests, test code snippets included in your docstrings, both useful and illustrative. There&#8217;s no way to know some code refactoring went well if you can&#8217;t test the result.</li>
+<li>Use error reporting wisely<br />
+Python includes exception handling. Use this wisely: when something goes wrong in some function which should return a string normally to be displayed to the user, don&#8217;t just return a normal string with some error message inside, as if everything went well, but return the message packed in an exception object, so the calling code will know something went wrong (and maybe handle according to this information), whilst still being able to display the error message to the user.<br />
+Next to this, subclass Exception (or a more specific Exception child class), don&#8217;t just return base Exceptions, unless in some basic circumstances. An exception class shouldn&#8217;t be huge: &#8216;class FooException(Exception): pass&#8217; cuts the job.</li>
+<li>Don&#8217;t turn off error reporting during development<br />
+In some cases it&#8217;s useful to make sure your application keeps on running, no matter what happens (this is eg how Twisted handles server handler exceptions). Python provides some ways to achieve this, so in case you need it you can use it, but make sure you provide a way to disable this, so you can tell your application to crash hard on exceptions during development. This way you&#8217;ll certainly notice the issue and you&#8217;ll be able to fix it early.</li>
+<li>Search the web!<br />
+Lots of great people wrote thousands of Python modules for lots of things. Many of them use the very liberal Python license, which allows you to re-use this code even in a close source environment. <a href="http://pypi.python.org/pypi" title="Python Package Index">Pypi</a> can be a great place to start.</li>
+<li>Use Python basic built-in functions<br />
+A basic example: to check whether a function parameter is of a certain type, don&#8217;t use something like &#8216;arg.__class__ == MyClass&#8217;, use &#8216;isinstance(arg, MyClass)&#8217;. Did you know isinstance&#8217;s second argument can be a tuple/list? If it is, arg&#8217;s type will be checked against all types in this list, so there&#8217;s no need to do several &#8216;isinstance&#8217; calls. Other useful built-ins are getattr/setattr/hasattr (obviously), issubclass,&#8230;</li>
+<li>Use non-instance-specific class methods where useful<br />
+Just like many other programming languages, Python allows you to add static methods to a class. Just decorate your method using the &#8216;staticmethod&#8217; decorator!<br />
+Next to static methods, Python knows the concept of class methods, which get the class as argument. You most likely won&#8217;t need these often.</li>
+<li>Learn &#8216;functional programming&#8217; basics<br />
+At first it can be hard to wrap your head around functional programming patterns, but they allow a very convenient and clean way to handle several situations.</li>
+<li>Don&#8217;t mess with sys.path<br />
+If you need to import &#8216;external&#8217; modules, try not to mess with sys.path. Use distutils functions to discover modules, ship them as eggs,&#8230; If you want to alter sys.path anyway, try not to hardcode any &#8216;base&#8217; paths: generic paths are a major plus, and removing hardcoded path stuff can be a PITA.</li>
+<li>Use an interactive shell<br />
+A Python shell like <a href="http://ipython.scipy.org/" title="iPython">iPython</a> is a must-have. I&#8217;m completely addicted to the tab-completion and documentation shortcuts it provides.</li>
+<li>Use a code metrics tool<br />
+I personally use <a href="http://www.logilab.org/857" title="PyLint">PyLint</a> (with some rules disabled). This tool will check your code for various things: missing imports, typos, wrong variable/function/class/module naming, syntax errors,&#8230; which could be in your code even if your test suite runs fine. Maybe you can even add a hook to the VCS you&#8217;re using, which doesn&#8217;t allow you to check in code unless it got a PyLint score of eg. 7. Extremely useful!</li>
+</ul>
+<p>Some days ago <a href="http://www.realnitro.be" title="RealNitro">RealNitro</a> pointed me at this <a href="http://www.wordaligned.org/articles/essential-python-reading-list" title="Essential Python Reading List">list of essential Python readings</a>. &#8220;<a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/" title="Idiomatic Python">Idiomatic Python</a>&#8221; is a must-read, even for experienced Python developers.</p>
+<p>That&#8217;s about it for now, maybe I&#8217;ll add some more items to this list later on. If you have some other hints, comments!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/how-not-to-write-python-code/feed/</wfw:commentRss>
+		<slash:comments>41</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.359 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:35 -->
+<!-- Compression = gzip -->

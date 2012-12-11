@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; ajax</title>
+	<atom:link href="http://eikke.com/tag/ajax/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Django generic AJAX form validation</title>
+		<link>http://eikke.com/django-generic-ajax-form-validation/</link>
+		<comments>http://eikke.com/django-generic-ajax-form-validation/#comments</comments>
+		<pubDate>Mon, 31 Dec 2007 13:20:26 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[ajax]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[form]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[jquery]]></category>
+		<category><![CDATA[newforms]]></category>
+		<category><![CDATA[snippet]]></category>
+		<category><![CDATA[validation]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/django-generic-ajax-form-validation/</guid>
+		<description><![CDATA[I just created a generic view for Django which allows a developer to easily add AJAX-style form validation to a newforms based form. The system needs one server-side view, and some client-side JavaScript. You can find the view code in my Django snippets Git repository. The view only works with POST requests. It takes a [...]]]></description>
+			<content:encoded><![CDATA[<p>I just created a generic view for <a href="http://www.djangoproject.com" title="Django">Django</a> which allows a developer to easily add AJAX-style form validation to a <a href="http://www.djangoproject.com/documentation/newforms" title="Django newforms documentation">newforms</a> based form.</p>
+<p>The system needs one server-side view, and some client-side JavaScript. You can find the <a href="http://git.nicolast.be/?p=django-snippets.git;a=blob;f=ajax/form-validation-view.py;hb=HEAD" title="Django AJAX form validation view">view code</a> in my <a href="http://git.nicolast.be/?p=django-snippets.git;a=summary" title="Django snippets">Django snippets Git repository</a>. The view only works with POST requests. It takes a standard HttpRequest and some options:</p>
+<ul>
+<li>form_class: this parameter defines the newforms class to validate against. It can be specified in the extra args parameter of the view&#8217;s urlconf. If you don&#8217;t specify it, the &#8216;form_class&#8217; POST field will be used. If this doesn&#8217;t exist either, an exception is raised. The parameter can be a newforms form instance, a string, or a class (which should be a subclass of BaseForm).</li>
+<li>format: the serialization format to use. Currently only &#8216;json&#8217; is supported.</li>
+<li>args: extra argument list to provide to the form constructor (shouldn&#8217;t be provided in most cases)</li>
+<li>kwargs: extra argument dics to provide to the form constructor (shouldn&#8217;t be provided in most cases)</li>
+</ul>
+<p>Next to the server-side view you&#8217;ll need some pretty basic JavaScript code on client side. I use <a href="http://www.jquery.com" title="JQuery">JQuery</a> and the <a href="http://www.malsup.com/jquery/form/" title="JQuery form plugin">JQuery Form plugin</a>. Here&#8217;s some sample code, assuming the form ID is &#8216;my_form&#8217;, and form fields are represented like this:</p>
+<pre>&lt;p id="{{ form.field.name }}_container"&gt;&lt;label for="{{ form.field.auto_id }}"&gt;{{ form.field.label|capfirst }}:&lt;/label&gt;{{ form.field }}
+{% if form.field.errors %}&lt;span id="{{ form.field.name }}_error" class="error"&gt;{{ form.field.errors.0 }}&lt;/span&gt;{% endif %}
+&lt;/p&gt;</pre>
+<p>Here&#8217;s the corresponding JavaScript code:</p>
+<pre>function do_something() {
+}
+function process_validation(data) {
+    if(data['form_valid'] == true) {
+        do_something();
+        return;
+    }
+    for(var field in data["errors"]) {
+        errors = data["errors"][field]
+        if(errors.length &gt; 0) {
+            error = errors[0];
+            if($("#" + field + "_error").length == 0) {
+                s = $("&lt;br /&gt;&lt;span style=\"display: none;\" id=\"" + field + "_error\" class=\"error\"&gt;" + error + "&lt;/span&gt;");
+                $("#" + field + "_container").append(s);
+            }
+            $("#" + field + "_error").html(error).fadeIn("slow");
+        }
+    }
+}
+function validate_form(data) {
+    data.push({name: 'form_class', value: 'project.application.forms.ApplicationForm'});
+    $.post("{% url validate_form %}", data, process_validation, "json");
+}
+$(document).ready(function() {
+    $("#my_form").submit(function() {
+        data = $("#my_form").formToArray();
+        $(".error").fadeOut("slow");
+        validate_form(data);
+        return false;
+    });
+});</pre>
+<p>Obviously this should be changed to suit your needs.</p>
+<p>I hope this code can be useful for someone&#8230;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/django-generic-ajax-form-validation/feed/</wfw:commentRss>
+		<slash:comments>10</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.144 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:34 -->
+<!-- Compression = gzip -->

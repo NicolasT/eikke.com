@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; jfs</title>
+	<atom:link href="http://eikke.com/tag/jfs/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Filesystem issues and django-couchdb work</title>
+		<link>http://eikke.com/filesystem-issues-and-django-couchdb-work/</link>
+		<comments>http://eikke.com/filesystem-issues-and-django-couchdb-work/#comments</comments>
+		<pubDate>Sun, 30 Dec 2007 01:47:22 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[couchdb]]></category>
+		<category><![CDATA[crash]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[evolution]]></category>
+		<category><![CDATA[fglrx]]></category>
+		<category><![CDATA[firefox]]></category>
+		<category><![CDATA[gnome]]></category>
+		<category><![CDATA[jfs]]></category>
+		<category><![CDATA[pidgin]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/filesystem-issues-and-django-couchdb-work/</guid>
+		<description><![CDATA[Last night, when shutting down my laptop (which had been up for quite a long time because of suspend/resume niceness), it crashed. I don&#8217;t know what exactly happened: pressed the GNOME&#8217;s logout button, applications were closed, until only my background was visible, then the system locked up, so I suspect my X server (some part [...]]]></description>
+			<content:encoded><![CDATA[<p>Last night, when shutting down my laptop (which had been up for quite a long time because of suspend/resume niceness), it crashed. I don&#8217;t know what exactly happened: pressed the GNOME&#8217;s logout button, applications were closed, until only my background was visible, then the system locked up, so I suspect my X server (some part of it, GPU driver (fglrx) might be the bad guy). I was able to sysrq s u o, so I thought everything would be relatively fine.</p>
+<p>This morning I powered on my system, and while booting, fsck of some partitions was taking a rather long time. It&#8217;s pretty normal fsck was taking somewhat longer, but not thát long&#8230; I&#8217;m using JFS on most logical volumes.</p>
+<p>When the consistency check of my /home partition was done, a whole load of invalid files was displayed and later on moved to lost+found: 34068 files. Once booted, I scanned my filesystems again, rebooted, logged in, started X. Everything started fine, until I launched Evolution: it presented my the &#8216;initial run&#8217; wizard. Other issues (on first sight): all Firefox cookies were gone, and Pidgin&#8217;s blist.xml was corrupted. When using my old computer (which had frequent lockups on heavy IO usage) these last 2 issues happened a lot too, which is highly annoying, especially the blist.xml thing as I can&#8217;t see any reason to keep this file opened for long periods?</p>
+<p>Luckily I was able to get my Evolution up and running again by restoring it&#8217;s GConf settings and ~/.evolution using some old backup (15/10/07). I guess I should backup more regularly&#8230; Next to this I hope I won&#8217;t find any other corrupted files, so the ones in lost+found are just Evolution email files and Firefox caches.</p>
+<p>Anyway, here&#8217;s a screenshot displaying some of the initial and hackish work I&#8217;ve done this evening on integrating <a href="http://www.djangoproject.com" title="Django">Django</a> and <a href="http://www.couchdb.org" title="CouchDB">CouchDB</a> as <a href="http://eikke.com/couchdb-with-python" title="Python, CouchDB and Python">I wrote about yesterday</a>:</p>
+<p><a href="http://eikke.com/filesystem-issues-and-django-couchdb-work/django-and-couchdb-first-shot-2/" rel="attachment wp-att-15" title="Django and CouchDB first shot"><img src="http://eikke.com/wp-content/uploads/2007/12/django_couchdb12.thumbnail.png" alt="Django and CouchDB first shot" /></a></p>
+<p>As you can see, currently I&#8217;m able to edit fields of an object. There&#8217;s one major condition: an object with the given ID should already exist in the &#8216;database&#8217; which makes the current code rather useless, but hey <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  I&#8217;ll add object creation functionality later tonight or tomorrow.</p>
+<p>Current code is very expensive too, doing way too many queries to CouchDB, mainly in client.py. This most certainly needs work.</p>
+<p>Upgraded my <a href="http://www.wordpress.org" title="WordPress">WordPress</a> installation to the latest release, 2.3.2, in about 5 seconds. Got to love svn switch (although maybe I should start using git-svn for this installation too and git-pull the release branch in my local copy).</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/filesystem-issues-and-django-couchdb-work/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.143 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:41 -->
+<!-- Compression = gzip -->

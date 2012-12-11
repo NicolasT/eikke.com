@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; Linux</title>
+	<atom:link href="http://eikke.com/category/linux/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Microsoft to release Linux HyperV drivers as GPLv2</title>
+		<link>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/</link>
+		<comments>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/#comments</comments>
+		<pubDate>Mon, 20 Jul 2009 17:37:05 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[virtualization]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=116</guid>
+		<description><![CDATA[Looks like Microsoft releases the Linux drivers to enable a Linux kernel running as a guest in a Hyper-V hypervisor to run in &#8216;enlightened mode&#8217;, which sounds pretty much like Xen&#8216;s PV drivers for Windows, providing better IO performance, under the GPLv2 (which is the same open-source license as the Linux kernel itself). Quoting the [...]]]></description>
+			<content:encoded><![CDATA[<p>Looks like <a href="http://www.microsoft.com">Microsoft</a> releases the <a href="http://www.kernel.org">Linux</a> drivers to enable a Linux kernel running as a guest in a <a href="http://en.wikipedia.org/wiki/Hyper-V" title="Wikipedia - Hyper-V">Hyper-V</a> hypervisor to run in &#8216;enlightened mode&#8217;, which sounds pretty much like <a href="http://www.xen.org/">Xen</a>&#8216;s PV drivers for Windows, providing better IO performance, under the GPLv2 (which is the same open-source license as the Linux kernel itself). Quoting the <a href="http://msdn.microsoft.com/en-us/library/dd722833(BTS.10).aspx">Hyper-V Architecture and Feature Overview</a>:</p>
+<blockquote cite="http://msdn.microsoft.com/en-us/library/dd722833(BTS.10).aspx"><p>Enlightened I/O is a specialized virtualization-aware implementation of high level communication protocols (such as SCSI) that utilize the VMBus directly, bypassing any device emulation layer. This makes the communication more efficient but requires an enlightened guest that is hypervisor and VMBus aware.</p></blockquote>
+<p><del datetime="2009-07-20T18:25:18+00:00">The drivers seem to be developed by <a href="http://www.novell.com">Novell</a>, so I guess the <a href="http://boycottnovell.com">Boycott Novell</a> guys will have some more coverage^Wrants soon <img src='http://eikke.com/wp-includes/images/smilies/icon_razz.gif' alt=':-P' class='wp-smiley' /> </del> (Update: can&#8217;t find the reference on this anymore, so this might be a false statement, sorry. Thanks for pointing out <a href="http://www.savanne.be/">RubenV</a>)</p>
+<p>Interesting times on the virtualization front&hellip; Although I for one do not plan to replace Xen, <a href="http://www.opensolaris.org/os/community/xen/">xVM</a> or <a href="http://www.virtualbox.org">VirtualBox</a> anytime soon.</p>
+<p>Sources:</p>
+<ul>
+<li><a href="http://www.microsoft.com/presspass/features/2009/Jul09/07-20LinuxQA.mspx">Microsoft Press Release</a></li>
+<li><a href="http://blogs.the451group.com/opensource/2009/07/20/microsoft-contributes-to-linux-kernel-a-caos-theory-qa/">Blog of the 451 Group</a></li>
+<li><a href="http://lkml.org/lkml/2009/7/20/167">LKML</a></li>
+</ul>
+<p>On a side note: <a href="http://www.redhat.com">Red Hat</a> entered the <a href="http://www.standardandpoors.com">Standard &#038; Poor&#8217;s</a> 500 index, which might show Linux is gaining more interest from enterprises and investors.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Embedding JavaScript in Python</title>
+		<link>http://eikke.com/embedding-javascript-in-python/</link>
+		<comments>http://eikke.com/embedding-javascript-in-python/#comments</comments>
+		<pubDate>Mon, 25 Aug 2008 23:05:16 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[javascriptcore]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[webkit]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/embedding-javascript-in-python/</guid>
+		<description><![CDATA[Reading some posts about embedding languages/runtimes in applications on Planet GNOME reminded me I still had to announce some really quick and incomplete code blob I created some days after last GUADEC edition (which was insanely cool, thanks guys). It takes WebKit&#8216;s JavaScriptCore and allows you to embed it in some Python program, so you, [...]]]></description>
+			<content:encoded><![CDATA[<p>Reading some posts about embedding languages/runtimes in applications on <a href="http://planet.gnome.org" title="Planet GNOME">Planet GNOME</a> reminded me I still had to announce some really quick and incomplete code blob I created some days after last <a href="http://www.guadec.org" title="GUADEC">GUADEC</a> edition (which was insanely cool, thanks guys).</p>
+<p>It takes <a href="http://www.webkit.org" title="WebKit">WebKit</a>&#8216;s JavaScriptCore and allows you to embed it in some <a href="http://www.python.org" title="Python">Python</a> program, so you, as a Python developer, can allow consumers to write plugins using JavaScript. Don&#8217;t ask me whether it&#8217;s useful, maybe it&#8217;s not, but anyway.</p>
+<p>There&#8217;s one catch: currently there is no support to expose custom Python objects to the JavaScript runtime: you&#8217;re able to use JavaScript objects and functions etc. from within Python, but not the other way around. I started working on this, but the JSCore API lacked some stuff to be able to implement this cleanly (or I missed a part of it, that&#8217;s possible as well), maybe it has changed by now&#8230; There is transparent translation of JavaScript base types: unicode strings, booleans, null (which becomes None in Python), undefined (which becomes jscore.UNDEFINED) and floats.</p>
+<p>I did not work on the code for quite a long time because of too much real-job-work, maybe it no longer compiles, sorry&#8230; Anyway, it&#8217;s available in git <a href="http://git.nicolast.be/?p=python-jscore.git;a=summary" title="python-jscore git">here</a>, patches welcome etc. I guess <a href="http://git.nicolast.be/?p=python-jscore.git;a=blob;f=test/test_object.py;h=1604e4db7bb1e9333bcbed305ec3107921708ab0;hb=HEAD#l261">this</a> is the best sample code around. It&#8217;s using <a href="http://www.cython.org" title="Cython">Cython</a> for compilation (never tried with Pyrex, although this might work as well). If anyone can use it, great, if not, too bad, I did learn Cython doing this <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/embedding-javascript-in-python/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>VirtualBox launch script</title>
+		<link>http://eikke.com/virtualbox-launch-script/</link>
+		<comments>http://eikke.com/virtualbox-launch-script/#comments</comments>
+		<pubDate>Thu, 31 Jan 2008 01:55:55 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[iscsi]]></category>
+		<category><![CDATA[virtualbox]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/virtualbox-launch-script/</guid>
+		<description><![CDATA[I&#8217;ve been playing around with VirtualBox some more today (more on it, and other virtualization related stuff might follow later). I got a Windows XP instance running fine (and fast!) in it. Still got some issues (shared folders seem not to work when logged in as a non-administrator user in XP, although I tend to [...]]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been playing around with VirtualBox some more today (more on it, and other virtualization related stuff might follow later). I got a Windows XP instance running fine (and fast!) in it. Still got some issues (shared folders seem not to work when logged in as a non-administrator user in XP, although I tend to blame Windows for this issue, not VirtualBox), played around with a little Linux installation acting as an iSCSI target for its virtual block devices, accessing them from Windows using the Microsoft iSCSI initiator, etc. Here&#8217;s a <a href="http://key.nicolast.be/files/vbox-iscsi-seamless.png" title="VirtualBox, LIO, seamless Windows XP and iSCSI">screenshot</a> of all this.</p>
+<p>I added a launcher for my Windows VM to my panel, which was simply running &#8216;VBoxManage startvm &lt;VM UUID&gt;&#8217;. This was not an optimal solution though, as I wanted it to show a little error dialog when something went wrong when attempting to launch the VM (eg because I forgot it was already running), when the virtual disk files aren&#8217;t accessible (because I forgot to mount the volume they reside on), etc.</p>
+<p>So I cooked a little script which runs some sanity checks before launching the virtual machine, and reports any errors. Here it is:</p>
+<p><span id="more-57"></span></p>
+<pre>#!/bin/bash
+
+# This script was written by Nicolas Trangez &lt;eikke eikke com&gt;
+# It can act as a launcher script for VirtualBox virtual machines
+# and provides some basic error checking/reporting when doing so.
+# It might be useful when using a shortcut to launch machines in a
+# desktop environment.
+
+VBOXMANAGE=$(which VBoxManage)
+ZENITY=$(which zenity)
+VBOXVMUUID=$1
+
+if [ ! -x ${ZENITY} ]; then
+        echo "Error: The zenity tool could not be found."
+        exit 1
+fi
+
+if [ ! $# = 1 ]; then
+        ${ZENITY} --error --title "Argument required" --text "This script should be called with one argument: the UUID of the VirtualBox virtual machine you want to start.
+
+To find out this UUID, run \"${VBOXMANAGE} list vms\"."
+        exit 2
+fi
+
+if ! ${VBOXMANAGE} list vms | grep ^UUID | grep ${VBOXVMUUID} &gt; /dev/null; then
+        ${ZENITY} --error --title "Unknown Virtual Machine" --text "No VirtualBox virtual machine with UUID \"${VBOXVMUUID}\" could be found."
+        exit 3
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ master &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ master | sed -e "s/Primary\ master:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Primary master not found" --text "The image file for the primary master disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ slave &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Primary\ slave | sed -e "s/Primary\ slave:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Primary slave not found" --text "The image file for the primary slave disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+if ${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Secondary\ slave &gt; /dev/null; then
+        DISKFILE=$(${VBOXMANAGE} showvminfo ${VBOXVMUUID} | grep ^Secondary\ slave | sed -e "s/Secondary\ slave:\ *//" -e 's/\ *(UUID.*$//')
+        if [ ! -r ${DISKFILE} ]; then
+                ${ZENITY} --error --title "Secondary slave not found" --text "The image file for the secondary slave disk, ${DISKFILE}, could not be found."
+                exit 1
+        fi
+fi
+
+VBOXOUT=$(${VBOXMANAGE} startvm ${VBOXVMUUID})
+VBOXCODE=$?
+
+if [ ! ${VBOXCODE} = 0 ]; then
+        echo -e ${VBOXOUT}
+        VBOXERROR=$(echo ${VBOXOUT} | grep "\[\!\]\ Text" | sed "s/.*\[\!\]\ Text\ *=\ *//")
+        VBOXERROR=$(echo ${VBOXERROR} | sed "s/\ \[\!\].*//")
+        ${ZENITY} --error --title "Error starting Virtual Machine" --text "An error occured while starting the virtual machine:
+
+${VBOXERROR}
+
+Run \"${VBOXMANAGE} startvm ${VBOXVMUUID}\" to see more details."
+        exit 4
+fi</pre>
+<p>Enjoy!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/virtualbox-launch-script/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Massive 70000 workstation Ubuntu deployment in France</title>
+		<link>http://eikke.com/massive-70000-workstation-ubuntu-deployment-in-france/</link>
+		<comments>http://eikke.com/massive-70000-workstation-ubuntu-deployment-in-france/#comments</comments>
+		<pubDate>Wed, 30 Jan 2008 15:59:28 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[Linux]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/massive-70000-workstation-ubuntu-deployment-in-france/</guid>
+		<description><![CDATA[After switching to OpenOffice in 2005 and introducing Mozilla Firefox and Thunderbird on their machines in 2006, the French paramilitary police (&#8216;Gendarmery&#8217;) will make the switch to 100% Free Software based desktops in the coming years. The migration should be completed in 2014. All workstations will be converted to Ubuntu desktops, starting this year with [...]]]></description>
+			<content:encoded><![CDATA[<p>After switching to <a href="http://www.openoffice.org" title="OpenOffice">OpenOffice</a> in 2005 and introducing <a href="http://www.mozilla.org" title="Mozilla">Mozilla</a> <a href="http://www.mozilla.org/products/firefox" title="Mozilla Firefox">Firefox</a> and <a href="http://www.mozilla.org/products/thunderbird" title="Mozilla Thunderbird">Thunderbird</a> on their machines in 2006, the French paramilitary police (&#8216;Gendarmery&#8217;) will make the switch to 100% Free Software based desktops in the coming years. The migration should be completed in 2014.</p>
+<p>All workstations will be converted to Ubuntu desktops, starting this year with 5000-8000 seats, growing to 12000-15000 over the next four years. By 2014, all 70000 (!!!) desktops should be running free software.</p>
+<p>There are three major reasons for the full switch:</p>
+<ol>
+<li>Remove dependency on one single supplier</li>
+<li> Gain full control over the whole operating system stack</li>
+<li>Reduce costs</li>
+</ol>
+<p>Nowadays licensing costs sum up to 7000000€ (that&#8217;s seven million euros) every year.</p>
+<p>I guess this must be one of the largest Linux desktops deployments ever?</p>
+<p>Source: <a href="http://afp.google.com/article/ALeqM5iU4Lq7tOR_WVOJLZ3IeRaIH03x6w" title="AFP: French police deal blow to Microsoft">AFP</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/massive-70000-workstation-ubuntu-deployment-in-france/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>KDE4 reviewed</title>
+		<link>http://eikke.com/kde4-reviewed/</link>
+		<comments>http://eikke.com/kde4-reviewed/#comments</comments>
+		<pubDate>Sun, 13 Jan 2008 11:57:02 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[free desktop]]></category>
+		<category><![CDATA[kde]]></category>
+		<category><![CDATA[kde4]]></category>
+		<category><![CDATA[productivity]]></category>
+		<category><![CDATA[review]]></category>
+		<category><![CDATA[virtualbox]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/kde4-reviewed/</guid>
+		<description><![CDATA[I&#8217;ve been able to download the KDE4 LiveCD by now, so I wanted to give it a test ride and write a basic KDE 4 review. These are my findings. I first and foremost want to stress I do not ever want to attack, offend or whatever anyone in this post (as reactions of vocal [...]]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been able to <a href="http://eikke.com/kde4-released-more-free-desktop-progress/">download the KDE4 LiveCD</a> by now, so I wanted to give it a test ride and write a basic <strong>KDE 4 review</strong>. These are my findings. I first and foremost want to stress I do not ever want to attack, offend or whatever anyone in this post (as reactions of vocal users on posts like these can be fierce sometimes <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> ). These are my findings, both positive and negative.</p>
+<p>One reason to read this until the end (in case you wouldn&#8217;t <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> ):</p>
+<p><a href="http://eikke.com/kde4-reviewed/kde-40-button-overflow/" rel="attachment wp-att-47" title="KDE 4.0 Button Overflow"><img src="http://eikke.com/wp-content/uploads/2008/01/lots_of_buttons.thumbnail.png" alt="KDE 4.0 Button Overflow" /></a></p>
+<p>At first bootup the <a href="http://www.opensuse.org" title="OpenSuSE">OpenSuSE</a> bootsplash theme attracts your attention. I really like it, very smooth.</p>
+<p>After a successful bootup (using <a href="http://www.virtualbox.org" title="VirtualBox">VirtualBox</a> virtualization)  the <a href="http://www.kde.org" title="KDE">KDE</a> desktop starts. This takes a while, but this can be blamed on the use of a LiveCD, and a virtual machine. The splash screen is very clean, the use of black and rounded corners reminds me of <a href="http://www.apple.com">Apple OS X</a> a little, don&#8217;t ask me why. The icon animation is nice, although I think the transparency shouldn&#8217;t go all the way to completely transparent (at least, that&#8217;s what it looks like), an maybe it should change somewhat slower. Next to this, the last icon in row (the KDE icon) is much bigger than the others, which doens&#8217;t look nice. Anyway, minor details.</p>
+<p>Once booted, the user is presented with his desktop and a &#8216;Useful Tips&#8217; dialog:</p>
+<p><a href="http://eikke.com/kde4-reviewed/kde-40-first-login/" rel="attachment wp-att-40" title="KDE 4.0 First login"><img src="http://eikke.com/wp-content/uploads/2008/01/initial_login.thumbnail.png" alt="KDE 4.0 First login" /></a></p>
+<p><span id="more-39"></span></p>
+<p>One can immediately notice the new themeing (at least, compared to what I remember of KDE 3.5). The window borders are pretty nice (I like the fact they&#8217;re integrated with the window content, notice the curve on top), icons in the dialog are slick. One detail I really dislike is the use of centered text. No clue why this isn&#8217;t simply left-aligned.</p>
+<p>Once the dialog is closed, one can explore the desktop. As I mentioned in <a href="http://eikke.com/kde4-released-more-free-desktop-progress/">my previous KDE 4 post</a>, I dislike the panel width. I could not figure out how to change this though: when right-clicking the panel in search of some &#8220;Properties&#8221; function, only panel applet-specific properties can be changed, and the panel border is not draggable. Maybe this setting is hidden somewhere else, but it&#8217;s not available in the (IMHO) most logical place.</p>
+<p>There are 6 panel applets enabled by default: a menu (which integrates applications, places and system settings, as before, somewhat like the GNOME panel menu Novell created), a task manager, a desktop switcher, the clipboard manager, an applet to manage removable devices, and a clock.</p>
+<p>There&#8217;s a minor issue with the applet represented by the computer screen: unlike the other applets, when hovering with your mouse above it, no tooltip is displayed denoting what this icon is all about. I could only figure this out once clicking it.</p>
+<p>On the upper right corner there&#8217;s a hotspot which allows the user to add widgets to his desktop, or to &#8216;Zoom out&#8217;:</p>
+<p><a href="http://eikke.com/kde4-reviewed/kde-40-desktop-zoom-out-feature/" rel="attachment wp-att-41" title="KDE 4.0 Desktop zoom out feature"><img src="http://eikke.com/wp-content/uploads/2008/01/desktop_zoom_out.thumbnail.png" alt="KDE 4.0 Desktop zoom out feature" /></a></p>
+<p>I, honestly, have no clue what the use of that is. Luckily you can zoom in again too, although the hotspot context menu is zoomed out to one quarter of its original size too, which is really small (actually, not readable). Bug?</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/kde4-reviewed/feed/</wfw:commentRss>
+		<slash:comments>17</slash:comments>
+		</item>
+		<item>
+		<title>KDE4 released: more Free Desktop progress</title>
+		<link>http://eikke.com/kde4-released-more-free-desktop-progress/</link>
+		<comments>http://eikke.com/kde4-released-more-free-desktop-progress/#comments</comments>
+		<pubDate>Fri, 11 Jan 2008 21:08:08 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[free desktop]]></category>
+		<category><![CDATA[gnome]]></category>
+		<category><![CDATA[kde]]></category>
+		<category><![CDATA[kde4]]></category>
+		<category><![CDATA[topaz]]></category>
+		<category><![CDATA[virtualbox]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/kde4-released-more-free-desktop-progress/</guid>
+		<description><![CDATA[KDE4 was released today. Most likely not a big surprise for most readers, but hey Congratulations to the KDE team! I&#8217;d love to give KDE 4 a test-run asap, been trying to download the LiveCD ISO to boot it in my VirtualBox virtual machine, but the torrent is extremely slow here. Maybe my ISP also [...]]]></description>
+			<content:encoded><![CDATA[<p><strong><a href="http://www.kde.org/announcements/4.0/" title="KDE 4.0 release announcement">KDE4 was released today</a></strong>. Most likely not a big surprise for most readers, but hey <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  Congratulations to the <a href="http://www.kde.org" title="KDE">KDE</a> team!</p>
+<p>I&#8217;d love to give KDE 4 a test-run asap, been trying to download the <a href="http://home.kde.org/~binner/kde-four-live/" title="KDE 4.0 LiveCD">LiveCD ISO</a> to boot it in my <a href="http://www.virtualbox.org" title="VirtualBox">VirtualBox</a> virtual machine, but the <a href="http://home.kde.org/~binner/kde-four-live/KDE-Four-Live.i686-1.0.torrent" title="KDE 4.0 LiveCD Torrent">torrent</a> is extremely slow here. Maybe <a href="http://www.skynet.be" title="Skynet">my ISP</a> also implemented BitTorrent bandwidth capping as iirc some others did in Belgium, which is completely unfair as this is, obviously, 100% legal content. Some of the screenshots I saw both during development phases and today do look pretty cool, especially taking into account I&#8217;m not a big fan of the KDE3.x look. I&#8217;m still a little afraid the bottom panel is very high (just like the KDE3.x one), which removes quite a lot of my precious display size&#8230; A 14.1 widescreen laptop isn&#8217;t thát big, using <a href="http://www.gnome.org" title="GNOME">GNOME</a> I only loose 2&#215;21 pixels.</p>
+<p>One thing made me wonder: <a href="http://plasma.kde.org/" title="KDE Plasma">Plasma</a>, <a href="http://solid.kde.org/" title="KDE Solid">Solid</a>, <a href="http://phonon.kde.org/" title="KDE Phonon">Phonon</a>, <a href="http://www.kde.org/announcements/4.0/applications.php" title="KDE 4.0 Applications">Dolphin, Okular</a>, <a href="http://pim.kde.org/akonadi/" title="KDE Akonadi">Akonadi</a>, <a href="http://oxygen-icons.org/" title="KDE Oxygen Icons">Oxygen</a>,&#8230; Where&#8217;s the K* guys? <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<p>I remember some really long and heated threads on GNOME 3 (<a href="http://live.gnome.org/ThreePointZero" title="GNOME Project Topaz">Project Topaz</a>, which I still consider to be a great name) some months ago, maybe those should be revamped too, to keep the vibe alive <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>Last couple of years have been very interesting Free Desktop-wise: we got more integration of system components, very flashy UI stuff, great new iconsets and themes, more stabilization of desktop components, several great and innovative new applications,&#8230; PDE (Perfect Desktop Environment) doesn&#8217;t exist yet (most likely it never will&#8230; does such a thing exist, after all?) but current projects are progressing very nicely, each with their proper strengths, targeted user base and features, which can only be applauded and stimulated. Keep on rocking, all of you, so the years ahead of us will be even more surprising, creative, constructive and <strong>fun</strong>!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/kde4-released-more-free-desktop-progress/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Nokia 6300 SyncML follow-up</title>
+		<link>http://eikke.com/nokia-6300-syncml-follow-up/</link>
+		<comments>http://eikke.com/nokia-6300-syncml-follow-up/#comments</comments>
+		<pubDate>Tue, 08 Jan 2008 17:54:52 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[nokia 6300]]></category>
+		<category><![CDATA[opensync]]></category>
+		<category><![CDATA[syncml]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/nokia-6300-syncml-follow-up/</guid>
+		<description><![CDATA[Last couple of days I&#8217;ve been trying to get SyncML up and running on my new Nokia 6300 cellphone, as it wasn&#8217;t working before. I&#8217;ve been collaborating with the main libsyncml author to figure out what&#8217;s going wrong, but no success, although there is a report of someone who did get it working. The phone [...]]]></description>
+			<content:encoded><![CDATA[<p>Last couple of days I&#8217;ve been trying to get SyncML up and running on my new Nokia 6300 cellphone, as <a href="http://eikke.com/cellphone-bluetooth-and-reddit-rant/" title="Cellphone, bluetooth and reddit rant">it wasn&#8217;t working before</a>. I&#8217;ve been collaborating with the main <a href="http://libsyncml.opensync.org" title="libsyncml homepage">libsyncml</a> author to figure out what&#8217;s going wrong, but no success, although there is a <a href="http://libsyncml.opensync.org/ticket/123">report</a> of someone who did get it working.</p>
+<p>The phone firmware is broken though, that&#8217;s pretty sure. As you can read in the <a href="http://libsyncml.opensync.org/ticket/123">bug report</a>, he had to sync the phone in Windows using the Nokia PC Suite, before it wanted to work using libsyncml. Next to this, authentication had to be enabled on the phone before it wanted to sync.</p>
+<p>It looks like I&#8217;m not the only person who got issues though: even the official Nokia software under Windows refuses to work (&#8220;<a href="http://www.google.be/search?q=PC+Sync+has+encountered+a+problem+and+has+terminated+the+synchronisation">PC Sync has encountered a problem and has terminated the synchronisation</a>&#8220;, &#8220;<a href="http://www.google.be/search?q=Data+transfer+not+possible">Data transfer not possible</a>&#8220;) for several users. There are reports of SyncML working in iSync, although this needs an external &#8220;plugin&#8221;. Luckily I was able to make a complete phone backup using the PC suite. This, and all other suite features, except sync, seem to work fine.</p>
+<p>Anyway, libsyncml traces, obex data dumps or logs of the data sent and received by the official client under Windows (by snooping USB data) didn&#8217;t provide any solution, yet.</p>
+<p>The fact synchronization doesn&#8217;t work is a killer bug if you ask me: I bought this phone to be able to sync, otherwise I&#8217;d have settled with some basic model at half the price (like my old 3100).</p>
+<p>One more issue: I configured the built-in email client to fetch mails from my IMAP server using an SSL connection. When trying to sync my mails, the client errors out though, as my (self-signed) server certificate can&#8217;t be validated. I checked the phone&#8217;s manual, but there&#8217;s nothing regarding CA keys in the phone&#8217;s trust list, nor could I find it myself&#8230;</p>
+<p>It would be really nice if, in some new version of the firmware (next to fixing the SyncML issues) the contact list would be somewhat better integrated with other applications:</p>
+<ol>
+<li>Allow sending emails to contacts or browsing to the webpage of contacts from within the contacts application. Currently you can only view the addresses, if set, but there&#8217;s no way to launch the email client or browser application with the given address.</li>
+<li>Integrate calendar and contact birthday information: you can set the birthday of contacts, but these are not displayed in the calendar, whilst the latter one does allow you to add birthdays. I guess nobody wants to add all contacts manually in his calendar application too&#8230;</li>
+</ol>
+<p>So, if you happen to know some people working on series40 firmware, please point them to these issues, thanks <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/nokia-6300-syncml-follow-up/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>Filesystem issues and django-couchdb work</title>
+		<link>http://eikke.com/filesystem-issues-and-django-couchdb-work/</link>
+		<comments>http://eikke.com/filesystem-issues-and-django-couchdb-work/#comments</comments>
+		<pubDate>Sun, 30 Dec 2007 01:47:22 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Linux]]></category>
+		<category><![CDATA[couchdb]]></category>
+		<category><![CDATA[crash]]></category>
+		<category><![CDATA[django]]></category>
+		<category><![CDATA[evolution]]></category>
+		<category><![CDATA[fglrx]]></category>
+		<category><![CDATA[firefox]]></category>
+		<category><![CDATA[gnome]]></category>
+		<category><![CDATA[jfs]]></category>
+		<category><![CDATA[pidgin]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/filesystem-issues-and-django-couchdb-work/</guid>
+		<description><![CDATA[Last night, when shutting down my laptop (which had been up for quite a long time because of suspend/resume niceness), it crashed. I don&#8217;t know what exactly happened: pressed the GNOME&#8217;s logout button, applications were closed, until only my background was visible, then the system locked up, so I suspect my X server (some part [...]]]></description>
+			<content:encoded><![CDATA[<p>Last night, when shutting down my laptop (which had been up for quite a long time because of suspend/resume niceness), it crashed. I don&#8217;t know what exactly happened: pressed the GNOME&#8217;s logout button, applications were closed, until only my background was visible, then the system locked up, so I suspect my X server (some part of it, GPU driver (fglrx) might be the bad guy). I was able to sysrq s u o, so I thought everything would be relatively fine.</p>
+<p>This morning I powered on my system, and while booting, fsck of some partitions was taking a rather long time. It&#8217;s pretty normal fsck was taking somewhat longer, but not thát long&#8230; I&#8217;m using JFS on most logical volumes.</p>
+<p>When the consistency check of my /home partition was done, a whole load of invalid files was displayed and later on moved to lost+found: 34068 files. Once booted, I scanned my filesystems again, rebooted, logged in, started X. Everything started fine, until I launched Evolution: it presented my the &#8216;initial run&#8217; wizard. Other issues (on first sight): all Firefox cookies were gone, and Pidgin&#8217;s blist.xml was corrupted. When using my old computer (which had frequent lockups on heavy IO usage) these last 2 issues happened a lot too, which is highly annoying, especially the blist.xml thing as I can&#8217;t see any reason to keep this file opened for long periods?</p>
+<p>Luckily I was able to get my Evolution up and running again by restoring it&#8217;s GConf settings and ~/.evolution using some old backup (15/10/07). I guess I should backup more regularly&#8230; Next to this I hope I won&#8217;t find any other corrupted files, so the ones in lost+found are just Evolution email files and Firefox caches.</p>
+<p>Anyway, here&#8217;s a screenshot displaying some of the initial and hackish work I&#8217;ve done this evening on integrating <a href="http://www.djangoproject.com" title="Django">Django</a> and <a href="http://www.couchdb.org" title="CouchDB">CouchDB</a> as <a href="http://eikke.com/couchdb-with-python" title="Python, CouchDB and Python">I wrote about yesterday</a>:</p>
+<p><a href="http://eikke.com/filesystem-issues-and-django-couchdb-work/django-and-couchdb-first-shot-2/" rel="attachment wp-att-15" title="Django and CouchDB first shot"><img src="http://eikke.com/wp-content/uploads/2007/12/django_couchdb12.thumbnail.png" alt="Django and CouchDB first shot" /></a></p>
+<p>As you can see, currently I&#8217;m able to edit fields of an object. There&#8217;s one major condition: an object with the given ID should already exist in the &#8216;database&#8217; which makes the current code rather useless, but hey <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  I&#8217;ll add object creation functionality later tonight or tomorrow.</p>
+<p>Current code is very expensive too, doing way too many queries to CouchDB, mainly in client.py. This most certainly needs work.</p>
+<p>Upgraded my <a href="http://www.wordpress.org" title="WordPress">WordPress</a> installation to the latest release, 2.3.2, in about 5 seconds. Got to love svn switch (although maybe I should start using git-svn for this installation too and git-pull the release branch in my local copy).</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/filesystem-issues-and-django-couchdb-work/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+		<item>
+		<title>First bug report ever</title>
+		<link>http://eikke.com/first-bug-report-ever/</link>
+		<comments>http://eikke.com/first-bug-report-ever/#comments</comments>
+		<pubDate>Fri, 28 Dec 2007 03:07:39 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Desktop]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/2007/12/28/first-bug-report-ever/</guid>
+		<description><![CDATA[Yesterday I came across my (most likely, as far as I can remember) very first bug report ever, here, filed on the 16th of november 2002. A bug in Mandrake 8.2 (kernel 2.4.18, XFree86 4.2.0, KDE 3.0RC2) because of which I was unable to use my mouse in X. The machine was an Acer Pentium1 [...]]]></description>
+			<content:encoded><![CDATA[<p>Yesterday I came across my (most likely, as far as I can remember) very first bug report ever, <a href="http://expert.mandriva.com/question/40560">here</a>, filed on the 16th of november 2002. A bug in Mandrake 8.2 (kernel 2.4.18, XFree86 4.2.0, KDE 3.0RC2) because of which I was unable to use my mouse in X. The machine was an Acer Pentium1 166MHz with 40MB of RAM inside and an S3Virge video adapter.</p>
+<p>This was not my first Linux experience: my first installation ever, on the same machine, was using a SuSe sample CD my dad got at Cebit2000. This was an evaluation copy of SuSe 6.4, providing kernel 2.2.14, XFree86 3.3.6 and KDE 1.1.2 (well, I can&#8217;t remember, that&#8217;s what the web tells me now).</p>
+<p>Compared to those days (although not <em>that </em>long ago) installing and (especially) using a Linux desktop nowadays could be called somewhat easier <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>So, have you got any memories of your very first Linux install or a reference to your earliest bug report?</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/first-bug-report-ever/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.676 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:10 -->
+<!-- Compression = gzip -->

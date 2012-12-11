@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; erlang</title>
+	<atom:link href="http://eikke.com/tag/erlang/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Erlang, Python and Twisted mashup using TwOTP</title>
+		<link>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/</link>
+		<comments>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/#comments</comments>
+		<pubDate>Sun, 19 Apr 2009 19:03:30 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[erlang]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[twisted]]></category>
+		<category><![CDATA[twotp]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=90</guid>
+		<description><![CDATA[Recently, I&#8217;ve been toying around with Erlang again. After creating some simple apps I wanted to integrate some Erlang code inside a Python application (since that&#8217;s still my favorite day-to-day language, it&#8217;s used at work and I&#8217;m sort-of convinced Erlang would be a good choice for several of the applications we need to develop, integrated [...]]]></description>
+			<content:encoded><![CDATA[<p>Recently, I&#8217;ve been toying around with <a href="http://erlang.org">Erlang</a> again. After creating some simple apps I wanted to integrate some Erlang code inside a <a href="http://www.python.org">Python</a> application (since that&#8217;s still my favorite day-to-day language, it&#8217;s used at work and I&#8217;m sort-of convinced Erlang would be a good choice for several of the applications we need to develop, integrated with our existing Python code). The most obvious solution would be to use an Erlang port, but this is IMHO rather cumbersome: it requires a developer to define a messaging format, parsing code for incoming messages, etc. There&#8217;s a <a href="http://www.kazmier.net/computer/port-howto/">tutorial</a> available if you want to take this route.</p>
+<p>A more elegant solution is creating a node using Python, similar to <a href="http://erlang.org/doc/apps/jinterface/index.html">JInterface</a> and equivalents. Luckily there&#8217;s an existing project working on a library to create Erlang nodes using Python and <a href="http://www.twistedmatrix.com">Twisted</a>: <a href="https://code.launchpad.net/twotp">TwOTP</a>.</p>
+<p>One downside: it&#8217;s rather underdocumented&#8230; So here&#8217;s a very quick demo how to call functions on an Erlang node from within a Twisted application.</p>
+<p>First of all we&#8217;ll create 2 Erlang functions: one which returns a simple &#8220;Hello&#8221; message, one which uses an extra process to return &#8216;pong&#8217; messages on calls to &#8216;ping&#8217;, and counts those.</p>
+<p>The code:</p>
+<p><code>
+<pre>-module(demo).
+-export([hello/1, ping/0, start/0]).
+
+hello(Name) ->
+    Message = "Hello, " ++ Name,
+    io:format(Message ++ "~n", []),
+    Message.
+
+ping_loop(N) ->
+    receive
+        {get_id, From} ->
+            From ! {pong, N},
+            ping_loop(N + 1)
+    end.
+
+ping() ->
+    pingsrv ! {get_id, self()},
+    receive
+        {pong, N} -&gt; ok
+    end,
+    {pong, N}.
+
+start() ->
+    Pid = spawn_link(fun() -> ping_loop(1) end),
+    register(pingsrv, Pid).
+</pre>
+<p></code></p>
+<p>This should be straight-forward if you&#8217;re familiar with Erlang (which I assume).</p>
+<p>The Python code is not that hard to get either: it follows the basic Twisted pattern. First one should create a connection to EPMD, the Erlang Port Mapper Daemon (used to find other nodes), then a connection to the server node should be created, and finally functions can be called (calls happen the same way as Erlang&#8217;s <a href="http://erlang.org/doc/man/rpc.html">RPC module</a>).</p>
+<p>Here&#8217;s the code. I&#8217;d advise to read it bottom-to-top:</p>
+<p><code>
+<pre>import sys
+
+from twisted.internet import reactor
+import twotp
+
+def error(e):
+    '''A generic error handler'''
+    print 'Error:'
+    print e
+    reactor.stop()
+
+def do_pingpong(proto):
+    def handle_pong(result):
+        # Parse the result
+        # 'ping' returns a tuple of an atom ('pong') and an integer (the pong
+        # id)
+        # In TwOTP, an Atom object has a 'text' attribute, which is the string
+        # form of the atom
+        text, id_ = result[0].text, result[1]
+        print 'Got ping result: %s %d' % (text, id_)
+        # Recurse
+        reactor.callLater(1, do_pingpong, proto)
+
+    # Call the 'ping' function of the 'demo' module
+    d = proto.factory.callRemote(proto, 'demo', 'ping')
+    # Add an RPC call handler
+    d.addCallback(handle_pong)
+    # And our generic error handler
+    d.addErrback(error)
+
+def call_hello(proto, name):
+    def handle_hello(result):
+        print 'Got hello result:', result
+        # Erlang strings are lists of numbers
+        # The default encoding is Latin1, this might need to be changed if your
+        # Erlang node uses another encoding
+        text = ''.join(chr(c) for c in result).decode('latin1')
+        print 'String form:', text
+        # Start pingpong loop
+        do_pingpong(proto)
+
+    # Call the 'hello' function of the 'demo' module, and pass in argument
+    # 'name'
+    d = proto.factory.callRemote(proto, 'demo', 'hello', name)
+    # Add a callback for this function call
+    d.addCallback(handle_hello)
+    # And our generic error handler
+    d.addErrback(error)
+
+def launch(epmd, remote, name):
+    '''Entry point of our demo application'''
+    # Connect to a node. This returns a deferred
+    d = epmd.connectToNode(remote)
+    # Add a callback, called when the connection to the node is established
+    d.addCallback(call_hello, name)
+    # And add our generic error handler
+    d.addErrback(error)
+
+def main():
+    remote = sys.argv[1]
+    name = sys.argv[2]
+    # Read out the Erlang cookie value
+    cookie = twotp.readCookie()
+    # Create a name for this node
+    this_node = twotp.buildNodeName('demo_client')
+    # Connect to EPMD
+    epmd = twotp.OneShotPortMapperFactory(this_node, cookie)
+    # Call our entry point function when the Twisted reactor is started
+    reactor.callWhenRunning(launch, epmd, remote, name)
+    # Start the reactor
+    reactor.run()
+
+if __name__ == '__main__':
+    main()</pre>
+<p></code></p>
+<p>Finally, to run it, you should first start a server node, and run the &#8216;pingsrv&#8217; process:</p>
+<p><code>
+<pre>MacBook:pyping nicolas$ erl -sname test@localhost
+Erlang (BEAM) emulator version 5.6.5 [source] [async-threads:0] [hipe] [kernel-poll:false]
+
+Eshell V5.6.5  (abort with ^G)
+(test@localhost)1> c(demo).
+{ok,demo}
+(test@localhost)2> demo:start().
+true</pre>
+<p></code></p>
+<p>Notice we started <em>erl</em> providing <em>test@localhost</em> as short node name.</p>
+<p>Now we can launch our client:</p>
+<p><code>
+<pre>(pythonenv)MacBook:pyping nicolas$ python hello.py 'test' Nicolas
+Got hello result: [72, 101, 108, 108, 111, 44, 32, 78, 105, 99, 111, 108, 97, 115]
+String form: Hello, Nicolas
+Got ping result: pong 1
+Got ping result: pong 2
+Got ping result: pong 3</pre>
+<p></code></p>
+<p>&#8216;test&#8217; is the shortname of the server node.</p>
+<p>You can stop the ping loop using <em>CTRL-C</em>. If you restart the client afterwards, you can see the ping IDs were retained:</p>
+<p><code>
+<pre>(pythonenv)MacBook:pyping nicolas$ python hello.py 'test' Nicolas
+Got hello result: [72, 101, 108, 108, 111, 44, 32, 78, 105, 99, 111, 108, 97, 115]
+String form: Hello, Nicolas
+Got ping result: pong 4
+Got ping result: pong 5</pre>
+<p></code></p>
+<p>That&#8217;s about it. Using TwOTP you can also develop a node which exposes functions, which can be called from an Erlang node using <em>rpc:call/4</em>. Check the documentation provided with TwOTP for a basic example of this feature.</p>
+<p>Combining Erlang applications as distributed, fault tolerant core infrastructure and Python/Twisted applications for &#8216;everyday coding&#8217; can be an interesting match in several setups, an TwOTP provides all required functionalities to integrate the 2 platforms easily.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/erlang-python-and-twisted-mashup-using-twotp/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.176 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:39:17 -->
+<!-- Compression = gzip -->

@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; Nicolas</title>
+	<atom:link href="http://eikke.com/author/nicolas/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>On Functional Programming Languages</title>
+		<link>http://eikke.com/on-functional-programming-languages/</link>
+		<comments>http://eikke.com/on-functional-programming-languages/#comments</comments>
+		<pubDate>Wed, 07 Apr 2010 21:50:38 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[fp]]></category>
+		<category><![CDATA[functional programming]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=173</guid>
+		<description><![CDATA[As a programming-language adept I&#8217;ve been studying the ideas, concepts and theory of functional programming (FP) and FP-related languages for about 2 years now, still learning new things everyday. Recently a &#8216;FP User Group&#8217; was started by some people at Ghent University, called GhentFPG, and the first meeting took place last thursday, with great interest [...]]]></description>
+			<content:encoded><![CDATA[<p>As a programming-language adept I&#8217;ve been studying the ideas, concepts and theory of <a href="http://en.wikipedia.org/wiki/Functional_programming">functional programming</a> (FP) and FP-related languages for about 2 years now, still learning new things everyday.</p>
+<p>Recently a &#8216;FP User Group&#8217; was started by some people at <a href="http://www.ugent.be">Ghent University</a>, called GhentFPG, and the first meeting took place last thursday, with great interest from students, university employees as well as people working in the industry. You can find some more info in the <a href="http://groups.google.com/group/ghent-fpg">GhentFPG Google Group</a> or in the <a href="http://www.haskell.org/haskellwiki/Ghent_Functional_Programming_Group">wiki</a> (where you can also find the slides of the presentations given during the first meeting).</p>
+<p>Some days ago someone new to FP posted a <a href="http://groups.google.com/group/ghent-fpg/browse_thread/thread/81cee5d8c9a77266">message on the mailing list</a>, asking which language he should study, among other things.</p>
+<p>Since I think my reply might be of general interest (also outside GhentFPG), I decided to post a copy on this blog as well (note I did add some extra markup). Comments welcome!</p>
+<blockquote><p>
+Based on my experience (which is biased, obviously):</p>
+<ul>
+<li>
+<p>Functional Programming is not only a language-related thing. FP<br />
+languages do enforce you to apply functional paradigms, but you can<br />
+easily follow these paradigms in lots of other (more mainstream?)<br />
+languages as well: it is easier to learn people a paradigm using a<br />
+language they already know, rather than telling them FP is really cool<br />
+and useful and interesting, but requires them to learn a new<br />
+language/toolchain/&#8230; first.</p>
+<p>Not talking about <a href="http://www.java.net">Java</a> or <a href="http://en.wikipedia.org/wiki/C%2B%2B">C++</a> or something similar here, rather <a href="http://www.python.org">Python</a><br />
+and <a href="http://ruby-lang.org/">Ruby</a>.</p>
+<li>
+<p>If you&#8217;re into Java/<a href="http://msdn.microsoft.com/en-us/vcsharp/aa336809.aspx">C#</a>/&#8230;, <a href="http://www.scala-lang.org/"><em>Scala</em></a> is a really good introduction to FP:<br />
+it allows you to write OOP code just like you do already, but also<br />
+provides you lots of FP-related features, and pushes you gently into the<br />
+FP approach. The book &#8220;Programming in Scala&#8221; by Odersky et al. (the main<br />
+author of Scala) is IMO a really good intro to both Scala as well as the<br />
+FP concepts it provides, not only showing them but also explaining<br />
+gently why they&#8217;re useful, and why they&#8217;re &#8216;better&#8217; than the approaches<br />
+you&#8217;re taking already.</p>
+<p>The Scala type system is rather interesting as well.</p>
+<p>It&#8217;s the gentle path, so you want <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  Learning Scala before reading<br />
+&#8216;<a href="http://www.realworldhaskell.org/blog/">Real World Haskell</a>&#8216; certainly helped me a lot to understand the latter.</p>
+<li>
+<p><a href="http://haskell.org/"><em>Haskell</em></a> is an incredibly interesting language because of the concepts<br />
+it adopted and types it provides, but it does require an immediate mind<br />
+switch when coming from a non-OOP world (I once spent about 2 hours to<br />
+explain a Java-guy how classes and instances in Haskell relate to<br />
+classes and instances in Java, it wasn&#8217;t obvious). &#8220;Real World Haskell&#8221;<br />
+is certainly worth a read (and if you read &#8220;Programming in Scala&#8221; as<br />
+well, you&#8217;ll notice lots of similarities).</p>
+<p>I for one can read Haskell code pretty easily and learned lots of<br />
+CS/math things thanks to learning it, but I&#8217;m (still) unable to write<br />
+non-trivial code (I need some good project to get my hands dirty I<br />
+guess).</p>
+<li>
+<p><a href="http://www.erlang.org"><em>Erlang</em></a> is really interesting from a (very specific) feature<br />
+perspective: high-availability, distributed computing, the actor system<br />
+and the OTP library on top of it,&#8230;</p>
+<p>It&#8217;s a rather &#8216;old&#8217; language, but I kind of like it. Some people do<br />
+complain about the syntax, but once you figured out &#8216;,&#8217;, &#8216;;&#8217; and &#8216;.&#8217; are<br />
+used almost the same as they are in &#8216;human&#8217; written language, everything<br />
+becomes obvious  <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>Do note though Erlang is not a normal general-purpose language. You can<br />
+code +- everything you want using it, but it&#8217;s really targeted to<br />
+distributed/high-available/network applications. You most likely won&#8217;t<br />
+use it to solve mathematical problems or write a game. It&#8217;s really good<br />
+at what it&#8217;s built for though.</p>
+<p>One final note: please don&#8217;t ever make the mistake I made. If you know<br />
+Erlang, and take a look at Scala (which also has an actor library in the<br />
+standard distribution, as well as the more advanced <a href="http://akkasource.org">Akka</a>-library), don&#8217;t<br />
+judge Scala as being a competitor for Erlang, they&#8217;re both completely<br />
+different languages targeting different applications. &#8216;Scala&#8217; is not<br />
+about &#8216;scalability&#8217; as Erlang is (it&#8217;s a &#8220;Scalable Language&#8221;).</p>
+<li>
+<p><a href="http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/"><em>F#</em></a> (and most likely <a href="http://caml.inria.fr/ocaml/"><em>OCaml</em></a> as well, although I never used it though) is<br />
+certainly worth a look as well. I only read 3/4th of a book on it, but<br />
+it looks really promising and interesting.</p>
+<li>
+<p>There&#8217;s obviously all sorts of <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)"><em>Lisp</em></a> dialects. I have no opinion on<br />
+them, never looked into any Lisp closely enough. I only wrote some<br />
+<a href="http://clojure.org"><em>Clojure</em></a> (a Lisp-dialect for the JVM) code one day, but need to learn<br />
+more about the Lisp-way of programming. Clojure seems to be interesting<br />
+because of the deep integration of <a href="http://en.wikipedia.org/wiki/Software_transactional_memory">Software Transactional Memory</a> (STM)<br />
+in the language (yet another approach to concurrency <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> ).</p>
+</ul>
+<p>As for the IDE question: <a href="http://www.vim.org">Vim</a> and a decent terminal are all you need,<br />
+luckily none of the above languages require you to learn how to use a<br />
+toolchain which enforces you (or some magic IDE) to write 500 lines of<br />
+XML-based build &#8216;programs&#8217; or other insanities.</p>
+<p>My advice: pick some language, learn it, but make sure you don&#8217;t only<br />
+learn the language, but especially the concepts (type system,<br />
+higher-order stuff, list manipulation,&#8230;). Then pick some other<br />
+language and learn it as well (which will be easier since you got the<br />
+concepts already) and so on.</p>
+<p>And read tons of papers available on the internet in between <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' />  Even if<br />
+you don&#8217;t understand a paper completely, you&#8217;ll pick up some things<br />
+already, and re-reading it 2 weeks later helps a lot <img src='http://eikke.com/wp-includes/images/smilies/icon_biggrin.gif' alt=':-D' class='wp-smiley' /> </p>
+<p>Just my .02,</p>
+<p>Nicolas</p>
+</blockquote>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/on-functional-programming-languages/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Book review: Python Testing &#8211; Beginner&#8217;s Guide</title>
+		<link>http://eikke.com/book-review-python-testing-beginners-guide-2/</link>
+		<comments>http://eikke.com/book-review-python-testing-beginners-guide-2/#comments</comments>
+		<pubDate>Sun, 14 Mar 2010 20:49:54 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[book]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[testing]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=170</guid>
+		<description><![CDATA[As mentioned before, some days ago I received a copy of a recent book from Packt Publishing titled &#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221; by Daniel Arbuckle. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt. The book targets people who know Python (it doesn&#8217;t contain [...]]]></description>
+			<content:encoded><![CDATA[<p>As mentioned <a href="/book-review-python-testing-beginners-guide/">before</a>, some days ago I received a copy of a recent book from <em>Packt Publishing</em> titled <strong><a href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=eikke.com&#038;utm_medium=bookrev&#038;utm_content=blog&#038;utm_campaign=mdb_002562">&#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221;</a></strong> by <em>Daniel Arbuckle</em>. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt.</p>
+<p>The book targets people who know Python (it doesn&#8217;t contain a language introduction chapter or something alike, which would be rather pointless anyway), and want to start testing the code they write. Even though the author starts by explaining basic tools like <em>doctests</em> and the <em>unittest</em> framework contained in the Python standard library, it could be a useful read even if you used these tools before, e.g. when the Mock library is explained, or in the chapter on web application testing using Twill.</p>
+<p>The text is easy to read, and contains both hands-on code examples, explanations as well as tasks for the reader and quiz questions. I did not audit all code for correctness (although in my opinion some more time should have been invested here before the book was publishing: some code samples contain errors, even invalid syntax (p45: &#8220;<code>self.integrated_error +q= err * delta</code>&#8220;), which is not what I expect in a book about code testing), nor all quizes. These could&#8217;ve used some more care as well, e.g. on p94 one can read</p>
+<blockquote><p>What is the unittest equivalent of this doctest?</p>
+<pre><code>>>> try:
+...     int('123')
+... except ValueError:
+...     pass
+... else:
+...     print 'Expected exception was not raised'
+</code></pre>
+</blockquote>
+<p>I was puzzled by this, since as far as I could remember, int(&#8217;123&#8242;) works just fine, and I didn&#8217;t have a computer at hand to check. Checked now, and it works as I expected, so maybe I&#8217;m missing something here? The solution found in the back of the book is a literal <em>unittest</em>-port of the above <em>doctest</em>, and should fail, if I&#8217;m not mistaken:</p>
+<blockquote><pre><code>>>> def test_exceptions(TestCase):
+...     def test_ValueError(self):
+...         self.assertRaises(ValueError, int, '123')
+</code></pre>
+</blockquote>
+<p>This example also shows one more negative point of the book, IMHO: the code samples don&#8217;t follow <strong>PEP-8</strong> (or similar) capitalization, which makes code rather hard to read sometimes.</p>
+<p>The solutions for the last quiz questions are missing as well, and accidently I did want to read those.</p>
+<p>Don&#8217;t be mistaken though: these issues don&#8217;t reduce the overall value of the book, it&#8217;s certainly worth your time, as long as you keep in mind not to be too confused by the mistakes as shown above.</p>
+<h3>Topic overview</h3>
+<p>The book starts with a short overview of types of testing, including unit, integration and system testing, and why testing is worth the effort. This is a very short overview of 3 pages.</p>
+<p>Starting from chapter 2, the <em>doctest</em> system is introduced. I think it&#8217;s an interesting approach to start with <em>doctest</em> instead of using <em>unittest</em>, which is modeled after the more &#8216;standard&#8217; xUnit packages. Doctests are useful during specification writing as well, which is in most project the first stage, before any unittestable code is written. The chapter also introduces an overview of the <em>doctest</em> directives, which was useful to read.</p>
+<p>In chapter 3 gives an example of the development of a small project, and all stages involved, including how doctests fit in every stage.</p>
+<p>Maybe a sample of <strong>Sphinx</strong> and its <em>doctest</em> integration would have been a nice addition to one of the previous chapters, since the book introduced <em>doctest</em> as part of stand-alone text files, not as part of code docstrings (although it does talk about those as well). When writing documentation in plain text files, Sphinx is certainly the way to go, and its <em>doctest</em> plugin is a useful extra.</p>
+<p>Starting in chapter 4, the Python &#8216;<em>mocking</em>&#8216; library is introduced. The chapter itself is a rather good introduction to mock-based testing, but I don&#8217;t think mocks should be used in doctests, which should be rather small, examplish snippets. Mock definitions don&#8217;t belong there, IMO. This chapter also shows some lack of pre-publishing reviews in a copy-paste error, in the block explaining how to install mocker on page 62, telling from now on Nose is ready to be used.</p>
+<p>Chapter 5, which you can read <a href="http://www.packtpub.com/files/8846-python-testing-beginners-guide-sample-chapter-5-when-doctest-isnt-enough-unittest-to-the-rescue.pdf">here</a> introduces the <em>unittest</em> framework, its assertion methods, fixtures and mocking integration.</p>
+<p>In chapter 6 &#8216;<em>nose</em>&#8216; is introduced, a tool to find and run tests in a project. I use nose myself in almost every project, and it&#8217;s certainly a good choice. The chapter gives a pretty good overview of the useful features nose provides. It does contain a strange example of module-level setup and teardown methods, whilst IMHO subclassing <em>TestCase</em> would be more suited (and more portable).</p>
+<p>Chapter 7 implements a complete project from specification to implementation and maintenance. Useful to read, but I think the chapter contains too much code, and it&#8217;s repeated too often.</p>
+<p>Chapter 8 introduces web application testing using Twill, which I never used before (nor did I ever test a web application before). Useful to read, but Twill might be a strange choice, since there have been no releases since end 2007&#8230; Selenium might have been a better choice?</p>
+<p>A large part of the chapter is dedicated to list all possible Twill commands as well, which I think is a waste of space, this can be easily found in the Twill language reference.</p>
+<p>Chapter 9 introduces integration and system testing. Interesting to read, the diagram-drawing method used is certainly useful, but it also contains too much code listings.</p>
+<p>Finally, chapter 10 gives a short overview of some other testing tools. First <em>coverage.py</em> is explained, which is certainly useful. Then integration of test execution with version control systems is explained. I think this is certainly useful, but not at this level of detail. Setting up a Subversion repository is not exactly what I expect here, especially not when non-anonymous, password-based authentication over svn:// is used (which is a method which should be avoided, AFAIK).<br />
+Finally, continuous integration using Buildbot is tackled. No comments here, although I tend to use Hudson myself <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<h3>Final words</h3>
+<p>Is this book worth your time and money? If you&#8217;re into Python and you don&#8217;t have lots of experience with testing Python code, it certainly is. Even if you wrote tests using unittest or doctests before, you&#8217;ll most likely learn some new things, like using mocks.</p>
+<p>I&#8217;m glad Packt gave me the opportunity to read and review the book. I&#8217;d advise them to put some more effort in pre-publishing reviews for future titles, but the overall quality of the non-code content was certainly OK, and I hope lots of readers will enjoy and learn from this book.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/book-review-python-testing-beginners-guide-2/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Book review: Python Testing: Beginner&#8217;s Guide</title>
+		<link>http://eikke.com/book-review-python-testing-beginners-guide/</link>
+		<comments>http://eikke.com/book-review-python-testing-beginners-guide/#comments</comments>
+		<pubDate>Tue, 23 Feb 2010 21:19:20 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=156</guid>
+		<description><![CDATA[Recently a new book on software testing in Python projects was published by Packt Publishing, &#8220;Python Testing: Beginner&#8217;s Guide&#8221;. I&#8217;ll read the book the coming weeks (it didn&#8217;t arrive yet) and publish a review later on. If you&#8217;re into Python software development, you might want to take a look at the book webpage, or download [...]]]></description>
+			<content:encoded><![CDATA[<p>Recently a new book on software testing in Python projects was published by Packt Publishing, &#8220;Python Testing: Beginner&#8217;s Guide&#8221;. I&#8217;ll read the book the coming weeks (it didn&#8217;t arrive yet) and publish a review later on.</p>
+<p>If you&#8217;re into Python software development, you might want to take a look at the book <a title="Python Testing: Beginner's Guide" href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=eikke.com&amp;utm_medium=bookrev&amp;utm_content=blog&amp;utm_campaign=mdb_002562">webpage</a>, or download a free <a title="When Doctest isn't Enough: Unittest to the Rescue" href="http://www.packtpub.com/files/8846-python-testing-beginners-guide-sample-chapter-5-when-doctest-isnt-enough-unittest-to-the-rescue.pdf">chapter</a> (PDF) about the standard Python <em>unittest</em> package for now.</p>
+<p>Since I&#8217;m not a big fan of extensive/exaggerated unit testing and rather believe in functional/component tests, I&#8217;m looking forward to read the book and learn some new things. Looking forward to the web application testing chapter, among others.</p>
+<p><em><strong>Disclaimer:</strong> I was invited by Packt Publishing to review this book, and they provide a free copy.</em></p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/book-review-python-testing-beginners-guide/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Facebook goes XMPP?</title>
+		<link>http://eikke.com/facebook-goes-xmpp/</link>
+		<comments>http://eikke.com/facebook-goes-xmpp/#comments</comments>
+		<pubDate>Sat, 07 Nov 2009 18:46:08 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=147</guid>
+		<description><![CDATA[MacBook:~ nicolas $ telnet chat.facebook.com 5222 Trying 69.63.176.191... Connected to chat.facebook.com. Escape character is '^]'. &#60;stream /&#62; &#60;?xml version="1.0"?&#62;&#60;stream:stream id="F6DE2CB5" from="chat.facebook.com" xmlns="jabber:client" xmlns:stream="http://etherx.jabber.org/streams" xml:lang="en"&#62;&#60;stream:error&#62;&#60;invalid-namespace xmlns="urn:ietf:params:xml:ns:xmpp-streams"/&#62;&#60;/stream:error&#62;&#60;/stream:stream&#62; Connection closed by foreign host. Jay!]]></description>
+			<content:encoded><![CDATA[<p><code>
+<pre>
+MacBook:~ nicolas $ telnet chat.facebook.com 5222
+Trying 69.63.176.191...
+Connected to chat.facebook.com.
+Escape character is '^]'.
+&lt;stream /&gt;
+&lt;?xml version="1.0"?&gt;&lt;stream:stream id="F6DE2CB5" from="chat.facebook.com" xmlns="jabber:client" xmlns:stream="http://etherx.jabber.org/streams" xml:lang="en"&gt;&lt;stream:error&gt;&lt;invalid-namespace xmlns="urn:ietf:params:xml:ns:xmpp-streams"/&gt;&lt;/stream:error&gt;&lt;/stream:stream&gt;
+
+Connection closed by foreign host.
+</pre>
+<p></code></p>
+<p>Jay!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/facebook-goes-xmpp/feed/</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+		<item>
+		<title>Scala tail recursion and decompiler adventures</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/</link>
+		<comments>http://eikke.com/scala-tail-recursion-decompiler/#comments</comments>
+		<pubDate>Wed, 12 Aug 2009 22:31:03 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[functional programming]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[scala]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=129</guid>
+		<description><![CDATA[I've been into Scala lately. More about it will follow later, but there's something I found out which I really like.
+
+Last couple of days I've been writing some very basic Scala snippets, containing constructs which would be non-trivial or 'unusual' to write in Java, compile it to a class file, and then use a Java decompiler to figure out how the Scala compiler maps those constructs on the JVM.
+
+There's one thing which took my immediate attention: looks like (basic) tail-recursive functions are optimized into while-loops!]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been into <a href="http://www.scala-lang.org">Scala</a> lately. More about it will follow later, but there&#8217;s something I found out which I really like.</p>
+<p>Last couple of days I wrote some very basic Scala snippets, containing constructs which would be non-trivial or &#8216;unusual&#8217; to write in <a href="http://java.sun.com">Java</a>, compile it to a class file, and then use a <a href="http://java.decompiler.free.fr">Java decompiler</a> to figure out how the Scala compiler maps those constructs to JVM bytecodes.</p>
+<p>There&#8217;s one thing which took my attention: looks like (basic) tail-recursive functions are optimized into while-loops! This only happens if the last call of a function is a call to itself (the most basic form of tail recursion), but it&#8217;s an interesting feature anyway&#8230; No more need to put socket accept handling in an infinite while loop <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /><br />
+<span id="more-129"></span><br />
+A little demo. First, here&#8217;s a Scala object which implements a very basic &#8216;reduce&#8217; function:</p>
+<pre>
+object Reducer {
+  def reduce[T, V](fun: (V, T) => V, values: List[T], initial: V): V = {
+    if(values isEmpty)
+      return initial
+    val next = fun(initial, values head)
+    return reduce(fun, values tail, next)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val values = List(1, 2, 3, 4)
+    val sum = reduce[Int, Int]((x, y) => x + y, values, 0)
+    println("Result: " + sum)
+  }
+}
+</pre>
+<p>We can compile and run this, and it&#8217;ll output the expected result &#8217;10&#8242;:</p>
+<pre>MacBook:reduce nicolas $ scalac Reducer.scala 
+MacBook:reduce nicolas $ scala Reducer
+Result: 10</pre>
+<p>Now we can open the generated class files in JD. There are a couple of them (it&#8217;s interesting to take a look at all of them and figure out what they represent exactly), but in this case we need &#8216;Reducer$.class&#8217;, which contains the implementations of our public functions, including &#8216;reduce&#8217;.</p>
+<p>Here&#8217;s the Java version of the &#8216;reduce&#8217; function:</p>
+<pre>public &lt;T, V&gt; V reduce(Function2&lt;V, T, V&gt; fun, List&lt;T&gt; values, V initial)
+{
+  while (true)
+  {
+    if (values.isEmpty())
+      return initial;
+    Object next = fun.apply(initial, values.head());
+    initial = next;
+    values = values.tail();
+  }
+}
+</pre>
+<p>&#8216;Function2&#8242; is a built-in Scala type which represents a function taking 2 parameters. As you can see, this code does exactly the same as our Scala version and is most likely the way we&#8217;d write the code manually as well (the only thing I don&#8217;t get is why &#8216;next&#8217; is an Object and not a &#8216;V&#8217;, I might figure that out later), but without forcing us to write the imperative code, whilst still producing bytecodes which will most likely show the best performance on the JVM (which currently has no tail recursion optimization support (although <a href="http://openjdk.java.net/projects/mlvm/subprojects.html#TailCalls">that might change one day</a>)).</p>
+<p>I like it <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>[update]<br />
+For reference, here&#8217;s a slightly more Scala-ish implementation of <em>reduce</em>, showing the same time performance characteristics during some basic profiling. I was not able to get JD nor jad to generate any usable decompiled code though:</p>
+<pre>
+def reduce[T, V](fun: (V, T) => V, values: List[T], initial: V): V = {
+    values match {
+        case List() => initial;
+        case head :: tail => reduce(fun, tail, fun(initial, head))
+    }
+}
+</pre>
+<p>It uses Scala&#8217;s &#8220;List&#8221; pattern matching functionality.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/scala-tail-recursion-decompiler/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>Importing a Git tree into a Subversion repository</title>
+		<link>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/</link>
+		<comments>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/#comments</comments>
+		<pubDate>Sat, 25 Jul 2009 18:07:00 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[git]]></category>
+		<category><![CDATA[subversion]]></category>
+		<category><![CDATA[svn]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=125</guid>
+		<description><![CDATA[Recently I worked on some new project, and as always I created a local <a href="http://git-scm.com">Git</a> repository as a start. After working on it several days, creating lots of commits, I had to publish it into the central <a href="http://subversion.tigris.org">Subversion</a> repository (which is one of the <a href="http://en.wikipedia.org/wiki/Version_control_system">VCS</a>s we got). I could have done this by creating a new folder in SVN and add the latest version of all files of the project to it, but that way all history would be gone, which I didn't like.
+
+Git has a feature to work with SVN repositories, <em>git-svn</em>, but that's intended to check out existing code from SVN and work on it, not publishing an existing Git tree into a Subversion repository.
+
+A first rather naive approach didn't work out (as somewhat expected), but then I figured out how to achieve this anyway.]]></description>
+			<content:encoded><![CDATA[<p>Recently I worked on some new project, and as always I created a local <a href="http://git-scm.com">Git</a> repository as a start. After working on it several days, creating lots of commits, I had to publish it into the central <a href="http://subversion.tigris.org">Subversion</a> repository (which is one of the <a href="http://en.wikipedia.org/wiki/Version_control_system">VCS</a>s we got). I could have done this by creating a new folder in SVN and add the latest version of all files of the project to it, but that way all history would be gone, which I didn&#8217;t like.</p>
+<p>Git has a feature to work with SVN repositories, <em>git-svn</em>, but that&#8217;s intended to check out existing code from SVN and work on it, not publishing an existing Git tree into a Subversion repository.</p>
+<p>A first rather naive approach didn&#8217;t work out (as somewhat expected), but then I figured out how to achieve this anyway.<br />
+<span id="more-125"></span></p>
+<p>As a test, let&#8217;s first create an empty SVN repository and a Git repository with some commits:</p>
+<pre>$ svnadmin create repo
+$ svn co file:///Users/nicolas/Temp/git_to_svn/repo svn_repo
+Checked out revision 0.
+$ cd svn_repo
+$ svn mkdir trunk tags branches
+A         trunk
+A         tags
+A         branches
+$ svn commit -m "Create repository structure"
+Adding         branches
+Adding         tags
+Adding         trunk
+
+Committed revision 1.
+$ cd ..
+
+$ mkdir project; cd project
+$ git init
+Initialized empty Git repository in /Users/nicolas/Temp/git_to_svn/project/.git/
+$ echo "foo" > test.txt; git add test.txt; git commit -m "Initial version"
+master (root-commit) 88464cf] Initial version
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 test.txt
+$ echo "bar" > test.txt; git commit test.txt -m "Second version"
+master cb62866] Second version
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+</pre>
+<p>We now can set up <em>git-svn</em>:</p>
+<pre>$ git svn init -s file:///Users/nicolas/Temp/git_to_svn/repo/
+$ git svn fetch
+r1 = 741ab63aea786882eafd38dc74369e651f554c9c (trunk)
+</pre>
+<p>Depending on the layout of your SVN project, you might need to drop the <em>-s</em> parameter and add <em>-t</em>, <em>-T</em> or <em>-b</em> flags, see the <a href="http://www.kernel.org/pub/software/scm/git/docs/git-svn.html"><em>git-svn</em> manpage</a>.</p>
+<p>A little naive we could try to push everything to the SVN repository now:</p>
+<pre>
+$ git svn dcommit
+Unable to determine upstream SVN information from HEAD history.
+Perhaps the repository is empty. at /opt/local/libexec/git-core/git-svn line 439.
+</pre>
+<p>This fails since the git svn command can&#8217;t figure out which commits to push: there&#8217;s no link between our original Git repository and the Subversion heads.</p>
+<p>To fix this, we can use a Git <em>graft</em> to link them. We&#8217;ll tell Git the commit which created the SVN folder in which we want to store the project is the parent commit of the first commit in our Git repository:</p>
+<pre>
+$ git show-ref trunk
+741ab63aea786882eafd38dc74369e651f554c9c refs/remotes/trunk
+$ git log --pretty=oneline master | tail -n1
+88464cfdf549a82b30ee7c52e53e2b310f0d9ec4 Initial version
+$ echo "88464cfdf549a82b30ee7c52e53e2b310f0d9ec4 741ab63aea786882eafd38dc74369e651f554c9c" >> .git/info/grafts
+</pre>
+<p>If now you execute <em>git log</em>, you&#8217;ll see the &#8220;Create repository structure&#8221; SVN commit is displayed after our &#8220;Initial version&#8221; commit.</p>
+<p>Pushing to SVN now works fine:</p>
+<pre>
+$ git svn dcommit
+Committing to file:///Users/nicolas/Temp/git_to_svn/repo/trunk ...
+	A	test.txt
+Committed r2
+	A	test.txt
+r2 = 8c72757dd3a7d550ed8ef393bb74c0350d22dbac (trunk)
+No changes between current HEAD and refs/remotes/trunk
+Resetting to the latest refs/remotes/trunk
+test.txt: locally modified
+	M	test.txt
+Committed r3
+	M	test.txt
+r3 = ca0fc06d477bcd4dd5c6f6d2ae6d94356b510280 (trunk)
+No changes between current HEAD and refs/remotes/trunk
+Resetting to the latest refs/remotes/trunk
+</pre>
+<p>All set <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/importing-a-git-tree-into-a-subversion-repository/feed/</wfw:commentRss>
+		<slash:comments>13</slash:comments>
+		</item>
+		<item>
+		<title>Microsoft to release Linux HyperV drivers as GPLv2</title>
+		<link>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/</link>
+		<comments>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/#comments</comments>
+		<pubDate>Mon, 20 Jul 2009 17:37:05 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Linux]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[microsoft]]></category>
+		<category><![CDATA[virtualization]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=116</guid>
+		<description><![CDATA[Looks like Microsoft releases the Linux drivers to enable a Linux kernel running as a guest in a Hyper-V hypervisor to run in &#8216;enlightened mode&#8217;, which sounds pretty much like Xen&#8216;s PV drivers for Windows, providing better IO performance, under the GPLv2 (which is the same open-source license as the Linux kernel itself). Quoting the [...]]]></description>
+			<content:encoded><![CDATA[<p>Looks like <a href="http://www.microsoft.com">Microsoft</a> releases the <a href="http://www.kernel.org">Linux</a> drivers to enable a Linux kernel running as a guest in a <a href="http://en.wikipedia.org/wiki/Hyper-V" title="Wikipedia - Hyper-V">Hyper-V</a> hypervisor to run in &#8216;enlightened mode&#8217;, which sounds pretty much like <a href="http://www.xen.org/">Xen</a>&#8216;s PV drivers for Windows, providing better IO performance, under the GPLv2 (which is the same open-source license as the Linux kernel itself). Quoting the <a href="http://msdn.microsoft.com/en-us/library/dd722833(BTS.10).aspx">Hyper-V Architecture and Feature Overview</a>:</p>
+<blockquote cite="http://msdn.microsoft.com/en-us/library/dd722833(BTS.10).aspx"><p>Enlightened I/O is a specialized virtualization-aware implementation of high level communication protocols (such as SCSI) that utilize the VMBus directly, bypassing any device emulation layer. This makes the communication more efficient but requires an enlightened guest that is hypervisor and VMBus aware.</p></blockquote>
+<p><del datetime="2009-07-20T18:25:18+00:00">The drivers seem to be developed by <a href="http://www.novell.com">Novell</a>, so I guess the <a href="http://boycottnovell.com">Boycott Novell</a> guys will have some more coverage^Wrants soon <img src='http://eikke.com/wp-includes/images/smilies/icon_razz.gif' alt=':-P' class='wp-smiley' /> </del> (Update: can&#8217;t find the reference on this anymore, so this might be a false statement, sorry. Thanks for pointing out <a href="http://www.savanne.be/">RubenV</a>)</p>
+<p>Interesting times on the virtualization front&hellip; Although I for one do not plan to replace Xen, <a href="http://www.opensolaris.org/os/community/xen/">xVM</a> or <a href="http://www.virtualbox.org">VirtualBox</a> anytime soon.</p>
+<p>Sources:</p>
+<ul>
+<li><a href="http://www.microsoft.com/presspass/features/2009/Jul09/07-20LinuxQA.mspx">Microsoft Press Release</a></li>
+<li><a href="http://blogs.the451group.com/opensource/2009/07/20/microsoft-contributes-to-linux-kernel-a-caos-theory-qa/">Blog of the 451 Group</a></li>
+<li><a href="http://lkml.org/lkml/2009/7/20/167">LKML</a></li>
+</ul>
+<p>On a side note: <a href="http://www.redhat.com">Red Hat</a> entered the <a href="http://www.standardandpoors.com">Standard &#038; Poor&#8217;s</a> 500 index, which might show Linux is gaining more interest from enterprises and investors.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/microsoft-to-release-linux-hyperv-drivers-as-gplv2/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Re: Python recursion performance test</title>
+		<link>http://eikke.com/re-python-recursion-performance-test/</link>
+		<comments>http://eikke.com/re-python-recursion-performance-test/#comments</comments>
+		<pubDate>Thu, 16 Jul 2009 01:00:57 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=113</guid>
+		<description><![CDATA[(This is a reply on a post by Ahmed Soliman on recursion performance in (C)Python, and CPython function call overhead in general. I started to write this as a comment on his post, but it turned out much longer, so sending it over here in the end.) Hey, As discussed before, this is not a [...]]]></description>
+			<content:encoded><![CDATA[<p>(This is a reply on a <a href="http://www.ahmedsoliman.com/2009/07/15/python-recursion-performance-test/" title="Ahmed Soliman: Python recursion performance test">post</a> by <a href="http://www.ahmedsoliman.com" title="Ahmed Soliman">Ahmed Soliman</a> on recursion performance in (C)Python, and CPython function call overhead in general. I started to write this as a comment on his post, but it turned out much longer, so sending it over here in the end.)</p>
+<p>Hey,</p>
+<p>As discussed before, this is not a fair comparison, since the non-recursive version is much &#8216;smarter&#8217; than the recursive one: it calculates values and will never recalculates them, whilst the recursive version calculates everything over and over again.</p>
+<p>Adding some simple memoization helps a lot. First, my testing code:<br />
+<span id="more-113"></span><br />
+<script src="http://gist.github.com/148082.js"></script></p>
+<p>Here are the benchmarks on my MacBook Pro Intel Core2Duo 2.33GHz with 3GB RAM (running quite a lot of applications). Do note the &#8216;dumb&#8217; version calculates <em>fib(35)</em>, whilst the slightly optimized versions, which still use recursion but much less recursive calls (as they should) or your second version calculate <em>fib(150)</em>.</p>
+<p>Using MacOS X 10.5.6 stock CPython 2.5.1:</p>
+<pre>
+MacBook:Projects nicolas $ python -V
+Python 2.5.1
+
+MacBook:Projects nicolas $ python fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.8542108536 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.00020694732666 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00141310691833 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.000310182571411 seconds
+</pre>
+<p>Overall it looks like <em>fib2</em> and <em>memoize_constant_list</em> perform fairly similar, I guess function call overhead and <em>list.append</em> have a similar influence on performance in this case.</p>
+<p>Using Jython 2.5.0 from the binary distribution on the Java HotSpot 64bit Server VM as shipped for OS X 10.5.6:</p>
+<pre>
+MacBook:Projects nicolas $ ./Jython/jython2.5.0/jython -V 
+Jython 2.5.0
+
+MacBook:Projects nicolas $ ./Jython/jython2.5.0/jython fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.5539999008 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.0519998073578 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00399994850159 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00300002098083 seconds
+</pre>
+<p>The &#8216;dumb&#8217; <em>fib</em> implementation performs similar in both CPython and Jython. Jython performs significantly less good on the other implementations though, but maybe todays <a href="http://journal.thobe.org/2009/07/improving-performance-in-jython.html">news</a> could help here, not sure how much locking on <em>dict</em> and <em>list</em> access Jython introduces.</p>
+<p>Finally, using <a href="http://code.google.com/p/unladen-swallow/">Unladen Swallow</a> 2009Q2, self-compiled from SVN on the same system, using standard settings:</p>
+<pre>
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python -V
+Python 2.6.1
+
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python fib.py 35 150
+fib(35) = 9227465
+Calculation took 12.2675719261 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.000118970870972 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.000972986221313 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.00036096572876 seconds
+</pre>
+<p>which is similar to, slighly better or slightly worse than the CPython run, and when enforcing JIT (which introduces a significant startup time, which is not measured here):</p>
+<pre>
+MacBook:Projects nicolas $ ./unladen-swallow/unladen-2009Q2-inst/bin/python -j always fib.py 35 150
+fib(35) = 9227465
+Calculation took 14.6129109859 seconds
+
+Calculating the amount of recursive calls to calculate fib(35)
+Calculating fib(35) = 9227465 took 29860703 calls
+
+fib2(150) = 9969216677189303386214405760200
+Calculation took 0.0432291030884 seconds
+
+memoize_dict(fib)(150) = 9969216677189303386214405760200
+Calculation took 0.0363459587097 seconds
+
+memoize_constant_list(151, fib)(150) = 9969216677189303386214405760200
+Calculation took 0.0335609912872 seconds
+</pre>
+<p>which, to my surprise, performs pretty worse than the default settings.</p>
+<p>Overall: your first implementation performs tons and tons of function calls, whilst the second one, which resembles <em>memoize_list_fib</em> in my code (which is recursive), performs significantly less function calls and in the end <em>memoize_list_fib</em> performs almost as good as your second version (it performs +- the same number of function calls as the number of times you&#8217;re going through your loop).</p>
+<p>So whilst I do agree function calls in Python are reasonably slow compared to plain C function calls (which is just a jmp, no frame handling etc. etc. required), your comparison between your recursive and non-recursive implementation is completely unfair, and even if calculating <em>fib(35)</em> takes several seconds, consider you&#8217;re doing a pretty impressive 29860703 function calls to perform the calculation.</p>
+<p>Time to get some sleep.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/re-python-recursion-performance-test/feed/</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>First Clojure experiments</title>
+		<link>http://eikke.com/first-clojure-experiments/</link>
+		<comments>http://eikke.com/first-clojure-experiments/#comments</comments>
+		<pubDate>Sun, 12 Jul 2009 00:28:25 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[clojure]]></category>
+		<category><![CDATA[jvm]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=109</guid>
+		<description><![CDATA[Some weeks ago I attended JavaOne (a pretty neat conference, even for non-Java-heads like me) and got in touch with several non-Java languages running on the JVM (nothing really new next to Project Fortress, but I never got into most for real). Since I wanted to learn some language not resembling any other I already [...]]]></description>
+			<content:encoded><![CDATA[<p>Some weeks ago I attended <a href="http://java.sun.com/javaone/" title="JavaOne">JavaOne</a> (a pretty neat conference, even for non-Java-heads like me) and got in touch with several non-Java languages running on the <a href="http://en.wikipedia.org/wiki/Java_Virtual_Machine" title="Wikipedia - Java Virtual Machine"><abbr title="Java Virtual Machine">JVM</abbr></a> (nothing really new next to <a href="http://projectfortress.sun.com/Projects/Community" title="Project Fortress">Project Fortress</a>, but I never got into most for real).</p>
+<p>Since I wanted to learn some language not resembling any other I already know (even a little), I decided some hours ago to start digging into Clojure, which is a <a href="http://en.wikipedia.org/wiki/LISP" title="Wikipedia - LISP"><abbr title="LISt Processing">LISP</abbr></a> dialect running on the JVM using <a href="http://en.wikipedia.org/wiki/Software_transactional_memory" title="Wikipedia - Software transactional memory"><abbr title="Software Transactional Memory">STM</abbr></a> (Software Transactional Memory) and created with concurrency in mind. Check the <a href="http://clojure.org/" title="Clojure">website</a> for more information.<br />
+<span id="more-109"></span></p>
+<p>After some hacking I got a first &#8216;application&#8217; running. Since recently there&#8217;s been some little meme at work regarding echo servers, I decided to write a very basic line-oriented echo server in Clojure.</p>
+<p>The result is a server using one thread per connection which just sends back lines to a connected client as-is. Nothing fancy, but might be a useful start for developing basic network applications using Clojure.</p>
+<p>Enjoy!</p>
+<p><script src="http://gist.github.com/145449.js"></script></p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/first-clojure-experiments/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Joined the Twitter train</title>
+		<link>http://eikke.com/joined-the-twitter-train/</link>
+		<comments>http://eikke.com/joined-the-twitter-train/#comments</comments>
+		<pubDate>Mon, 11 May 2009 21:05:39 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[twitter]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/joined-the-twitter-train/</guid>
+		<description><![CDATA[Created a Twitter profile today, let&#8217;s see what it brings.]]></description>
+			<content:encoded><![CDATA[<p>Created a <a href="http://twitter.com">Twitter</a> <a href="http://twitter.com/eikke">profile</a> today, let&#8217;s see what it brings.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/joined-the-twitter-train/feed/</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.600 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:30 -->
+<!-- Compression = gzip -->

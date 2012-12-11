@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; Virtual Reality</title>
+	<atom:link href="http://eikke.com/tag/virtual-reality/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Wii head tracking explained: how it works</title>
+		<link>http://eikke.com/wii-head-tracking-explained-how-it-works/</link>
+		<comments>http://eikke.com/wii-head-tracking-explained-how-it-works/#comments</comments>
+		<pubDate>Tue, 08 Jan 2008 02:05:55 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Virtual Reality]]></category>
+		<category><![CDATA[3D]]></category>
+		<category><![CDATA[head tracking]]></category>
+		<category><![CDATA[rendering]]></category>
+		<category><![CDATA[wii]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/wii-head-tracking-explained-how-it-works/</guid>
+		<description><![CDATA[I wrote about a cool Wii-mote hack yesterday, which provides a richer 3D experience, based on the movement of the head of the user. In this post (and if all goes well some following posts) I&#8217;ll try to explain some of the basics how this works. I won&#8217;t get into geometrical or mathematical details, not [...]]]></description>
+			<content:encoded><![CDATA[<p>I wrote about <a href="http://eikke.com/more-wii-innovation-head-tracking/" title="More Wii innovation: head tracking">a cool Wii-mote hack</a> yesterday, which provides a richer 3D experience, based on the movement of the head of the user. In this post (and if all goes well some following posts) I&#8217;ll try to explain some of the basics how this works. I won&#8217;t get into geometrical or mathematical details, not to bore the readers too much <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<p>I start with very basic rendering of linear distance changes.<br />
+<span id="more-22"></span></p>
+<p>We&#8217;ll start with the most basic view: standing in front of the screen (which displays the scene) and moving towards it, or going backwards. Imagine you&#8217;re standing in front of three towers. The middle one is in front of you, and you can see all three towers. Now you start walking towards the one in front of you. This one will become larger and larger (well, it won&#8217;t become any larger of course, but it&#8217;ll look as if it grows), and so will the 2 towers besides it.</p>
+<p>Those two towers aside will move to the corner of what you see though (the scene), until they disappear.</p>
+<p>Here are some very basic drawings explaining this. The first one is a top view of the scene, where the viewer is far enough to see all towers:</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance1a.png" title="Head Tracking explained: distance 1, top view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance1a.png" alt="Head Tracking explained: distance 1, top view" /></a></p>
+<p>This might need some explanation. Actually it&#8217;s pretty simple, think of it as if someone is looking at these towers, and you&#8217;re flying above him in a helicopter and look downwards to the earth. You can see the top of the person&#8217;s head (the green circle), and the roof of the three towers (yellow cubes).</p>
+<p>The red and black lines are just imaginary: the red lines depict the border lines of the person&#8217;s view. As you most likely noticed yourself already, a human being isn&#8217;t able to see everything 180 degrees in front of him without rolling his eyeballs, or turning his head. In this sample image I used a vision of 90 degrees (which is most likely more than a normal human being can see, but well). The black line depicts where the intersection is taken. Think about it like this: the black line is the top of an enormous piece of paper, which is attached to the towers. Our viewer (the person who&#8217;s head is green on top) got an extremely long pencil, and draws the outlines of the towers on this paper from where he stands, as he sees them.</p>
+<p>This is what would be on the paper (well, not only the outlines, but hey&#8230;). You could also interpret this as a picture taken by the viewer from where he stands. The red lines would depict the vision border of the camera lens, then:</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance1b.png" title="Head Tracking explained: distance 1, front view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance1b.png" alt="Head Tracking explained: distance 1, front view" /></a></p>
+<p>Here&#8217;s what happens when the viewer comes somewhat closer. The right tower will be out of sight (at least the front of it, for simplicity I&#8217;m not taking depth into account), the left one will go partially out of sight. Notice the paper could become smaller, but when displaying this paper on a screen, or printing out a picture you take, the screen size or photo paper size would be the same as in the first view. The size of the sensor area in your eyes also remains constant, so everything will look bigger:</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance2a.png" title="Head Tracking explained: distance 2, top view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance2a.png" alt="Head Tracking explained: distance 2, top view" /></a></p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance2b.png" title="Head Tracking explained: distance 2, front view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance2b.png" alt="Head Tracking explained: distance 2, front view" /></a></p>
+<p>I must confess I forgot to take the tower hight/width aspect ratios into account, my bad. It shouldn&#8217;t confuse you though <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>Do notice the viewer can almost no longer see the top of the towers, if he approaches even more, he&#8217;ll be so close to the tower he can only see the front of the lowest floors:</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance3a.png" title="Head Tracking explained: distance 3, top view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance3a.png" alt="Head Tracking explained: distance 3, top view" /></a></p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance3b.png" title="Head Tracking explained: distance 3, front view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance3b.png" alt="Head Tracking explained: distance 3, front view" /></a></p>
+<p>Calculating what to display on the screen when a user approaches or goes away from the display (ie walks forwards or backwards in the scene) is pretty easy using basic triangles. You don&#8217;t even need any trigonometry, as long as the viewer remains exactly in front of the scene object.</p>
+<p>Let&#8217;s go through this using a very basic object, a cube which is exactly in front of the viewer. Adding more objects to the scene would be easy: just add them to the scene, but always make sure to only display what&#8217;s between the lines of sight of the viewer.</p>
+<p>Let&#8217;s say the cube&#8217;s height/width/depth is 20 (in the scene), and initially the viewer is at 50 away from it. Let&#8217;s say the screen (black line) in the real world is 200 wide (this 20, 50 and 200 could be pixels, cm, whatever. The metrics of display size on screen are decoupled from metrics inside the scene). The viewer got a vision of 90 degrees. As we know the viewer is right in front of the cube and got a 90 degree vision, this 200 wide screen can display 100 ( = 2 * 50 ) width of the virtual world. As the cube is 20 wide, it should be displayed by 200 / (100 / 20) = 200 / 5 = 40 on the screen.</p>
+<p>Do note the image is not correctly scaled at all, and the blue and black numbers represent different units: the blue ones are virtual scene units, the black ones physical screen dimensions.</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance4.png" title="Head Tracking explained: distance 4, top view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance4.png" alt="Head Tracking explained: distance 4, top view" /></a></p>
+<p>Now the viewer walks towards the cube until he&#8217;s 20 away from it, the width of the black line in the top view would become smaller, but the width of the cube would remain 20, so the cube would seem to be bigger than before, as it covers a larger part of the &#8216;paper&#8217;, but the display size (the size of the screen) remains constant.</p>
+<p>How big should it be displayed on the screen? More than 20, obviously, but how much exactly?</p>
+<p>This is pretty easy: the &#8216;paper width&#8217;  is 2 * 20 = 40 now (in the virtual world), the cube width remains 20. So, the cube should take 100 / (40 / 20 ) % = 50% of the physical display: 50% of 200 is 100:</p>
+<p><a href="http://eikke.com/wp-content/uploads/2008/01/distance5.png" title="Head Tracking explained: distance 5, top view"><img src="http://eikke.com/wp-content/uploads/2008/01/distance5.png" alt="Head Tracking explained: distance 5, top view" /></a></p>
+<p>That&#8217;s about all there is to know, without touching the subject of &#8216;virtual sight&#8217; (which is most basicly a mirror operation around the intersection plane). If all goes well, more should follow later.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/wii-head-tracking-explained-how-it-works/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+		<item>
+		<title>More Wii innovation: head tracking</title>
+		<link>http://eikke.com/more-wii-innovation-head-tracking/</link>
+		<comments>http://eikke.com/more-wii-innovation-head-tracking/#comments</comments>
+		<pubDate>Sun, 06 Jan 2008 19:03:33 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[Desktop]]></category>
+		<category><![CDATA[gadget]]></category>
+		<category><![CDATA[head tracking]]></category>
+		<category><![CDATA[Virtual Reality]]></category>
+		<category><![CDATA[wii]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/more-wii-innovation-head-tracking/</guid>
+		<description><![CDATA[Someone just sent a mail to the xorg and compiz mailing lists, pointing to this YouTube video regarding a new way of (ab)using the Nintendo Wii to control a virtual environment. If you didn&#8217;t see it yet, check it out, it&#8217;s rather impressive: [youtube]Jd3-eiid-Uw[/youtube] I don&#8217;t know whether this could actually be useful in a [...]]]></description>
+			<content:encoded><![CDATA[<p>Someone just sent a mail to the xorg and compiz mailing lists, pointing to this YouTube video regarding a new way of (ab)using the Nintendo Wii to control a virtual environment. If you didn&#8217;t see it yet, check it out, it&#8217;s rather impressive:</p>
+<p>[youtube]Jd3-eiid-Uw[/youtube]</p>
+<p>I don&#8217;t know whether this could actually be useful in a pure desktop environment, but for games (although I&#8217;m no gamer myself) I could imaging this offers a whole new spatial experience. Up to Nintendo or third-party vendors to design and commercialize the necessary gadgets or remotes.</p>
+<p>Too bad there&#8217;s not enough empty space around our TV at home, otherwise I think I&#8217;d buy a Wii, love the tennis game <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/more-wii-innovation-head-tracking/feed/</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.158 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:50 -->
+<!-- Compression = gzip -->

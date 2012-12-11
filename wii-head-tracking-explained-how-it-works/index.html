@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<title>Wii head tracking explained: how it works &#8211; Ikke&#039;s blog</title>
+	
+	<link rel="alternate" type="application/rss+xml" href="../feed/index.html" title="Ikke&#039;s blog latest posts" />
+	<link rel="alternate" type="application/rss+xml" href="../comments/feed/index.html" title="Ikke&#039;s blog latest comments" />
+	<link rel="pingback" href="../xmlrpc.php" />
+		<link rel='archives' title='April 2010' href='../2010/04/index.html' />
+	<link rel='archives' title='March 2010' href='../2010/03/index.html' />
+	<link rel='archives' title='February 2010' href='../2010/02/index.html' />
+	<link rel='archives' title='November 2009' href='../2009/11/index.html' />
+	<link rel='archives' title='August 2009' href='../2009/08/index.html' />
+	<link rel='archives' title='July 2009' href='../2009/07/index.html' />
+	<link rel='archives' title='May 2009' href='../2009/05/index.html' />
+	<link rel='archives' title='April 2009' href='../2009/04/index.html' />
+	<link rel='archives' title='January 2009' href='../2009/01/index.html' />
+	<link rel='archives' title='November 2008' href='../2008/11/index.html' />
+	<link rel='archives' title='September 2008' href='../2008/09/index.html' />
+	<link rel='archives' title='August 2008' href='../2008/08/index.html' />
+	<link rel='archives' title='July 2008' href='../2008/07/index.html' />
+	<link rel='archives' title='May 2008' href='../2008/05/index.html' />
+	<link rel='archives' title='February 2008' href='../2008/02/index.html' />
+	<link rel='archives' title='January 2008' href='../2008/01/index.html' />
+	<link rel='archives' title='December 2007' href='../2007/12/index.html' />
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="../wp-content/themes/carrington/css/css.css" />
+
+	<!--[if lte IE 7]>
+		<link rel="stylesheet" href="http://eikke.com/wp-content/themes/carrington/css/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	
+	<!--[if lte IE 6]>
+		<link rel="stylesheet" href="http://eikke.com/wp-content/themes/carrington/css/ie6.css" type="text/css" media="screen" />
+
+		<script type="text/javascript" src="http://eikke.com/wp-content/themes/carrington/js/DD_belatedPNG.js"></script>
+		<script type="text/javascript">
+			DD_belatedPNG.fix('img, #header, #footer, #header .wrapper, #footer .wrapper, #TB_title, #developer-link a');
+		</script>
+	<![endif]-->
+	
+	<link rel="alternate" type="application/rss+xml" title="Ikke&#039;s blog &raquo; Wii head tracking explained: how it works Comments Feed" href="feed/index.html" />
+<script type='text/javascript' src='http://eikke.com/wp-includes/js/jquery/jquery.js?ver=1.7.2'></script>
+<script type='text/javascript' src='../wp-content/themes/carrington/js/carrington5152.js?ver=1.0'></script>
+<script type='text/javascript' src='../wp-content/themes/carrington/carrington-core/lightbox/thickbox5152.js?ver=1.0'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://eikke.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='More Wii innovation: head tracking' href='../more-wii-innovation-head-tracking/index.html' />
+<link rel='next' title='Nokia 6300 SyncML follow-up' href='../nokia-6300-syncml-follow-up/index.html' />
+<meta name="generator" content="WordPress 3.4.1" />
+<link rel='canonical' href='index.html' />
+<link rel='shortlink' href='http://wp.me/p9YZd-m' />
+
+<link rel="stylesheet" type="text/css" media="screen" href="../wp-content/themes/carrington/carrington-core/lightbox/css/thickbox.css" />
+		
+<script type="text/javascript">
+var CFCT_URL = "../index.html";
+var CFCT_AJAX_LOAD = true;
+</script>
+	
+<script type="text/javascript">
+tb_pathToImage = "../wp-content/themes/carrington/carrington-core/lightbox/img/loadingAnimation.gif";
+jQuery(function($) {
+	$("a.thickbox").each(function() {
+		var url = $(this).attr("rel");
+		var post_id = $(this).parents("div.post, div.page").attr("id");
+		$(this).attr("href", url).attr("rel", post_id);
+	});
+});
+</script>
+		
+	<!-- OpenID stuff -->
+	<link rel="openid.server" href="http://www.myopenid.com/server" />
+	<link rel="openid.delegate" href="http://ikke.myopenid.com/" />
+	<link rel="openid2.local_id" href="http://ikke.myopenid.com/" />
+	<link rel="openid2.provider" href="http://www.myopenid.com/server" />
+	<meta http-equiv="X-XRDS-Location" content="http://ikke.myopenid.com/xrds" />
+</head>
+
+<body>
+	<div id="page">
+		<div id="top"><a class="accessibility" href="#content">Skip to content</a></div>
+		<hr class="lofi" />
+		<div id="header" class="section">
+			<div class="wrapper">
+				<strong id="blog-title"><a href="../index.html" rel="home">Ikke&#039;s blog</a></strong>
+				<p id="blog-description">&#039;cause this is what I do</p>
+				<div id="navigation">
+					<ul class="nav clearfix">
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../articles/index.html">Articles</li>
+						<li><a href="../code/index.html">Code</li>
+						<li><a href="../ivman/index.html">Ivman</li>
+						<li class="secondary"><a href="../wp-login.html">Log in</a></li>
+						 
+					</ul>
+				</div><!-- #navigation -->
+			</div><!-- .wrapper -->
+		</div><!-- #header -->
+		<div id="sub-header" class="section">
+			<div class="wrapper">
+				<form method="get" action="http://eikke.com/google-search/" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-7170970013053423:koq3ee4wyns" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" value="" size="15" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+				<div id="all-categories">
+					<script type="text/javascript"><!--
+google_ad_client = "pub-7170970013053423";
+/* eikke.com Carrington top 728x15 */
+google_ad_slot = "1265244087";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+				</div><!-- #list-categories -->
+			</div><!-- .wrapper -->
+		</div><!--#sub-header-->
+		<hr class="lofi" />
+		<div id="main" class="section">
+			<div class="wrapper">
+
+<div id="content">
+<div id="post-content-22" class="post-22 post type-post status-publish format-standard hentry category-virtual-reality tag-3d tag-head-tracking tag-rendering tag-virtual-reality tag-wii full">
+	
+	<h1 class="entry-title full-title"><a href="index.html" title="Permanent link to Wii head tracking explained: how it works" rel="bookmark" rev="post-22">Wii head tracking explained: how it works</a></h1>
+	
+	<div class="entry-content full-content">
+<p>I wrote about <a href="../more-wii-innovation-head-tracking/index.html" title="More Wii innovation: head tracking">a cool Wii-mote hack</a> yesterday, which provides a richer 3D experience, based on the movement of the head of the user. In this post (and if all goes well some following posts) I&#8217;ll try to explain some of the basics how this works. I won&#8217;t get into geometrical or mathematical details, not to bore the readers too much <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<p>I start with very basic rendering of linear distance changes.<br />
+<span id="more-22"></span></p>
+<p>We&#8217;ll start with the most basic view: standing in front of the screen (which displays the scene) and moving towards it, or going backwards. Imagine you&#8217;re standing in front of three towers. The middle one is in front of you, and you can see all three towers. Now you start walking towards the one in front of you. This one will become larger and larger (well, it won&#8217;t become any larger of course, but it&#8217;ll look as if it grows), and so will the 2 towers besides it.</p>
+<p>Those two towers aside will move to the corner of what you see though (the scene), until they disappear.</p>
+<p>Here are some very basic drawings explaining this. The first one is a top view of the scene, where the viewer is far enough to see all towers:</p>
+<p><a href="../wp-content/uploads/2008/01/distance1a.html" title="Head Tracking explained: distance 1, top view"><img src="../wp-content/uploads/2008/01/distance1a.html" alt="Head Tracking explained: distance 1, top view" /></a></p>
+<p>This might need some explanation. Actually it&#8217;s pretty simple, think of it as if someone is looking at these towers, and you&#8217;re flying above him in a helicopter and look downwards to the earth. You can see the top of the person&#8217;s head (the green circle), and the roof of the three towers (yellow cubes).</p>
+<p>The red and black lines are just imaginary: the red lines depict the border lines of the person&#8217;s view. As you most likely noticed yourself already, a human being isn&#8217;t able to see everything 180 degrees in front of him without rolling his eyeballs, or turning his head. In this sample image I used a vision of 90 degrees (which is most likely more than a normal human being can see, but well). The black line depicts where the intersection is taken. Think about it like this: the black line is the top of an enormous piece of paper, which is attached to the towers. Our viewer (the person who&#8217;s head is green on top) got an extremely long pencil, and draws the outlines of the towers on this paper from where he stands, as he sees them.</p>
+<p>This is what would be on the paper (well, not only the outlines, but hey&#8230;). You could also interpret this as a picture taken by the viewer from where he stands. The red lines would depict the vision border of the camera lens, then:</p>
+<p><a href="../wp-content/uploads/2008/01/distance1b.html" title="Head Tracking explained: distance 1, front view"><img src="../wp-content/uploads/2008/01/distance1b.html" alt="Head Tracking explained: distance 1, front view" /></a></p>
+<p>Here&#8217;s what happens when the viewer comes somewhat closer. The right tower will be out of sight (at least the front of it, for simplicity I&#8217;m not taking depth into account), the left one will go partially out of sight. Notice the paper could become smaller, but when displaying this paper on a screen, or printing out a picture you take, the screen size or photo paper size would be the same as in the first view. The size of the sensor area in your eyes also remains constant, so everything will look bigger:</p>
+<p><a href="../wp-content/uploads/2008/01/distance2a.html" title="Head Tracking explained: distance 2, top view"><img src="../wp-content/uploads/2008/01/distance2a.html" alt="Head Tracking explained: distance 2, top view" /></a></p>
+<p><a href="../wp-content/uploads/2008/01/distance2b.html" title="Head Tracking explained: distance 2, front view"><img src="../wp-content/uploads/2008/01/distance2b.html" alt="Head Tracking explained: distance 2, front view" /></a></p>
+<p>I must confess I forgot to take the tower hight/width aspect ratios into account, my bad. It shouldn&#8217;t confuse you though <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>Do notice the viewer can almost no longer see the top of the towers, if he approaches even more, he&#8217;ll be so close to the tower he can only see the front of the lowest floors:</p>
+<p><a href="../wp-content/uploads/2008/01/distance3a.html" title="Head Tracking explained: distance 3, top view"><img src="../wp-content/uploads/2008/01/distance3a.html" alt="Head Tracking explained: distance 3, top view" /></a></p>
+<p><a href="../wp-content/uploads/2008/01/distance3b.html" title="Head Tracking explained: distance 3, front view"><img src="../wp-content/uploads/2008/01/distance3b.html" alt="Head Tracking explained: distance 3, front view" /></a></p>
+<p>Calculating what to display on the screen when a user approaches or goes away from the display (ie walks forwards or backwards in the scene) is pretty easy using basic triangles. You don&#8217;t even need any trigonometry, as long as the viewer remains exactly in front of the scene object.</p>
+<p>Let&#8217;s go through this using a very basic object, a cube which is exactly in front of the viewer. Adding more objects to the scene would be easy: just add them to the scene, but always make sure to only display what&#8217;s between the lines of sight of the viewer.</p>
+<p>Let&#8217;s say the cube&#8217;s height/width/depth is 20 (in the scene), and initially the viewer is at 50 away from it. Let&#8217;s say the screen (black line) in the real world is 200 wide (this 20, 50 and 200 could be pixels, cm, whatever. The metrics of display size on screen are decoupled from metrics inside the scene). The viewer got a vision of 90 degrees. As we know the viewer is right in front of the cube and got a 90 degree vision, this 200 wide screen can display 100 ( = 2 * 50 ) width of the virtual world. As the cube is 20 wide, it should be displayed by 200 / (100 / 20) = 200 / 5 = 40 on the screen.</p>
+<p>Do note the image is not correctly scaled at all, and the blue and black numbers represent different units: the blue ones are virtual scene units, the black ones physical screen dimensions.</p>
+<p><a href="../wp-content/uploads/2008/01/distance4.html" title="Head Tracking explained: distance 4, top view"><img src="../wp-content/uploads/2008/01/distance4.html" alt="Head Tracking explained: distance 4, top view" /></a></p>
+<p>Now the viewer walks towards the cube until he&#8217;s 20 away from it, the width of the black line in the top view would become smaller, but the width of the cube would remain 20, so the cube would seem to be bigger than before, as it covers a larger part of the &#8216;paper&#8217;, but the display size (the size of the screen) remains constant.</p>
+<p>How big should it be displayed on the screen? More than 20, obviously, but how much exactly?</p>
+<p>This is pretty easy: the &#8216;paper width&#8217;  is 2 * 20 = 40 now (in the virtual world), the cube width remains 20. So, the cube should take 100 / (40 / 20 ) % = 50% of the physical display: 50% of 200 is 100:</p>
+<p><a href="../wp-content/uploads/2008/01/distance5.html" title="Head Tracking explained: distance 5, top view"><img src="../wp-content/uploads/2008/01/distance5.html" alt="Head Tracking explained: distance 5, top view" /></a></p>
+<p>That&#8217;s about all there is to know, without touching the subject of &#8216;virtual sight&#8217; (which is most basicly a mirror operation around the intersection plane). If all goes well, more should follow later.</p>
+		<div class="clear"></div>
+	</div><!-- .entry-content-->
+	
+	<p class="filed categories alt-font tight">Posted in <a href="../category/virtual-reality/index.html" title="View all posts in Virtual Reality" rel="category tag">Virtual Reality</a>.</p>
+	<p class="filed tags alt-font tight">Tagged with <a href="../tag/3d/index.html" rel="tag">3D</a>, <a href="../tag/head-tracking/index.html" rel="tag">head tracking</a>, <a href="../tag/rendering/index.html" rel="tag">rendering</a>, <a href="../tag/virtual-reality/index.html" rel="tag">Virtual Reality</a>, <a href="../tag/wii/index.html" rel="tag">wii</a>.</p>
+	
+	<p class="by-line">
+		<span class="author vcard full-author">
+			<span class="by alt-font">By</span> <a class="url fn" href="../author/nicolas/index.html" title="View all posts by Nicolas">Nicolas</a>		</span>
+		<span class="date full-date"><span class="ndash alt-font">&ndash;</span> <abbr class="published" title="2008-01-08T03:05">January 8, 2008</abbr></span>
+	</p><!--/by-line-->
+
+	<div id="post-comments-22-target"></div>
+	<div class="clear"></div>
+	
+	</div><!-- .post -->
+	<div id="comments">
+<div class="rule-major"><hr /></div>
+<h2 class="h1 comments-title" id="comments">7 Responses</h2>
+
+<p>Stay in touch with the conversation, subscribe to the <a class="feed" rel="alternate" href="feed/index.html"><acronym title="Really Simple Syndication">RSS</acronym> feed for comments on this post</a>.</p>
+
+<ol class="commentlist hfeed">
+<li class="li-comment" id="li-comment-64">
+	<div class="div-comment" id="div-comment-64">
+
+<div id="comment-64" class="comment even thread-even depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://0.gravatar.com/avatar/432b14624c692e7a24b7ce1c1ec8db50?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn">Anonymous</cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>I find this subject quite interesting, and I personally would *love* to see the math, trig and all.  I&#8217;d also love to see your explanation of the head-tracking math.</p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2008-01-08T09:22">January 8, 2008, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-64">09:22</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='indexa2b6.html?replytocom=64#respond-p22' onclick='return addComment.moveForm("comment-64", "64", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-65">
+	<div class="div-comment" id="div-comment-65">
+
+<div id="comment-65" class="comment odd alt thread-odd thread-alt depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://0.gravatar.com/avatar/07c84fef3495e8c187725ef9652517aa?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn">Thomas</cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>I&#8217;ve read somewhere that the human angle of vision is considered to be approximately 120/130°. </p>
+<p>You&#8217;d need to check a more accurate source than my rememberings, but the human field of view is definitely more than 90° : just put the corner of a blank sheet of paper under your nose, you will easily see far beyond the edge of the sheet on the sides.</p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2008-01-08T11:03">January 8, 2008, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-65">11:03</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='index0c48.html?replytocom=65#respond-p22' onclick='return addComment.moveForm("comment-65", "65", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-66">
+	<div class="div-comment" id="div-comment-66">
+
+<div id="comment-66" class="comment even thread-even depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://1.gravatar.com/avatar/fb0f777775f2954908aa2ab158224c83?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn">John McHugh</cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>hmmmm&#8230; deja vu, Almost like Iv seen someone do this hack already <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2008-01-08T12:23">January 8, 2008, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-66">12:23</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='index1b7b.html?replytocom=66#respond-p22' onclick='return addComment.moveForm("comment-66", "66", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-67">
+	<div class="div-comment" id="div-comment-67">
+
+<div id="comment-67" class="comment odd alt thread-odd thread-alt depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://1.gravatar.com/avatar/5823d09208b1e4b63bbfcd189492032c?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn"><a href='http://www.joachim-breitner.de/' rel='external nofollow' class='url'>Joachim Breitner</a></cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>Woudn’t it be possible to get the same result with a regular webcam, if you put something easily detectable on your forehead (big colored dots)? Or is the the crucial part of the wiimote the detection speed?</p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2008-01-08T14:29">January 8, 2008, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-67">14:29</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='index5602.html?replytocom=67#respond-p22' onclick='return addComment.moveForm("comment-67", "67", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-68">
+	<div class="div-comment" id="div-comment-68">
+
+<div id="comment-68" class="comment byuser comment-author-nicolas bypostauthor even thread-even depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://1.gravatar.com/avatar/5db180a41074c7f082b4b4057b7a016d?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn"><a href='../index.html' rel='external nofollow' class='url'>Nicolas</a></cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>@Anonymous: it might take some time until I finish next article(s), exams here.</p>
+<p>@Thomas: I&#8217;ll look for it. I was just guessing, the angle where you got a good view (ie well-focused) looked quite small to me (but maybe it was too late in the evening <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> )</p>
+<p>Maybe I&#8217;m understanding something wrong, but I think your &#8216;sheet of paper&#8217; example is wrong, as the angle it proves to be visible is depending on both the width of the paper, and the distance between your eyes and the paper&#8230;</p>
+<p>@John: obviously, check yesterday&#8217;s post I link to at the top of this article.</p>
+<p>@Joachim: object tracking in picture sequences isn&#8217;t that easy, unless the tracked object is really distinct from other parts of the image. For the wiimote it&#8217;s much easier: there&#8217;ll most likely be only one IR source around, where the IR light could even be of some specific wave length (inside some range, that is). Normal webcams don&#8217;t register (or filter) IR light from the visual though, before sending it to the PC, afaik. Maybe I should dig up my old webcam and check whether there are any good Linux drivers by now, and play around with it a little <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2008-01-08T16:52">January 8, 2008, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-68">16:52</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='indexa129.html?replytocom=68#respond-p22' onclick='return addComment.moveForm("comment-68", "68", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-56004">
+	<div class="div-comment" id="div-comment-56004">
+
+<div id="comment-56004" class="comment odd alt thread-odd thread-alt depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://0.gravatar.com/avatar/ee8d5ec2f52d9ff1dda5a392b4de37d9?s=48&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn">shankar</cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>Great post.. where are the images for the top view, front view etc&#8230; ??</p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2011-08-14T15:54">August 14, 2011, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-56004">15:54</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='indexb0e6.html?replytocom=56004#respond-p22' onclick='return addComment.moveForm("comment-56004", "56004", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+
+<li class="li-comment" id="li-comment-61369">
+	<div class="div-comment" id="div-comment-61369">
+
+<div id="comment-61369" class="comment even thread-even depth-1 hentry">
+	<address class="vcard author entry-title comment-author">
+		<span class="photo avatar"><img alt='' src='http://1.gravatar.com/avatar/fd75a6102e6691f0217cda7bf89cc777?s=48&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48 photo' height='48' width='48' /></span>
+<cite class="fn">slyvality</cite> <span class="says">says</span>	</address><!--.vcard-->
+
+	<div class="entry-content comment-content">
+<p>Exaplananation is great, but I can&#8217;t access the diagrams. How can i access diagrams? I am really interested in this subject</p>
+	</div><!--.entry-content-->
+	<div class="clear"></div>
+	<div class="comment-meta commentmetadata small">
+		<span class="date comment-date">
+			<abbr class="published" title="2011-10-17T20:56">October 17, 2011, <a title="Permanent link to this comment" rel="bookmark" href="index.html#comment-61369">20:56</a></abbr>
+		</span><!--.date-->
+<a class='comment-reply-link' href='indexbadb.html?replytocom=61369#respond-p22' onclick='return addComment.moveForm("comment-61369", "61369", "respond-p22", "22")'>Reply</a>	</div>
+</div><!--.comment-->	</div>
+</li>
+</ol>
+<div id="respond-p22">
+	<form action="http://eikke.com/wp-comments-post.php" method="post" class="comment-form">
+		<p class="comment-form-comment tight">
+		<label class="h3" for="comment-p22">Leave a Reply <em id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link-p22" href="index.html#respond-p22" style="display:none;">Cancel</a></em></label>
+			<br class="lofi" />
+			<span class="comment-form-comment-area">
+				<textarea id="comment-p22" name="comment" rows="8" cols="40"></textarea><br />
+				<em class="some-html-is-ok"><abbr title="You can use: &lt;a href=__.html title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; ">Some HTML is OK</abbr></em>
+			</span>
+		</p>
+		<p class="comment-form-user-info tight">
+			<input type="text" id="author-p22" name="author" value="" size="22" />
+			<label for="author-p22">Name <em>(required)</em></label>
+		</p><!--/name-->
+		<p class="comment-form-user-info tight">
+			<input type="text" id="email-p22" name="email" value="" size="22" />
+			<label for="email-p22">Email  <em>(required, but never shared)</em></label>
+		</p><!--/email-->
+		<p class="comment-form-user-info tight">
+			<input type="text" id="url-p22" name="url" value="" size="22" />
+			<label title="Your website address" for="url-p22">Web</label>
+		</p><!--/url-->
+		<p class="tight">
+			<input name="submit" type="submit" value="Post comment" />
+			<span class="comment-form-trackback">or, reply to this post via <a rel="trackback" href="trackback/index.html">trackback</a>.</span>
+		</p>
+<input type='hidden' name='comment_post_ID' value='22' id='comment_post_ID_p22' />
+<input type='hidden' name='comment_parent' id='comment_parent_p22' value='0' />
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2624469693" /></p>	</form>
+</div>
+	</div><!--#comments-->
+
+	<div class="pagination-single">
+		<span class="previous">&laquo; <a href="../more-wii-innovation-head-tracking/index.html" rel="prev">More Wii innovation: head tracking</a></span>
+		<span class="next"><a href="../nokia-6300-syncml-follow-up/index.html" rel="next">Nokia 6300 SyncML follow-up</a> &raquo;</span>
+	</div>
+
+</div><!--#content-->
+
+<hr class="lofi" />
+<div id="sidebar">
+	<div id="carrington-subscribe" class="widget">
+		<h2 class="widget-title">Subscribe</h2>
+		<a class="feed alignright" title="RSS 2.0 feed for posts" rel="alternate" href="../feed/index.html">
+			<img src="../wp-content/themes/carrington/img/rss-button.gif" alt="Ikke&#039;s blog latest posts" title="Ikke&#039;s blog latest posts" />
+		</a>
+	</div><!--.widget-->
+	<div id="carrington-about" class="widget">
+		<div class="about">
+			<h2 class="widget-title">About Ikke&#039;s blog</h2>
+Random (mostly technical) braindumps by some guy known as &#8220;ikke&#8221;, &#8220;eikke&#8221; or maybe &#8220;Nicolas&#8221;. Read it if you like it, ignore it if you don&#8217;t. Even though I&#8217;m currently working at Sun Microsystems, this is a strictly personal website. Anything written here does not necessarily represent the opinions or position of my employer.<a class="more" href="../about/index.html">more &rarr;</a>		</div>
+	</div><!--.widget-->
+
+	<div id="primary-sidebar">
+<div id="meta-2" class="widget widget_meta"><h2 class="widget-title">Meta</h2>			<ul>
+						<li><a href="../wp-login.html">Log in</a></li>
+			<li><a href="../feed/index.html" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="../comments/feed/index.html" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+<div class="clear"></div></div><div id="linkcat-8" class="widget widget_links"><h2 class="widget-title">Friends</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://blog.realnitro.be/" rel="friend met co-worker" title="Blog of Jens  &#8216;RealNitro&#8217; Geiregat">Jens Geiregat</a></li>
+<li><a href="http://peterdedecker.net/blog/index.php" rel="contact met" title="Blog of Peter &#8216;Sylvain&#8217; Dedecker">Peter Dedecker</a></li>
+<li><a href="http://weblog.savanne.be/" rel="contact met" title="Blog of Ruben &#8216;RubenV&#8217; Vermeersch">Ruben Vermeersch</a></li>
+
+	</ul>
+<div class="clear"></div></div>
+<div id="linkcat-23" class="widget widget_links"><h2 class="widget-title">Me</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.last.fm/user/eikke/" rel="me" title="My last.fm profile page">last.fm</a></li>
+<li><a href="http://www.linkedin.com/in/nicolastrangez" rel="me" title="My LinkedIn profile page">LinkedIn</a></li>
+<li><a href="http://blog.eikke.com/" rel="me" title="My old blog">Old blog</a></li>
+
+	</ul>
+<div class="clear"></div></div>
+<div id="linkcat-7" class="widget widget_links"><h2 class="widget-title">Planets</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://planet.freedesktop.org/" title="Planet centralising blogs of everyone working on freedesktop.org projects">Planet Freedesktop</a></li>
+<li><a href="http://planet.gnome.org/" rel="colleague" title="Planet centralising blogs of everyone working on the GNOME desktop">Planet GNOME</a></li>
+<li><a href="http://planet.grep.be/" rel="colleague" title="Planet centralising blogs of belgians working on Free Software">Planet grep</a></li>
+<li><a href="http://www.planet-ugent.be/" rel="contact" title="Planet centralising blogs of everyone somehow related to UGent">Planet UGent</a></li>
+
+	</ul>
+<div class="clear"></div></div>
+<div id="text-301271331" class="widget widget_text"><h2 class="widget-title">License</h2>			<div class="textwidget"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.0/be/" title="Creative Commons Attribution-Noncommercial-Share Alike 2.0 Belgium License">
+<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/2.0/be/88x31.png" />
+</a></div>
+		<div class="clear"></div></div>	</div><!--#primary-sidebar-->
+	<div id="secondary-sidebar">
+<div id="twitter-429238881" class="widget widget_twitter"><div><h2 class="widget-title"><span class='twitterwidget twitterwidget-title'>Me @ Twitter</span></h2><ul><li><span class='entry-content'><a href="http://twitter.com/donsbot" class="twitter-user">@donsbot</a> Any reason Data.ByteString.zipWith' isn't exported/public API?</span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/eikke/statuses/147836017301389312">12:30:27 AM December 17, 2011</a></span> <span class='from-meta'>from web</span> <span class="in-reply-to-meta"><a href="http://twitter.com/donsbot/statuses/" class="reply-to">in reply to donsbot</a></span></span> <span class="intent-meta"><a href="http://twitter.com/intent/tweet?in_reply_to=147836017301389312" class="in-reply-to" data-lang="en" title="Reply">Reply</a><a href="http://twitter.com/intent/retweet?tweet_id=147836017301389312" class="retweet" data-lang="en" title="Retweet">Retweet</a><a href="http://twitter.com/intent/favorite?tweet_id=147836017301389312" class="favorite" data-lang="en" title="Favorite">Favorite</a></span></li><li><span class='entry-content'>RT <a href="http://twitter.com/raichoo" class="twitter-user">@raichoo</a>: "#Ocaml has an OOP extension… that nobody uses […] not even its inventor" -Yaron Minsky, Janestreet.</span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/eikke/statuses/147790118328074241">09:28:04 PM December 16, 2011</a></span> <span class='from-meta'>from web</span></span> <span class="intent-meta"><a href="http://twitter.com/intent/tweet?in_reply_to=147790118328074241" data-lang="en" class="in-reply-to" title="Reply">Reply</a><a href="http://twitter.com/intent/retweet?tweet_id=147790118328074241" data-lang="en" class="retweet" title="Retweet">Retweet</a><a href="http://twitter.com/intent/favorite?tweet_id=147790118328074241" data-lang="en" class="favorite" title="Favorite">Favorite</a></span></li><li><span class='entry-content'>Whenever you launch a tech startup, don't look for office space: head to Starbucks. Coffee, power &#038; free wifi, all you need is a laptop!</span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/eikke/statuses/147745522264965120">06:30:52 PM December 16, 2011</a></span> <span class='from-meta'>from web</span></span> <span class="intent-meta"><a href="http://twitter.com/intent/tweet?in_reply_to=147745522264965120" data-lang="en" class="in-reply-to" title="Reply">Reply</a><a href="http://twitter.com/intent/retweet?tweet_id=147745522264965120" data-lang="en" class="retweet" title="Retweet">Retweet</a><a href="http://twitter.com/intent/favorite?tweet_id=147745522264965120" data-lang="en" class="favorite" title="Favorite">Favorite</a></span></li><li><span class='entry-content'><a href="http://twitter.com/viktorklang" class="twitter-user">@viktorklang</a> Bit me a couple of time in the Haskell bindings as well. Simple approach to make a library "threadsafe"?</span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/eikke/statuses/147697399807213568">03:19:38 PM December 16, 2011</a></span> <span class='from-meta'>from web</span> <span class="in-reply-to-meta"><a href="http://twitter.com/viktorklang/statuses/147668055768576000" class="reply-to">in reply to viktorklang</a></span></span> <span class="intent-meta"><a href="http://twitter.com/intent/tweet?in_reply_to=147697399807213568" class="in-reply-to" data-lang="en" title="Reply">Reply</a><a href="http://twitter.com/intent/retweet?tweet_id=147697399807213568" class="retweet" data-lang="en" title="Retweet">Retweet</a><a href="http://twitter.com/intent/favorite?tweet_id=147697399807213568" class="favorite" data-lang="en" title="Favorite">Favorite</a></span></li><li><span class='entry-content'>W00t ^_^ RT <a href="http://twitter.com/johtib" class="twitter-user">@johtib</a> Screenshot teaser for something I've been working on lately: <a href="http://t.co/OyGog474">http://t.co/OyGog474</a></span> <span class='entry-meta'><span class='time-meta'><a href="http://twitter.com/eikke/statuses/147667168144793600">01:19:31 PM December 16, 2011</a></span> <span class='from-meta'>from web</span></span> <span class="intent-meta"><a href="http://twitter.com/intent/tweet?in_reply_to=147667168144793600" data-lang="en" class="in-reply-to" title="Reply">Reply</a><a href="http://twitter.com/intent/retweet?tweet_id=147667168144793600" data-lang="en" class="retweet" title="Retweet">Retweet</a><a href="http://twitter.com/intent/favorite?tweet_id=147667168144793600" data-lang="en" class="favorite" title="Favorite">Favorite</a></span></li></ul><div class="follow-button"><a href="http://twitter.com/eikke" class="twitter-follow-button" title="Follow @eikke" data-lang="en">@eikke</a></div></div><div class="clear"></div></div><div id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widget-title">Tags</h2><div class="tagcloud"><a href='../tag/3d/index.html' class='tag-link-42' title='1 topic' style='font-size: 8pt;'>3D</a>
+<a href='../tag/ajax/index.html' class='tag-link-26' title='1 topic' style='font-size: 8pt;'>ajax</a>
+<a href='../tag/belgium/index.html' class='tag-link-44' title='1 topic' style='font-size: 8pt;'>belgium</a>
+<a href='../tag/bnf/index.html' class='tag-link-62' title='2 topics' style='font-size: 10.863636363636pt;'>bnf</a>
+<a href='../tag/cellphone/index.html' class='tag-link-32' title='1 topic' style='font-size: 8pt;'>cellphone</a>
+<a href='../tag/couchdb/index.html' class='tag-link-14' title='2 topics' style='font-size: 10.863636363636pt;'>couchdb</a>
+<a href='../tag/crash/index.html' class='tag-link-17' title='1 topic' style='font-size: 8pt;'>crash</a>
+<a href='../tag/desktop/index.html' class='tag-link-13' title='5 topics' style='font-size: 15.636363636364pt;'>Desktop</a>
+<a href='../tag/development/index.html' class='tag-link-5' title='11 topics' style='font-size: 20.409090909091pt;'>Development</a>
+<a href='../tag/django/index.html' class='tag-link-6' title='7 topics' style='font-size: 17.545454545455pt;'>django</a>
+<a href='../tag/django-validation/index.html' class='tag-link-60' title='2 topics' style='font-size: 10.863636363636pt;'>django-validation</a>
+<a href='../tag/evolution/index.html' class='tag-link-20' title='1 topic' style='font-size: 8pt;'>evolution</a>
+<a href='../tag/fglrx/index.html' class='tag-link-18' title='1 topic' style='font-size: 8pt;'>fglrx</a>
+<a href='../tag/firefox/index.html' class='tag-link-21' title='1 topic' style='font-size: 8pt;'>firefox</a>
+<a href='../tag/form/index.html' class='tag-link-27' title='3 topics' style='font-size: 12.772727272727pt;'>form</a>
+<a href='../tag/free-desktop/index.html' class='tag-link-50' title='2 topics' style='font-size: 10.863636363636pt;'>free desktop</a>
+<a href='../tag/functional-programming/index.html' class='tag-link-77' title='3 topics' style='font-size: 12.772727272727pt;'>functional programming</a>
+<a href='../tag/gadget/index.html' class='tag-link-41' title='1 topic' style='font-size: 8pt;'>gadget</a>
+<a href='../tag/gnokii/index.html' class='tag-link-36' title='1 topic' style='font-size: 8pt;'>gnokii</a>
+<a href='../tag/gnome/index.html' class='tag-link-16' title='4 topics' style='font-size: 14.363636363636pt;'>gnome</a>
+<a href='../tag/government/index.html' class='tag-link-46' title='1 topic' style='font-size: 8pt;'>government</a>
+<a href='../tag/head-tracking/index.html' class='tag-link-40' title='2 topics' style='font-size: 10.863636363636pt;'>head tracking</a>
+<a href='../tag/javascript/index.html' class='tag-link-25' title='5 topics' style='font-size: 15.636363636364pt;'>javascript</a>
+<a href='../tag/jfs/index.html' class='tag-link-22' title='1 topic' style='font-size: 8pt;'>jfs</a>
+<a href='../tag/jquery/index.html' class='tag-link-30' title='1 topic' style='font-size: 8pt;'>jquery</a>
+<a href='../tag/kde/index.html' class='tag-link-49' title='2 topics' style='font-size: 10.863636363636pt;'>kde</a>
+<a href='../tag/kde4/index.html' class='tag-link-48' title='2 topics' style='font-size: 10.863636363636pt;'>kde4</a>
+<a href='../tag/linux/index.html' class='tag-link-12' title='4 topics' style='font-size: 14.363636363636pt;'>Linux</a>
+<a href='../tag/microsoft/index.html' class='tag-link-67' title='2 topics' style='font-size: 10.863636363636pt;'>microsoft</a>
+<a href='../tag/newforms/index.html' class='tag-link-28' title='3 topics' style='font-size: 12.772727272727pt;'>newforms</a>
+<a href='../tag/nokia-6300/index.html' class='tag-link-33' title='2 topics' style='font-size: 10.863636363636pt;'>nokia 6300</a>
+<a href='../tag/opensync/index.html' class='tag-link-35' title='2 topics' style='font-size: 10.863636363636pt;'>opensync</a>
+<a href='../tag/parsing/index.html' class='tag-link-61' title='2 topics' style='font-size: 10.863636363636pt;'>parsing</a>
+<a href='../tag/pidgin/index.html' class='tag-link-19' title='1 topic' style='font-size: 8pt;'>pidgin</a>
+<a href='../tag/politics/index.html' class='tag-link-45' title='1 topic' style='font-size: 8pt;'>politics</a>
+<a href='../tag/python/index.html' class='tag-link-15' title='14 topics' style='font-size: 22pt;'>python</a>
+<a href='../tag/rant/index.html' class='tag-link-37' title='1 topic' style='font-size: 8pt;'>rant</a>
+<a href='../tag/rendering/index.html' class='tag-link-43' title='1 topic' style='font-size: 8pt;'>rendering</a>
+<a href='../tag/snippet/index.html' class='tag-link-24' title='1 topic' style='font-size: 8pt;'>snippet</a>
+<a href='../tag/sun/index.html' class='tag-link-85' title='2 topics' style='font-size: 10.863636363636pt;'>Sun</a>
+<a href='../tag/syncml/index.html' class='tag-link-34' title='2 topics' style='font-size: 10.863636363636pt;'>syncml</a>
+<a href='../tag/validation/index.html' class='tag-link-29' title='3 topics' style='font-size: 12.772727272727pt;'>validation</a>
+<a href='../tag/virtualbox/index.html' class='tag-link-52' title='3 topics' style='font-size: 12.772727272727pt;'>virtualbox</a>
+<a href='../tag/virtual-reality/index.html' class='tag-link-39' title='2 topics' style='font-size: 10.863636363636pt;'>Virtual Reality</a>
+<a href='../tag/wii/index.html' class='tag-link-38' title='2 topics' style='font-size: 10.863636363636pt;'>wii</a></div>
+<div class="clear"></div></div>	</div><!--#secondary-sidebar-->
+
+	<div class="clear"></div>
+</div><!--#sidebar-->			<div class="clear"></div>
+			</div><!-- .wrapper -->
+		</div><!-- #main -->
+		<hr class="lofi" />
+		<div id="footer" class="section">
+			<div class="wrapper">		
+				<p id="generator-link">Proudly powered by <a href="http://wordpress.org/" rel="generator">WordPress</a> and <a href="http://carringtontheme.com/" title="Carrington theme for WordPress">Carrington</a>.</p>
+			</div><!--.wrapper-->
+		</div><!--#footer -->
+	</div><!--#page-->
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10069879-1");
+pageTracker._trackPageview();
+} catch(err) {}</script><script type='text/javascript' src='http://platform.twitter.com/widgets.js?ver=1.0.0'></script>
+<!--stats_footer_test--><script src="http://stats.wordpress.com/e-201250.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'2379387',v:'ext',post:'22'});
+var load_cmc = function(){linktracker_init(2379387,22,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+</body>
+
+<!-- Mirrored from eikke.com/wii-head-tracking-explained-how-it-works/ by HTTrack Website Copier/3.x [XR&CO'2010], Tue, 11 Dec 2012 20:24:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8"><!-- /Added by HTTrack -->
+</html>
+<!-- Dynamic page generated in 0.363 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:31:48 -->
+<!-- Compression = gzip -->

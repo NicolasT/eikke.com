@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; java</title>
+	<atom:link href="http://eikke.com/tag/java/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Scala tail recursion and decompiler adventures</title>
+		<link>http://eikke.com/scala-tail-recursion-decompiler/</link>
+		<comments>http://eikke.com/scala-tail-recursion-decompiler/#comments</comments>
+		<pubDate>Wed, 12 Aug 2009 22:31:03 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Technology]]></category>
+		<category><![CDATA[functional programming]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[scala]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=129</guid>
+		<description><![CDATA[I've been into Scala lately. More about it will follow later, but there's something I found out which I really like.
+
+Last couple of days I've been writing some very basic Scala snippets, containing constructs which would be non-trivial or 'unusual' to write in Java, compile it to a class file, and then use a Java decompiler to figure out how the Scala compiler maps those constructs on the JVM.
+
+There's one thing which took my immediate attention: looks like (basic) tail-recursive functions are optimized into while-loops!]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been into <a href="http://www.scala-lang.org">Scala</a> lately. More about it will follow later, but there&#8217;s something I found out which I really like.</p>
+<p>Last couple of days I wrote some very basic Scala snippets, containing constructs which would be non-trivial or &#8216;unusual&#8217; to write in <a href="http://java.sun.com">Java</a>, compile it to a class file, and then use a <a href="http://java.decompiler.free.fr">Java decompiler</a> to figure out how the Scala compiler maps those constructs to JVM bytecodes.</p>
+<p>There&#8217;s one thing which took my attention: looks like (basic) tail-recursive functions are optimized into while-loops! This only happens if the last call of a function is a call to itself (the most basic form of tail recursion), but it&#8217;s an interesting feature anyway&#8230; No more need to put socket accept handling in an infinite while loop <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /><br />
+<span id="more-129"></span><br />
+A little demo. First, here&#8217;s a Scala object which implements a very basic &#8216;reduce&#8217; function:</p>
+<pre>
+object Reducer {
+  def reduce[T, V](fun: (V, T) => V, values: List[T], initial: V): V = {
+    if(values isEmpty)
+      return initial
+    val next = fun(initial, values head)
+    return reduce(fun, values tail, next)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val values = List(1, 2, 3, 4)
+    val sum = reduce[Int, Int]((x, y) => x + y, values, 0)
+    println("Result: " + sum)
+  }
+}
+</pre>
+<p>We can compile and run this, and it&#8217;ll output the expected result &#8217;10&#8242;:</p>
+<pre>MacBook:reduce nicolas $ scalac Reducer.scala 
+MacBook:reduce nicolas $ scala Reducer
+Result: 10</pre>
+<p>Now we can open the generated class files in JD. There are a couple of them (it&#8217;s interesting to take a look at all of them and figure out what they represent exactly), but in this case we need &#8216;Reducer$.class&#8217;, which contains the implementations of our public functions, including &#8216;reduce&#8217;.</p>
+<p>Here&#8217;s the Java version of the &#8216;reduce&#8217; function:</p>
+<pre>public &lt;T, V&gt; V reduce(Function2&lt;V, T, V&gt; fun, List&lt;T&gt; values, V initial)
+{
+  while (true)
+  {
+    if (values.isEmpty())
+      return initial;
+    Object next = fun.apply(initial, values.head());
+    initial = next;
+    values = values.tail();
+  }
+}
+</pre>
+<p>&#8216;Function2&#8242; is a built-in Scala type which represents a function taking 2 parameters. As you can see, this code does exactly the same as our Scala version and is most likely the way we&#8217;d write the code manually as well (the only thing I don&#8217;t get is why &#8216;next&#8217; is an Object and not a &#8216;V&#8217;, I might figure that out later), but without forcing us to write the imperative code, whilst still producing bytecodes which will most likely show the best performance on the JVM (which currently has no tail recursion optimization support (although <a href="http://openjdk.java.net/projects/mlvm/subprojects.html#TailCalls">that might change one day</a>)).</p>
+<p>I like it <img src='http://eikke.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /> </p>
+<p>[update]<br />
+For reference, here&#8217;s a slightly more Scala-ish implementation of <em>reduce</em>, showing the same time performance characteristics during some basic profiling. I was not able to get JD nor jad to generate any usable decompiled code though:</p>
+<pre>
+def reduce[T, V](fun: (V, T) => V, values: List[T], initial: V): V = {
+    values match {
+        case List() => initial;
+        case head :: tail => reduce(fun, tail, fun(initial, head))
+    }
+}
+</pre>
+<p>It uses Scala&#8217;s &#8220;List&#8221; pattern matching functionality.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/scala-tail-recursion-decompiler/feed/</wfw:commentRss>
+		<slash:comments>7</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.320 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:54 -->
+<!-- Compression = gzip -->

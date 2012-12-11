@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+		>
+<channel>
+	<title>Comments on: Python if/else in lambda</title>
+	<atom:link href="http://eikke.com/python-ifelse-in-lambda/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com/python-ifelse-in-lambda/</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Tue, 04 Dec 2012 00:03:23 +0000</lastBuildDate>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+	<item>
+		<title>By: kracekumar</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-50594</link>
+		<dc:creator>kracekumar</dc:creator>
+		<pubDate>Sun, 22 May 2011 07:58:13 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-50594</guid>
+		<description>I liked this article especially Eduardo de Oliveira Padoan comment</description>
+		<content:encoded><![CDATA[<p>I liked this article especially Eduardo de Oliveira Padoan comment</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: James</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-37385</link>
+		<dc:creator>James</dc:creator>
+		<pubDate>Sat, 10 Jul 2010 09:11:32 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-37385</guid>
+		<description>Such an important article.  God, this was killing me.</description>
+		<content:encoded><![CDATA[<p>Such an important article.  God, this was killing me.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: KingRadical</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-28744</link>
+		<dc:creator>KingRadical</dc:creator>
+		<pubDate>Wed, 04 Nov 2009 23:45:49 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-28744</guid>
+		<description>&gt;&gt;&gt; print (lambda x: np.array([3, 4]) if x == 2 else 1)(2)
+[3 4]</description>
+		<content:encoded><![CDATA[<p>&gt;&gt;&gt; print (lambda x: np.array([3, 4]) if x == 2 else 1)(2)<br />
+[3 4]</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: KingRadical</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-28743</link>
+		<dc:creator>KingRadical</dc:creator>
+		<pubDate>Wed, 04 Nov 2009 23:44:42 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-28743</guid>
+		<description>&gt;&gt;&gt; print (lambda x: 0 if x == 2 else 1)(2)
+0
+&gt;&gt;&gt; print (lambda x: 0 if x == 2 else 1)(3)
+1</description>
+		<content:encoded><![CDATA[<p>&gt;&gt;&gt; print (lambda x: 0 if x == 2 else 1)(2)<br />
+0<br />
+&gt;&gt;&gt; print (lambda x: 0 if x == 2 else 1)(3)<br />
+1</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Guest</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-23934</link>
+		<dc:creator>Guest</dc:creator>
+		<pubDate>Wed, 10 Jun 2009 08:24:29 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-23934</guid>
+		<description>(lambda x: x!=2 and 1 or 0)</description>
+		<content:encoded><![CDATA[<p>(lambda x: x!=2 and 1 or 0)</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: MA Nussli</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-7849</link>
+		<dc:creator>MA Nussli</dc:creator>
+		<pubDate>Mon, 11 Aug 2008 12:21:41 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-7849</guid>
+		<description>The &quot;And&quot;/&quot;Or&quot; solution doesn&#039;t work in any case. At least, I didn&#039;t manage to make it work.
+
+For example, if your &quot;True statement&quot; is actually a value which is evaluated to a &quot;False&quot; expression(like 0, None, &#039;&#039; or []) then &quot;False statement&quot; will always be returned.
+example:
+print (lambda x:x==2 and 0 or 1)(2)   ---&gt; 1
+print (lambda x:x==2 and 0 or 1)(3)   ---&gt; 1
+
+Even worst, if one of the &quot;True/False statements&quot; cannot be evaluated to a boolean expression(like a numpy.array) then it won&#039;t work at all...
+example:
+print (lambda x:x==2 and numpy.array([3,4]) or 1)(2)
+
+Any idea to circumvent such problems??</description>
+		<content:encoded><![CDATA[<p>The &#8220;And&#8221;/&#8221;Or&#8221; solution doesn&#8217;t work in any case. At least, I didn&#8217;t manage to make it work.</p>
+<p>For example, if your &#8220;True statement&#8221; is actually a value which is evaluated to a &#8220;False&#8221; expression(like 0, None, &#8221; or []) then &#8220;False statement&#8221; will always be returned.<br />
+example:<br />
+print (lambda x:x==2 and 0 or 1)(2)   &#8212;&gt; 1<br />
+print (lambda x:x==2 and 0 or 1)(3)   &#8212;&gt; 1</p>
+<p>Even worst, if one of the &#8220;True/False statements&#8221; cannot be evaluated to a boolean expression(like a numpy.array) then it won&#8217;t work at all&#8230;<br />
+example:<br />
+print (lambda x:x==2 and numpy.array([3,4]) or 1)(2)</p>
+<p>Any idea to circumvent such problems??</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Adway</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-3315</link>
+		<dc:creator>Adway</dc:creator>
+		<pubDate>Mon, 12 May 2008 08:55:39 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-3315</guid>
+		<description>I personally liked the &#039;and&#039; &#039;or&#039; idea. What&#039;s wrong about it?</description>
+		<content:encoded><![CDATA[<p>I personally liked the &#8216;and&#8217; &#8216;or&#8217; idea. What&#8217;s wrong about it?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jo</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-897</link>
+		<dc:creator>Jo</dc:creator>
+		<pubDate>Sat, 23 Feb 2008 20:24:28 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-897</guid>
+		<description>so after reading this it also means u could just do
+
+condition and &quot;True statement&quot; or &quot;Falsestatement&quot;
+which seams the easyest solution</description>
+		<content:encoded><![CDATA[<p>so after reading this it also means u could just do</p>
+<p>condition and &#8220;True statement&#8221; or &#8220;Falsestatement&#8221;<br />
+which seams the easyest solution</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Adriaan</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-855</link>
+		<dc:creator>Adriaan</dc:creator>
+		<pubDate>Thu, 21 Feb 2008 23:10:35 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-855</guid>
+		<description>Looks like there&#039;s no real solid solution short of a helper function - like Marius said, ( and  or ) fails if  evaluates to False (the inverse,  or  and , is even worse), and Thomas&#039; [, ][not ]) will always evaluate both  and , which can be problematic...
+
+I&#039;m starting to long for the ?: of c :-P</description>
+		<content:encoded><![CDATA[<p>Looks like there&#8217;s no real solid solution short of a helper function &#8211; like Marius said, ( and  or ) fails if  evaluates to False (the inverse,  or  and , is even worse), and Thomas&#8217; [, ][not ]) will always evaluate both  and , which can be problematic&#8230;</p>
+<p>I&#8217;m starting to long for the ?: of c <img src='http://eikke.com/wp-includes/images/smilies/icon_razz.gif' alt=':-P' class='wp-smiley' /> </p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Marius Gedminas</title>
+		<link>http://eikke.com/python-ifelse-in-lambda/comment-page-1/#comment-758</link>
+		<dc:creator>Marius Gedminas</dc:creator>
+		<pubDate>Sun, 17 Feb 2008 17:46:35 +0000</pubDate>
+		<guid isPermaLink="false">http://eikke.com/python-ifelse-in-lambda/#comment-758</guid>
+		<description>Be very very careful about this X and Y or Z trick.  It fails miserably when bool(Y) is False.</description>
+		<content:encoded><![CDATA[<p>Be very very careful about this X and Y or Z trick.  It fails miserably when bool(Y) is False.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.368 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:34:40 -->
+<!-- Compression = gzip -->

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; parsing</title>
+	<atom:link href="http://eikke.com/tag/parsing/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Pyparsing introduction: BNF to code</title>
+		<link>http://eikke.com/pyparsing-introduction-bnf-to-code/</link>
+		<comments>http://eikke.com/pyparsing-introduction-bnf-to-code/#comments</comments>
+		<pubDate>Sun, 20 Jan 2008 16:32:51 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[bnf]]></category>
+		<category><![CDATA[parsing]]></category>
+		<category><![CDATA[pyparsing]]></category>
+		<category><![CDATA[python]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/pyparsing-introduction-bnf-to-code/</guid>
+		<description><![CDATA[After reading my previous post, you should have a pretty good understanding of what a BNF definition is all about. Let&#8217;s put this theory into practice, and write some basic parsers in Python, using Pyparsing! Pyparsing allows a pretty one-to-one mapping of BNF to Python code: you can define sets and combinations, then parse any [...]]]></description>
+			<content:encoded><![CDATA[<p>After reading my <a href="http://eikke.com/text-parsing-formal-grammars-and-bnf-introduction/" title="eikke.com: Formal grammars and BNF introduction">previous post</a>, you should have a pretty good understanding of what a BNF definition is all about. Let&#8217;s put this theory into practice, and write some basic parsers in <a href="http://www.python.org" title="Python">Python</a>, using <strong>Pyparsing</strong>!</p>
+<p>Pyparsing allows a pretty one-to-one <strong>mapping of BNF to Python code</strong>: you can define sets and combinations, then parse any text fragment against it. This is something very important to notice: one basic BNF definition can (and should) be reused: if you once wrote a BNF definition for an integer value, you can easily reuse this definition in, eg, a basic integer math expression.</p>
+<p>The most basic element using Pyparsing is a Word. In it&#8217;s most basic form this is a set of characters which will match any arbitrary length string, as long as the characters in this string are part of the Word character set.</p>
+<p>A little introduction example: let&#8217;s write a parser which accepts words consisting of small-cap characters, or sentences which consist of words separated by spaces. First we define a formal definition using BNF:</p>
+<p><span id="more-51"></span></p>
+<ul>
+<li>character ::= a | b | c | d | &#8230; | y | z</li>
+<li>word ::= character | character word</li>
+<li>sentence ::= word | sentence &#8221; &#8221; word</li>
+</ul>
+<p>Let&#8217;s port this formal definition to Python code. First we need to do some imports, as in most Python programs. I&#8217;d encourage the reader to write this code in an interactive interpreter (give iPython a try, it rocks!) and experiment a little with it (tab-completion and &#8216;?&#8217; rock!):</p>
+<pre>from pyparsing import Word
+from string import lowercase</pre>
+<p>Pyparsing includes several useful pre-defined lists of characters, including</p>
+<ul>
+<li>alphas: a-zA-Z</li>
+<li>nums: 0-9</li>
+<li>alphanums: alphas + nums</li>
+</ul>
+<p>These are normal Python strings. In this sample we only want lowercase characters though, so we import this from the string module.</p>
+<p>Now we can define one word: a word is a concatenation of lowercase characters.</p>
+<pre>word = Word(lowercase)</pre>
+<p>Let&#8217;s play around with this:</p>
+<pre>print word.parseString('hello')
+# returns ['hello']
+print word.parseString('Hello')
+# raises ParseException: Expected W:(abcd...) (0), (1,1)
+print word.parseString('hello world')
+# returns ['hello']</pre>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/pyparsing-introduction-bnf-to-code/feed/</wfw:commentRss>
+		<slash:comments>8</slash:comments>
+		</item>
+		<item>
+		<title>Text parsing, formal grammars and BNF introduction</title>
+		<link>http://eikke.com/text-parsing-formal-grammars-and-bnf-introduction/</link>
+		<comments>http://eikke.com/text-parsing-formal-grammars-and-bnf-introduction/#comments</comments>
+		<pubDate>Sun, 20 Jan 2008 03:39:43 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Development]]></category>
+		<category><![CDATA[Various]]></category>
+		<category><![CDATA[bnf]]></category>
+		<category><![CDATA[grammar]]></category>
+		<category><![CDATA[mathematics]]></category>
+		<category><![CDATA[parsing]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/text-parsing-formal-grammars-and-bnf-introduction/</guid>
+		<description><![CDATA[Parsing input is something most developers run into one day. Parsing binary input can be pretty straight-forward, as most of the time you know the format of the input, ie you know what to expect: if you receive a message of 10 bytes, the first byte could be a message ID, the second one the [...]]]></description>
+			<content:encoded><![CDATA[<p>Parsing input is something most developers run into one day. Parsing binary input can be pretty straight-forward, as most of the time you know the format of the input, ie you know what to expect: if you receive a message of 10 bytes, the first byte could be a message ID, the second one the payload length, third one message type ID, and others message content. Pretty easy to handle.</p>
+<p>Parsing human-readable text can be harder though, as human beings tend to be less strict when providing input (eg whitespacing), you can&#8217;t ask humans to prepend strings with their length, etc.</p>
+<p>There are several ways to handle text input. One well-known method is using <a href="http://en.wikipedia.org/wiki/Regular_expression" title="Wikipedia: Regular expression">regular expressions</a> with matches, but writing regular expressions which are able to process not-so-strict input can be pretty though, writing expressions to parse large bodies of text is hard, using sub-expressions can become pretty complicated,&#8230; Overall regular expressions usually involve quite a lot of black magic for the average outsider.</p>
+<p><img src="http://imgs.xkcd.com/comics/regular_expressions.png" alt="xkcd comic: Regular expressions" height="607" width="600" /></p>
+<p>Luckily, there are easier methods to parse text input too, of which I&#8217;d like to introduct one: a <a href="http://www.python.org" title="Python">Python</a> module called <strong>Pyparsing</strong>, which can do BNF-style text parsing.</p>
+<p>First of all, let me explain &#8220;BNF&#8221;. The <a href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form" title="Wikipedia: Backus-Naur Form">Backus-Naur Form</a>, aka BNF, is a metasyntax you can use to express the grammar of a formal language.  This might make no sense at all, so let&#8217;s split it up:</p>
+<p><span id="more-50"></span></p>
+<ol>
+<li><strong>Syntax</strong>: a syntax defines the <em>structure</em> of a sentence. Don&#8217;t just think about a normal sentence here, an expression in a programming language can be a sentence as well. In every language there&#8217;s an alphabet (example: the alphabet of integer numbers consists of 0, 1, 2,&#8230;, 9). A syntax defines how characters from this alphabet should be placed together to form a valid sentence (expression).</li>
+<li><strong>Metasyntax</strong>: a metasyntax is a syntax to <em>define a syntax</em>. It has its own alphabet and well-formedness rules.</li>
+<li><strong>Grammar</strong>: set of rules against which sentences can be checked to figure out whether they&#8217;re valid or not. Do note being valid does not imply the sentence got a real significance.</li>
+<li><strong>Formal language</strong>: a language with a very strict and unforgiving description (grammar). The English language is not a formal language: although &#8220;I in Belgium live&#8221; is not a correct sentence (it doesn&#8217;t correspond to the grammar of the English language), everyone knows what it means. In a formal language, any string which consists of characters from the language&#8217;s alphabet, but does not match the grammar, got no significance at all.</li>
+</ol>
+<p>That&#8217;s about it. If this isn&#8217;t very clear to you, never mind, the upcoming examples should explain a lot.</p>
+<p>Let&#8217;s write our first BNF definition of a very simple language: integers. As noted before, the alphabet of integers consists of the numbers 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9. The structure of integers is very simple, it&#8217;s a concatenation of numbers, but shouldn&#8217;t start with a 0.</p>
+<p>When creating a BNF definition, we first define the sets of characters from the alphabet we&#8217;re going to use:</p>
+<ul>
+<li>nzdigit ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9</li>
+<li>digit ::=  0 | nzdigit</li>
+</ul>
+<p>nzdigit is a set of all non-zero numbers, digit is any digit. the :, = and | characters are part of the BNF&#8217;s metalanguage alphabet. The : and = characters are used to assign a set to a name, the | character denotes &#8220;or&#8221;. Notice we can re-use a previously defined set.</p>
+<p>Now let&#8217;s see how to define the rules for integers. An integer consists of a concatenation of numbers, but can&#8217;t start with a 0. So first of all we need to figure out how to present a concatenation of numbers. Remember we can use previously defined sets in a definition? Guess what, we can also re-use a set recursively, so this is a concatenation of digits:</p>
+<ul>
+<li>digits ::= digit | digit digits</li>
+</ul>
+<p>So, a &#8220;digits&#8221; is one single digit, or a single digit with a digits appended to it, which can be a single digit or a digits appended to it, etc. &#8220;1&#8243;, &#8220;12&#8243;, &#8220;120&#8243; and &#8220;012&#8243; are valid digits.</p>
+<p>So, finally we can define an integer:</p>
+<ul>
+<li>integer ::= digit | nzdigit digits</li>
+</ul>
+<p>An integer is a non-zero digit, or a non-zero digits followed by an arbitrary amount of digits.</p>
+<p>This example should be clear, if it&#8217;s not, read over it again, it&#8217;s pretty important to &#8216;get&#8217; this.</p>
+<p><strong>Exercise 1</strong>: define a BNF definition for a greeting: &#8220;Hello, John!&#8221;, where &#8216;John&#8217; can be any name starting with an uppercase character, followed by some lowercase ones.</p>
+<p><strong>Exercise 2</strong>: write a BNF definition for a standard printf-style function, which accepts string (&#8220;%s&#8221;) and integer (&#8220;%d&#8221;) values. The formatting string can consist of any alphanumeric character, spaces and formatters. Variable names can consist of any alphanumeric character, but can&#8217;t start with a number. You can use some pre-defined definitions:</p>
+<ul>
+<li>All the definitions we used above (nzdigit, digit, digits and integer)</li>
+<li>lcchar and ucchar: lower-case and upper-case characters</li>
+</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/text-parsing-formal-grammars-and-bnf-introduction/feed/</wfw:commentRss>
+		<slash:comments>14</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.188 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:33:44 -->
+<!-- Compression = gzip -->

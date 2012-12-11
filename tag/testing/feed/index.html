@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Ikke&#039;s blog &#187; testing</title>
+	<atom:link href="http://eikke.com/tag/testing/feed/" rel="self" type="application/rss+xml" />
+	<link>http://eikke.com</link>
+	<description>&#039;cause this is what I do</description>
+	<lastBuildDate>Sun, 13 Feb 2011 14:58:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.4.1</generator>
+		<item>
+		<title>Book review: Python Testing &#8211; Beginner&#8217;s Guide</title>
+		<link>http://eikke.com/book-review-python-testing-beginners-guide-2/</link>
+		<comments>http://eikke.com/book-review-python-testing-beginners-guide-2/#comments</comments>
+		<pubDate>Sun, 14 Mar 2010 20:49:54 +0000</pubDate>
+		<dc:creator>Nicolas</dc:creator>
+				<category><![CDATA[Technology]]></category>
+		<category><![CDATA[book]]></category>
+		<category><![CDATA[python]]></category>
+		<category><![CDATA[testing]]></category>
+
+		<guid isPermaLink="false">http://eikke.com/?p=170</guid>
+		<description><![CDATA[As mentioned before, some days ago I received a copy of a recent book from Packt Publishing titled &#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221; by Daniel Arbuckle. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt. The book targets people who know Python (it doesn&#8217;t contain [...]]]></description>
+			<content:encoded><![CDATA[<p>As mentioned <a href="/book-review-python-testing-beginners-guide/">before</a>, some days ago I received a copy of a recent book from <em>Packt Publishing</em> titled <strong><a href="http://www.packtpub.com/python-testing-beginners-guide/book?utm_source=eikke.com&#038;utm_medium=bookrev&#038;utm_content=blog&#038;utm_campaign=mdb_002562">&#8220;Python Testing &#8211; Beginner&#8217;s Guide&#8221;</a></strong> by <em>Daniel Arbuckle</em>. I read the whole book (it&#8217;s not huge, around 220 pages), and wrote a review, as requested by Packt.</p>
+<p>The book targets people who know Python (it doesn&#8217;t contain a language introduction chapter or something alike, which would be rather pointless anyway), and want to start testing the code they write. Even though the author starts by explaining basic tools like <em>doctests</em> and the <em>unittest</em> framework contained in the Python standard library, it could be a useful read even if you used these tools before, e.g. when the Mock library is explained, or in the chapter on web application testing using Twill.</p>
+<p>The text is easy to read, and contains both hands-on code examples, explanations as well as tasks for the reader and quiz questions. I did not audit all code for correctness (although in my opinion some more time should have been invested here before the book was publishing: some code samples contain errors, even invalid syntax (p45: &#8220;<code>self.integrated_error +q= err * delta</code>&#8220;), which is not what I expect in a book about code testing), nor all quizes. These could&#8217;ve used some more care as well, e.g. on p94 one can read</p>
+<blockquote><p>What is the unittest equivalent of this doctest?</p>
+<pre><code>>>> try:
+...     int('123')
+... except ValueError:
+...     pass
+... else:
+...     print 'Expected exception was not raised'
+</code></pre>
+</blockquote>
+<p>I was puzzled by this, since as far as I could remember, int(&#8217;123&#8242;) works just fine, and I didn&#8217;t have a computer at hand to check. Checked now, and it works as I expected, so maybe I&#8217;m missing something here? The solution found in the back of the book is a literal <em>unittest</em>-port of the above <em>doctest</em>, and should fail, if I&#8217;m not mistaken:</p>
+<blockquote><pre><code>>>> def test_exceptions(TestCase):
+...     def test_ValueError(self):
+...         self.assertRaises(ValueError, int, '123')
+</code></pre>
+</blockquote>
+<p>This example also shows one more negative point of the book, IMHO: the code samples don&#8217;t follow <strong>PEP-8</strong> (or similar) capitalization, which makes code rather hard to read sometimes.</p>
+<p>The solutions for the last quiz questions are missing as well, and accidently I did want to read those.</p>
+<p>Don&#8217;t be mistaken though: these issues don&#8217;t reduce the overall value of the book, it&#8217;s certainly worth your time, as long as you keep in mind not to be too confused by the mistakes as shown above.</p>
+<h3>Topic overview</h3>
+<p>The book starts with a short overview of types of testing, including unit, integration and system testing, and why testing is worth the effort. This is a very short overview of 3 pages.</p>
+<p>Starting from chapter 2, the <em>doctest</em> system is introduced. I think it&#8217;s an interesting approach to start with <em>doctest</em> instead of using <em>unittest</em>, which is modeled after the more &#8216;standard&#8217; xUnit packages. Doctests are useful during specification writing as well, which is in most project the first stage, before any unittestable code is written. The chapter also introduces an overview of the <em>doctest</em> directives, which was useful to read.</p>
+<p>In chapter 3 gives an example of the development of a small project, and all stages involved, including how doctests fit in every stage.</p>
+<p>Maybe a sample of <strong>Sphinx</strong> and its <em>doctest</em> integration would have been a nice addition to one of the previous chapters, since the book introduced <em>doctest</em> as part of stand-alone text files, not as part of code docstrings (although it does talk about those as well). When writing documentation in plain text files, Sphinx is certainly the way to go, and its <em>doctest</em> plugin is a useful extra.</p>
+<p>Starting in chapter 4, the Python &#8216;<em>mocking</em>&#8216; library is introduced. The chapter itself is a rather good introduction to mock-based testing, but I don&#8217;t think mocks should be used in doctests, which should be rather small, examplish snippets. Mock definitions don&#8217;t belong there, IMO. This chapter also shows some lack of pre-publishing reviews in a copy-paste error, in the block explaining how to install mocker on page 62, telling from now on Nose is ready to be used.</p>
+<p>Chapter 5, which you can read <a href="http://www.packtpub.com/files/8846-python-testing-beginners-guide-sample-chapter-5-when-doctest-isnt-enough-unittest-to-the-rescue.pdf">here</a> introduces the <em>unittest</em> framework, its assertion methods, fixtures and mocking integration.</p>
+<p>In chapter 6 &#8216;<em>nose</em>&#8216; is introduced, a tool to find and run tests in a project. I use nose myself in almost every project, and it&#8217;s certainly a good choice. The chapter gives a pretty good overview of the useful features nose provides. It does contain a strange example of module-level setup and teardown methods, whilst IMHO subclassing <em>TestCase</em> would be more suited (and more portable).</p>
+<p>Chapter 7 implements a complete project from specification to implementation and maintenance. Useful to read, but I think the chapter contains too much code, and it&#8217;s repeated too often.</p>
+<p>Chapter 8 introduces web application testing using Twill, which I never used before (nor did I ever test a web application before). Useful to read, but Twill might be a strange choice, since there have been no releases since end 2007&#8230; Selenium might have been a better choice?</p>
+<p>A large part of the chapter is dedicated to list all possible Twill commands as well, which I think is a waste of space, this can be easily found in the Twill language reference.</p>
+<p>Chapter 9 introduces integration and system testing. Interesting to read, the diagram-drawing method used is certainly useful, but it also contains too much code listings.</p>
+<p>Finally, chapter 10 gives a short overview of some other testing tools. First <em>coverage.py</em> is explained, which is certainly useful. Then integration of test execution with version control systems is explained. I think this is certainly useful, but not at this level of detail. Setting up a Subversion repository is not exactly what I expect here, especially not when non-anonymous, password-based authentication over svn:// is used (which is a method which should be avoided, AFAIK).<br />
+Finally, continuous integration using Buildbot is tackled. No comments here, although I tend to use Hudson myself <img src='http://eikke.com/wp-includes/images/smilies/icon_wink.gif' alt=';-)' class='wp-smiley' /> </p>
+<h3>Final words</h3>
+<p>Is this book worth your time and money? If you&#8217;re into Python and you don&#8217;t have lots of experience with testing Python code, it certainly is. Even if you wrote tests using unittest or doctests before, you&#8217;ll most likely learn some new things, like using mocks.</p>
+<p>I&#8217;m glad Packt gave me the opportunity to read and review the book. I&#8217;d advise them to put some more effort in pre-publishing reviews for future titles, but the overall quality of the non-code content was certainly OK, and I hope lots of readers will enjoy and learn from this book.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://eikke.com/book-review-python-testing-beginners-guide-2/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.157 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2012-12-11 21:32:36 -->
+<!-- Compression = gzip -->
